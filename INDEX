@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance General | Nombre de la Empresa</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px solid #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+
+        h1 { margin: 0; color: #2c3e50; font-size: 24px; }
+        p.subtitle { margin: 5px 0; color: #7f8c8d; font-style: italic; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        th { background-color: #f8f9fa; color: #2c3e50; }
+
+        .category-title {
+            background-color: #ecf0f1;
+            font-weight: bold;
+            color: #2980b9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .subtotal {
+            font-weight: bold;
+            background-color: #fafafa;
+        }
+
+        .total-final {
+            background-color: #2c3e50;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .text-right { text-align: right; }
+        
+        footer {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .signature {
+            border-top: 1px solid #333;
+            width: 200px;
+            padding-top: 10px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>NOMBRE DE LA EMPRESA S.A.</h1>
+        <p class="subtitle">Balance General al 31 de diciembre de 2025</p>
+        <p>(Cifras expresadas en Pesos)</p>
+    </header>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Cuentas</th>
+                <th class="text-right">Monto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- SECCIÓN ACTIVOS -->
+            <tr class="category-title">
+                <td colspan="2">Activos</td>
+            </tr>
+            <tr>
+                <td>Caja y Bancos</td>
+                <td class="text-right">$50,000</td>
+            </tr>
+            <tr>
+                <td>Cuentas por Cobrar</td>
+                <td class="text-right">$15,000</td>
+            </tr>
+            <tr>
+                <td>Inventarios</td>
+                <td class="text-right">$30,000</td>
+            </tr>
+            <tr class="subtotal">
+                <td>Total Activo Circulante</td>
+                <td class="text-right">$95,000</td>
+            </tr>
+            <tr>
+                <td>Propiedad, Planta y Equipo</td>
+                <td class="text-right">$120,000</td>
+            </tr>
+            <tr class="total-final">
+                <td>TOTAL ACTIVOS</td>
+                <td class="text-right">$215,000</td>
+            </tr>
+
+            <!-- SECCIÓN PASIVOS -->
+            <tr class="category-title">
+                <td colspan="2">Pasivos</td>
+            </tr>
+            <tr>
+                <td>Proveedores</td>
+                <td class="text-right">$20,000</td>
+            </tr>
+            <tr>
+                <td>Préstamos Bancarios (C.P.)</td>
+                <td class="text-right">$10,000</td>
+            </tr>
+            <tr class="subtotal">
+                <td>Total Pasivo Circulante</td>
+                <td class="text-right">$30,000</td>
+            </tr>
+            <tr>
+                <td>Deuda a Largo Plazo</td>
+                <td class="text-right">$50,000</td>
+            </tr>
+            <tr class="subtotal">
+                <td>TOTAL PASIVOS</td>
+                <td class="text-right">$80,000</td>
+            </tr>
+
+            <!-- SECCIÓN PATRIMONIO -->
+            <tr class="category-title">
+                <td colspan="2">Patrimonio Neto</td>
+            </tr>
+            <tr>
+                <td>Capital Social</td>
+                <td class="text-right">$100,000</td>
+            </tr>
+            <tr>
+                <td>Utilidades Retenidas</td>
+                <td class="text-right">$35,000</td>
+            </tr>
+            <tr class="subtotal">
+                <td>Total Patrimonio</td>
+                <td class="text-right">$135,000</td>
+            </tr>
+
+            <!-- VERIFICACIÓN -->
+            <tr class="total-final">
+                <td>TOTAL PASIVO + PATRIMONIO</td>
+                <td class="text-right">$215,000</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <footer>
+        <div class="signature">
+            <p>Contador General</p>
+        </div>
+        <div class="signature">
+            <p>Representante Legal</p>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>
