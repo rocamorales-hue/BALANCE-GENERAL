@@ -3,174 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balance General Profesional - Calculadora</title>
+    <title>Balance General Profesional</title>
     <style>
         :root {
-            --primary: #2c3e50;
-            --bg: #f4f7f6;
-            --border: #ddd;
-            --accent: #2980b9;
+            --primary-dark: #2c3e50;
+            --secondary-bg: #f8f9fa;
+            --accent: #34495e;
+            --border-color: #dee2e6;
         }
 
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); margin: 0; padding: 20px; font-size: 14px; }
-        .container { max-width: 1200px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        
-        h1 { text-align: center; color: var(--primary); font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid var(--primary); padding-bottom: 10px; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
 
-        .balance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        
-        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-        th, td { border: 1px solid var(--border); padding: 8px; text-align: left; }
-        
-        th { background: #f8f9fa; text-align: center; color: var(--primary); }
-        .section-header { background: #eee; font-weight: bold; text-transform: uppercase; font-size: 0.85rem; }
-        
-        input[type="number"] {
-            width: 90%;
-            border: 1px solid #ccc;
+        .balance-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
             border-radius: 4px;
-            padding: 5px;
-            text-align: right;
-            font-family: inherit;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
 
-        input:focus { border-color: var(--accent); outline: none; background: #f0f8ff; }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--primary-dark);
+            padding-bottom: 10px;
+        }
 
-        .total-row { background: #f1f1f1; font-weight: bold; }
-        .total-final { background: var(--primary); color: white; }
-        .total-final input { background: transparent; color: white; border: none; font-weight: bold; }
+        h1 { margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 22px; }
+        .date-line { font-style: italic; color: #666; margin-top: 5px; }
 
-        .col-title { font-size: 0.8rem; text-align: center; }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
 
-        @media (max-width: 900px) {
-            .balance-grid { grid-template-columns: 1fr; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 13px;
+        }
+
+        .category-head {
+            background-color: var(--secondary-bg);
+            font-weight: bold;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+        }
+
+        .sub-category {
+            font-weight: bold;
+            padding-left: 20px;
+            color: #555;
+        }
+
+        .account-name { padding-left: 35px; }
+
+        input[type="number"] {
+            width: 100%;
+            border: 1px solid transparent;
+            text-align: right;
+            padding: 4px;
+            background: #fffdf0; /* Color crema suave para indicar que es editable */
+        }
+
+        input[type="number"]:focus {
+            border: 1px solid var(--primary-dark);
+            outline: none;
+            background: #fff;
+        }
+
+        .total-row {
+            font-weight: bold;
+            background-color: #eee;
+        }
+
+        .grand-total {
+            background-color: var(--primary-dark);
+            color: white;
+            font-size: 15px;
+        }
+
+        .grand-total input {
+            background: transparent !important;
+            color: white;
+            font-weight: bold;
+            border: none;
+        }
+
+        footer {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .signature-box {
+            text-align: center;
+            border-top: 1px solid #000;
+            width: 250px;
+            padding-top: 10px;
+            font-size: 12px;
+        }
+
+        @media (max-width: 800px) {
+            .grid-container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>Balance General Interactivo</h1>
+<div class="balance-container">
+    <header>
+        <h1>Estado de Situación Financiera</h1>
+        <div class="date-line">Al 31 de Diciembre de 2025</div>
+    </header>
 
-    <div class="balance-grid">
-        <div class="side">
+    <div class="grid-container">
+        <section>
             <table>
                 <thead>
-                    <tr>
-                        <th colspan="4" class="section-header">Activo</th>
-                    </tr>
-                    <tr class="col-title">
-                        <th style="width: 30%;">Concepto</th>
-                        <th>Solicitud</th>
-                        <th>Ejecutivo</th>
-                        <th>Proyección</th>
-                    </tr>
+                    <tr class="category-head"><th colspan="2">Activos</th></tr>
                 </thead>
-                <tbody id="activo-body">
-                    <tr class="section-header"><td colspan="4">Activo Circulante</td></tr>
-                    <tr>
-                        <td>Saldo en Caja</td>
-                        <td><input type="number" class="act-sol" value="0" oninput="calcular()"></td>
-                        <td><input type="number" class="act-eje" value="0" oninput="calcular()"></td>
-                        <td><input type="number" class="act-pro" value="0" oninput="calcular()"></td>
-                    </tr>
-                    <tr>
-                        <td>Saldo en Bancos</td>
-                        <td><input type="number" class="act-sol" value="0" oninput="calcular()"></td>
-                        <td><input type="number" class="act-eje" value="0" oninput="calcular()"></td>
-                        <td><input type="number" class="act-pro" value="0" oninput="calcular()"></td>
-                    </tr>
-                    <tr>
-                        <td>Cuentas por Cobrar</td>
-                        <td><input type="number" class="act-sol" value="0" oninput="calcular()"></td>
-                        <td><input type="number" class="act-eje" value="0" oninput="calcular()"></td>
-                        <td><input type="number" class="act-pro" value="0" oninput="calcular()"></td>
-                    </tr>
-                    <tr>
-                        <td>Inventarios</td>
-                        <td><input type="number" class="act-sol" value="0" oninput="calcular()"></td>
-                        <td><input type="number" class="act-eje" value="0" oninput="calcular()"></td>
-                        <td><input type="number" class="act-pro" value="0" oninput="calcular()"></td>
-                    </tr>
-                    <tr class="total-row">
-                        <td>Total Circulante</td>
-                        <td><input type="number" id="total-act-sol" readonly disabled></td>
-                        <td><input type="number" id="total-act-eje" readonly disabled></td>
-                        <td><input type="number" id="total-act-pro" readonly disabled></td>
-                    </tr>
+                <tbody>
+                    <tr class="sub-category"><td colspan="2">Activo Circulante</td></tr>
+                    <tr><td class="account-name">Caja</td><td><input type="number" class="val-act-circ" value="0" oninput="calc()"></td></tr>
+                    <tr><td class="account-name">Bancos</td><td><input type="number" class="val-act-circ" value="0" oninput="calc()"></td></tr>
+                    <tr><td class="account-name">Inversiones Temporales</td><td><input type="number" class="val-act-circ" value="0" oninput="calc()"></td></tr>
+                    <tr><td class="account-name">Cuentas por Cobrar</td><td><input type="number" class="val-act-circ" value="0" oninput="calc()"></td></tr>
+                    <tr><td class="account-name">Inventarios</td><td><input type="number" class="val-act-circ" value="0" oninput="calc()"></td></tr>
+                    <tr><td class="account-name">IVA Acreditable</td><td><input type="number" class="val-act-circ" value="0" oninput="calc()"></td></tr>
+                    <tr class="total-row"><td>Total Activo Circulante</td><td><input type="number" id="sum-act-circ" readonly disabled></td></tr>
+
+                    <tr class="sub-category"><td colspan="2">Activo Fijo (No Circulante)</td></tr>
+                    <tr><td class="account-name">Terrenos</td><td><input type="number" class="val-act-fijo" value="0" oninput="calc()"></td></tr>
+                    <tr><td class="account-name">Edificios</td><td><input type="number" class="val-act-fijo" value="0" oninput="calc()"></td></tr>
+                    <tr><td class="account-name">Maquinaria y Equipo</td><td><input type="number" class="val-act-fijo" value="0" oninput="calc()"></td></tr>
+                    <tr><td class="account-name">Equipo de Transporte</td><td><input type="number" class="val-act-fijo" value="0" oninput="calc()"></td></tr>
+                    <tr><td class="account-name">Mobiliario y Equipo</td><td><input type="number" class="val-act-fijo" value="0" oninput="calc()"></td></tr>
+                    <tr><td class="account-name">Depreciación Acumulada</td><td><input type="number" class="val-act-fijo" value="0" oninput="calc()" placeholder="Ej: -5000"></td></tr>
+                    <tr class="total-row"><td>Total Activo Fijo</td><td><input type="number" id="sum-act-fijo" readonly disabled></td></tr>
+
+                    <tr class="sub-category"><td colspan="2">Activo Diferido</td></tr>
+                    <tr><td class="account-name">Gastos de Instalación</td><td><input type="number" class="val-act-dif" value="0" oninput="calc()"></td></tr>
+                    <tr><td class="account-name">Rentas Pagadas por Ant.</td><td><input type="number" class="val-act-dif" value="0" oninput="calc()"></td></tr>
+                    <tr class="total-row"><td>Total Activo Diferido</td><td><input type="number" id="sum-act-dif" readonly disabled></td></tr>
+
+                    <tr class="grand-total"><td>TOTAL ACTIVOS</td><td><input type="number" id="gran-total-activos" readonly disabled></td></tr>
                 </tbody>
             </table>
-        </div>
+        </section>
 
-        <div class="side">
+        <section>
             <table>
                 <thead>
-                    <tr>
-                        <th colspan="4" class="section-header">Pasivo</th>
-                    </tr>
-                    <tr class="col-title">
-                        <th style="width: 30%;">Concepto</th>
-                        <th>Solicitud</th>
-                        <th>Ejecutivo</th>
-                        <th>Proyección</th>
-                    </tr>
+                    <tr class="category-head"><th colspan="2">Pasivos</th></tr>
                 </thead>
-                <tbody id="pasivo-body">
-                    <tr class="section-header"><td colspan="4">Pasivo Corto Plazo</td></tr>
-                    <tr>
-                        <td>Proveedores</td>
-                        <td><input type="number" class="pas-sol" value="0" oninput="calcular()"></td>
-                        <td><input type="number" class="pas-eje" value="0" oninput="calcular()"></td>
-                        <td><input type="number" class="pas-pro" value="0" oninput="calcular()"></td>
-                    </tr>
-                    <tr>
-                        <td>Acreedores Diversos</td>
-                        <td><input type="number" class="pas-sol" value="0" oninput="calcular()"></td>
-                        <td><input type="number" class="pas-eje" value="0" oninput="calcular()"></td>
-                        <td><input type="number" class="pas-pro" value="0" oninput="calcular()"></td>
-                    </tr>
-                    <tr>
-                        <td>Impuestos por Pagar</td>
-                        <td><input type="number" class="pas-sol" value="0" oninput="calcular()"></td>
-                        <td><input type="number" class="pas-eje" value="0" oninput="calcular()"></td>
-                        <td><input type="number" class="pas-pro" value="0" oninput="calcular()"></td>
-                    </tr>
-                    <tr class="total-row">
-                        <td>Total Pasivos</td>
-                        <td><input type="number" id="total-pas-sol" readonly disabled></td>
-                        <td><input type="number" id="total-pas-eje" readonly disabled></td>
-                        <td><input type="number" id="total-pas-pro" readonly disabled></td>
-                    </tr>
+                <tbody>
+                    <tr class="sub-category"><td colspan="2">Pasivo a Corto Plazo</td></tr>
+                    <tr><td class="account-name">Proveedores</td><td><input type="number" class="val-pas-cp" value="0" oninput="calc()"></td></tr>
+                    <tr><td class="account-name">Acreedores Diversos</td><td><input type="number" class="val-pas-cp" value="0" oninput="calc()"></td></tr>
+                    <tr><td class="account-name">Impuestos por Pagar</td><td><input type="number" class="val-pas-cp" value="0" oninput="calc()"></td></tr>
+                    <tr><td class="account-name">Créditos Bancarios C.P.</td><td><input type="number" class="val-pas-cp" value="0" oninput="calc()"></td></tr>
+                    <tr class="total-row"><td>Total Pasivo C.P.</td><td><input type="number" id="sum-pas-cp" readonly disabled></td></tr>
+
+                    <tr class="sub-category"><td colspan="2">Pasivo a Largo Plazo</td></tr>
+                    <tr><td class="account-name">Documentos por Pagar L.P.</td><td><input type="number" class="val-pas-lp" value="0" oninput="calc()"></td></tr>
+                    <tr><td class="account-name">Hipotecas por Pagar</td><td><input type="number" class="val-pas-lp" value="0" oninput="calc()"></td></tr>
+                    <tr class="total-row"><td>Total Pasivo L.P.</td><td><input type="number" id="sum-pas-lp" readonly disabled></td></tr>
+
+                    <tr class="total-row" style="background:#ddd"><td>TOTAL PASIVOS</td><td><input type="number" id="gran-total-pasivos" readonly disabled></td></tr>
+
+                    <tr class="category-head"><th colspan="2">Capital Contable / Patrimonio</th></tr>
+                    <tr><td class="account-name">Capital Social</td><td><input type="number" class="val-cap" value="0" oninput="calc()"></td></tr>
+                    <tr><td class="account-name">Utilidades Retenidas</td><td><input type="number" class="val-cap" value="0" oninput="calc()"></td></tr>
+                    <tr><td class="account-name">Utilidad del Ejercicio</td><td><input type="number" class="val-cap" value="0" oninput="calc()"></td></tr>
+                    <tr><td class="account-name">Reservas de Capital</td><td><input type="number" class="val-cap" value="0" oninput="calc()"></td></tr>
+                    <tr class="total-row"><td>Total Capital</td><td><input type="number" id="sum-cap" readonly disabled></td></tr>
+
+                    <tr class="grand-total"><td>PASIVO + CAPITAL</td><td><input type="number" id="gran-total-pas-cap" readonly disabled></td></tr>
                 </tbody>
             </table>
-        </div>
+        </section>
     </div>
+
+    <footer>
+        <div class="signature-box">Contador General</div>
+        <div class="signature-box">Director General / Representante</div>
+    </footer>
 </div>
 
 <script>
-    function calcular() {
-        // Sumar Activos
-        document.getElementById('total-act-sol').value = sumarClase('act-sol');
-        document.getElementById('total-act-eje').value = sumarClase('act-eje');
-        document.getElementById('total-act-pro').value = sumarClase('act-pro');
+    function calc() {
+        // Totales Activos
+        const circ = sumClase('val-act-circ', 'sum-act-circ');
+        const fijo = sumClase('val-act-fijo', 'sum-act-fijo');
+        const dif = sumClase('val-act-dif', 'sum-act-dif');
+        document.getElementById('gran-total-activos').value = (circ + fijo + dif).toFixed(2);
 
-        // Sumar Pasivos
-        document.getElementById('total-pas-sol').value = sumarClase('pas-sol');
-        document.getElementById('total-pas-eje').value = sumarClase('pas-eje');
-        document.getElementById('total-pas-pro').value = sumarClase('pas-pro');
+        // Totales Pasivos
+        const pcp = sumClase('val-pas-cp', 'sum-pas-cp');
+        const plp = sumClase('val-pas-lp', 'sum-pas-lp');
+        const totalPas = pcp + plp;
+        document.getElementById('gran-total-pasivos').value = totalPas.toFixed(2);
+
+        // Patrimonio
+        const cap = sumClase('val-cap', 'sum-cap');
+        document.getElementById('gran-total-pas-cap').value = (totalPas + cap).toFixed(2);
     }
 
-    function sumarClase(clase) {
+    function sumClase(clase, resultId) {
         let inputs = document.getElementsByClassName(clase);
         let total = 0;
-        for (let input of inputs) {
-            total += parseFloat(input.value) || 0;
+        for (let i of inputs) {
+            total += parseFloat(i.value) || 0;
         }
-        return total.toFixed(2);
+        document.getElementById(resultId).value = total.toFixed(2);
+        return total;
     }
 
-    // Inicializar cálculos
-    calcular();
+    // Inicializar
+    calc();
 </script>
 
 </body>
