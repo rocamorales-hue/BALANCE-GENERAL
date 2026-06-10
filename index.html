@@ -247,7 +247,7 @@
             padding: 16px;
             border-left: 5px solid var(--accent-blue);
             display: flex;
-            justify-content: space-between;
+            justify-space-between: space-between;
             align-items: center;
             border: 1px solid #e2e8f0;
         }
@@ -477,30 +477,26 @@
         <table id="table-capacidad-pago">
             <thead>
                 <tr class="category-head">
-                    <th>Algoritmo Estructural Mensual</th>
-                    <th style="width: 25%;">Monto Mensual ($)</th>
-                    <th style="width: 25%;">Referencia Anual ($)</th>
+                    <th>Algoritmo de Cobertura Estructurada (Desglosado)</th>
+                    <th style="width: 25%;">Monto Anual ($)</th>
+                    <th style="width: 25%;">Ref. Mensual ($)</th>
                 </tr>
             </thead>
             <tbody>
-                <tr><td>Ventas Netas Mensuales</td><td style="text-align: right; font-weight: 600;" id="cp-ventas-m">$0.00</td><td class="monthly-display" style="background:#fff;" id="cp-ventas">$0.00</td></tr>
-                <tr><td style="color: var(--accent-red); padding-left: 20px;">(-) Costo de Ventas</td><td style="text-align: right; color: var(--accent-red);" id="cp-costo-m">$0.00</td><td class="monthly-display" id="cp-costo">$0.00</td></tr>
-                <tr><td style="color: var(--accent-red); padding-left: 20px;">(-) Gastos de Venta Operativos</td><td style="text-align: right; color: var(--accent-red);" id="cp-gventas-m">$0.00</td><td class="monthly-display" id="cp-gventas">$0.00</td></tr>
-                <tr><td style="color: var(--accent-red); padding-left: 20px;">(-) Gastos Administrativos</td><td style="text-align: right; color: var(--accent-red);" id="cp-gadmin-m">$0.00</td><td class="monthly-display" id="cp-gadmin">$0.00</td></tr>
-                <tr class="total-row" style="background: #cbd5e1;"><td>UTILIDAD OPERATIVA MENSUAL GENERADA</td><td style="text-align: right;" id="cp-utilidad-m">$0.00</td><td class="monthly-display" id="cp-utilidad">$0.00</td></tr>
-                <tr><td style="color: var(--accent-orange);">(-) Compromisos crediticios anteriores (Gastos Financieros)</td><td style="text-align: right; color: var(--accent-orange);" id="cp-compromisos-m">$0.00</td><td class="monthly-display" id="cp-compromisos">$0.00</td></tr>
-                <tr class="total-row" style="background: #94a3b8; color: #fff;"><td>UTILIDAD MENSUAL LIBRE ANTES DE NUEVA DEUDA</td><td style="text-align: right;" id="cp-utilidad-restando-m">$0.00</td><td class="monthly-display" id="cp-utilidad-restando">$0.00</td></tr>
-                <tr style="background: #fefcf0;">
-                    <td style="font-weight: 700; color: var(--accent-blue);">NUEVO PAGO / AMORTIZACIÓN MENSUAL A EVALUAR</td>
-                    <td><input type="text" class="money-input" id="input-nueva-amortizacion" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)" style="border: 1px solid var(--accent-blue); background:#fff;"></td>
-                    <td class="monthly-display" id="cp-nueva-amortizacion-anual">$0.00</td>
-                </tr>
+                <tr><td>Ventas Netas</td><td style="text-align: right; font-weight: 600;" id="cp-ventas">$0.00</td><td class="monthly-display" id="cp-ventas-m">$0.00</td></tr>
+                <tr><td style="color: var(--accent-red); padding-left: 20px;">(-) Costo de Ventas</td><td style="text-align: right; color: var(--accent-red);" id="cp-costo">$0.00</td><td class="monthly-display" id="cp-costo-m">$0.00</td></tr>
+                <tr><td style="color: var(--accent-red); padding-left: 20px;">(-) Gastos Operativos (Estructura de Ventas)</td><td style="text-align: right; color: var(--accent-red);" id="cp-gventas">$0.00</td><td class="monthly-display" id="cp-gventas-m">$0.00</td></tr>
+                <tr><td style="color: var(--accent-red); padding-left: 20px;">(-) Gastos Administrativos (Estructura de Oficina)</td><td style="text-align: right; color: var(--accent-red);" id="cp-gadmin">$0.00</td><td class="monthly-display" id="cp-gadmin-m">$0.00</td></tr>
+                <tr class="total-row" style="background: #cbd5e1;"><td>UTILIDAD OPERATIVA GENERADA</td><td style="text-align: right;" id="cp-utilidad">$0.00</td><td class="monthly-display" id="cp-utilidad-m">$0.00</td></tr>
+                <tr><td style="color: var(--accent-orange);">(-) Compromisos crediticios anteriores (Gastos Financieros RIF)</td><td style="text-align: right; color: var(--accent-orange);" id="cp-compromisos">$0.00</td><td class="monthly-display" id="cp-compromisos-m">$0.00</td></tr>
+                <tr class="total-row" style="background: #94a3b8; color: #fff;"><td>UTILIDAD RESTANDO COMPROMISOS CREDITICIOS</td><td style="text-align: right;" id="cp-utilidad-restando">$0.00</td><td class="monthly-display" id="cp-utilidad-restando-m">$0.00</td></tr>
+                <tr style="background: #fefcf0;"><td style="font-weight: 700; color: var(--accent-blue);">NUEVA AMORTIZACIÓN A EVALUAR (Capital + Interés)</td><td><input type="text" class="money-input" id="input-nueva-amortizacion" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)" style="border: 1px solid var(--accent-blue);"></td><td class="monthly-display" id="cp-nueva-amortizacion-m">$0.00</td></tr>
                 <tr class="total-row" style="background: #f1f5f9; color: var(--primary-dark); border-top: 2px solid var(--primary-dark)">
-                    <td style="font-weight: 700;">ÍNDICE DE CAPACIDAD DE PAGO MENSUAL (Auto)</td>
+                    <td style="font-weight: 700;">ÍNDICE DE COBERTURA DE CAPACIDAD DE PAGO (Auto)</td>
                     <td style="text-align: right; font-weight: 800; font-size: 14px;" id="cp-indice-pago-tabla">0.00x</td>
                     <td class="monthly-display" id="cp-indice-pago-tabla-status" style="font-weight:700; text-align:center;">-</td>
                 </tr>
-                <tr class="grand-total"><td>CAPACIDAD DE PAGO REMANENTE MENSUAL DISPONIBLE</td><td style="text-align: right; font-family: 'Courier New';" id="cp-remanente-m">$0.00</td><td class="monthly-display" id="cp-remanente">$0.00</td></tr>
+                <tr class="grand-total"><td>CAPACIDAD DE PAGO REMANENTE FLUJO LIBRE</td><td style="text-align: right; font-family: 'Courier New';" id="cp-remanente">$0.00</td><td class="monthly-display" id="cp-remanente-m">$0.00</td></tr>
             </tbody>
         </table>
     </div>
@@ -527,7 +523,7 @@
             <div class="kpi-card" style="border-left-color: #9333ea;"><div class="kpi-info"><h3>Cobertura de Deuda</h3><p>Util. Operación / Gastos Financieros (Ideal &gt; 2x)</p></div><div class="kpi-values"><div class="kpi-value" id="kpi-cobertura">0.00x</div><div class="kpi-status" id="status-cobertura">-</div></div></div>
             <div class="kpi-card" style="border-left-color: #b45309;"><div class="kpi-info"><h3>Rotación de Activos</h3><p>Ventas Netas / Activo Total</p></div><div class="kpi-values"><div class="kpi-value" id="kpi-rotacion">0.00x</div><div class="kpi-status" id="status-rotacion">-</div></div></div>
             <div class="kpi-card" style="border-left-color: #be185d;"><div class="kpi-info"><h3>Margen Operativo</h3><p>Util. de Operación / Ventas Netas</p></div><div class="kpi-values"><div class="kpi-value" id="kpi-margen-op">0.00%</div><div class="kpi-status" id="status-margen-op">-</div></div></div>
-            <div class="kpi-card" style="border-left-color: #0f766e;"><div class="kpi-info"><h3>Índice de Capacidad de Pago</h3><p>Flujo Mensual / Amortización Mensual</p></div><div class="kpi-values"><div class="kpi-value" id="kpi-indice-pago">0.00x</div><div class="kpi-status" id="status-indice-pago">-</div></div></div>
+            <div class="kpi-card" style="border-left-color: #0f766e;"><div class="kpi-info"><h3>Índice de Capacidad de Pago</h3><p>Utilidad Restante / Nueva Amortización</p></div><div class="kpi-values"><div class="kpi-value" id="kpi-indice-pago">0.00x</div><div class="kpi-status" id="status-indice-pago">-</div></div></div>
         </div>
     </div>
 </div>
@@ -642,45 +638,31 @@
         document.getElementById('gran-total-pas-cap').innerText = formatter.format(totalPasCap);
         document.getElementById('m-gran-total-pas-cap').innerText = formatter.format(totalPasCap / 12);
 
-        // --- 3. SECCIÓN 3: CAPACIDAD DE PAGO (MÉTRICAS MENSUALES DIRECTAS) ---
-        const vNetasM = ventasNetas / 12;
-        const cVentasM = costoVentas / 12;
-        const gVentasM = gventas / 12;
-        const gAdminM = gadmin / 12;
-        const uOperativaM = utilOperacion / 12;
-        const compCrediticiosM = Math.abs(parseMoney(document.getElementById('input-gastos-financieros').value)) / 12;
-        
-        const utilMensualLibre = uOperativaM - compCrediticiosM;
-        const nuevaAmortizacionMensual = parseMoney(document.getElementById('input-nueva-amortizacion').value);
-        const remanenteMensual = utilMensualLibre - nuevaAmortizacionMensual;
+        // --- 3. SECCIÓN 3: CAPACIDAD DE PAGO ---
+        const compCrediticios = Math.abs(parseMoney(document.getElementById('input-gastos-financieros').value));
+        const utilResting = utilOperacion - compCrediticios;
+        const nuevaAmortizacion = parseMoney(document.getElementById('input-nueva-amortizacion').value);
+        const remanenteCap = utilResting - nuevaAmortizacion;
 
-        document.getElementById('cp-ventas-m').innerText = formatter.format(vNetasM);
         document.getElementById('cp-ventas').innerText = formatter.format(ventasNetas);
-        
-        document.getElementById('cp-costo-m').innerText = formatter.format(cVentasM);
+        document.getElementById('cp-ventas-m').innerText = formatter.format(ventasNetas / 12);
         document.getElementById('cp-costo').innerText = formatter.format(costoVentas);
-        
-        document.getElementById('cp-gventas-m').innerText = formatter.format(gVentasM);
+        document.getElementById('cp-costo-m').innerText = formatter.format(costoVentas / 12);
         document.getElementById('cp-gventas').innerText = formatter.format(gventas);
-        
-        document.getElementById('cp-gadmin-m').innerText = formatter.format(gAdminM);
+        document.getElementById('cp-gventas-m').innerText = formatter.format(gventas / 12);
         document.getElementById('cp-gadmin').innerText = formatter.format(gadmin);
-        
-        document.getElementById('cp-utilidad-m').innerText = formatter.format(uOperativaM);
+        document.getElementById('cp-gadmin-m').innerText = formatter.format(gadmin / 12);
         document.getElementById('cp-utilidad').innerText = formatter.format(utilOperacion);
-        
-        document.getElementById('cp-compromisos-m').innerText = formatter.format(compCrediticiosM);
-        document.getElementById('cp-compromisos').innerText = formatter.format(compCrediticiosM * 12);
-        
-        document.getElementById('cp-utilidad-restando-m').innerText = formatter.format(utilMensualLibre);
-        document.getElementById('cp-utilidad-restando').innerText = formatter.format(utilMensualLibre * 12);
-        
-        document.getElementById('cp-nueva-amortizacion-anual').innerText = formatter.format(nuevaAmortizacionMensual * 12);
-        document.getElementById('cp-remanente-m').innerText = formatter.format(remanenteMensual);
-        document.getElementById('cp-remanente').innerText = formatter.format(remanenteMensual * 12);
+        document.getElementById('cp-utilidad-m').innerText = formatter.format(utilOperacion / 12);
+        document.getElementById('cp-compromisos').innerText = formatter.format(compCrediticios);
+        document.getElementById('cp-compromisos-m').innerText = formatter.format(compCrediticios / 12);
+        document.getElementById('cp-utilidad-restando').innerText = formatter.format(utilResting);
+        document.getElementById('cp-utilidad-restando-m').innerText = formatter.format(utilResting / 12);
+        document.getElementById('cp-nueva-amortizacion-m').innerText = formatter.format(nuevaAmortizacion / 12);
+        document.getElementById('cp-remanente').innerText = formatter.format(remanenteCap);
+        document.getElementById('cp-remanente-m').innerText = formatter.format(remanenteCap / 12);
 
-        // Índice de capacidad de pago mensual
-        const coberturaNueva = nuevaAmortizacionMensual > 0 ? utilMensualLibre / nuevaAmortizacionMensual : 0;
+        const coberturaNueva = nuevaAmortizacion > 0 ? utilResting / nuevaAmortizacion : 0;
         document.getElementById('cp-indice-pago-tabla').innerText = coberturaNueva.toFixed(2) + 'x';
         
         const elStatusTabla = document.getElementById('cp-indice-pago-tabla-status');
@@ -691,6 +673,12 @@
         const razonCirc = pcp > 0 ? (circ / pcp) : 0;
         document.getElementById('kpi-liquidez').innerText = razonCirc.toFixed(2);
         setKpiStatus('status-liquidez', razonCirc >= 1.5, 'Saludable', 'Revisar Liquidez');
+
+        const inputsCirc = document.getElementsByClassName('val-act-circ');
+        const inventarios = parseMoney(inputsCirc[4].value); 
+        const pruebaAcido = pcp > 0 ? ((circ - inventarios) / pcp) : 0;
+        document.getElementById('kpi-acido').innerText = pruebaAcido.toFixed(2);
+        setKpiStatus('status-acido', pruebaAcido >= 1.0, 'Óptimo', 'Presión Tesorería');
 
         const leverage = totalActivos > 0 ? (totalPasivos / totalActivos) * 100 : 0;
         document.getElementById('kpi-endeuda').innerText = leverage.toFixed(1) + '%';
@@ -721,10 +709,9 @@
         document.getElementById('kpi-capital-trabajo').innerText = formatter.format(capitalTrabajo);
         setKpiStatus('status-capital-trabajo', capitalTrabajo > 0, 'Solvente', 'Déficit Operativo');
 
-        const compCrediticiosAnual = compCrediticiosM * 12;
-        const cobertura = compCrediticiosAnual > 0 ? utilOperacion / compCrediticiosAnual : 0;
+        const cobertura = compCrediticios > 0 ? utilOperacion / compCrediticios : 0;
         document.getElementById('kpi-cobertura').innerText = cobertura.toFixed(2) + 'x';
-        setKpiStatus('status-cobertura', cobertura >= 2 || compCrediticiosAnual === 0, 'Saludable', 'Riesgo de Deuda');
+        setKpiStatus('status-cobertura', cobertura >= 2 || compCrediticios === 0, 'Saludable', 'Riesgo de Deuda');
 
         const rotacion = totalActivos > 0 ? ventasNetas / totalActivos : 0;
         document.getElementById('kpi-rotacion').innerText = rotacion.toFixed(2) + 'x';
@@ -736,11 +723,6 @@
 
         document.getElementById('kpi-indice-pago').innerText = coberturaNueva.toFixed(2) + 'x';
         setKpiStatus('status-indice-pago', coberturaNueva >= 1.25, 'Viable', 'Insuficiente');
-
-        const inventarios = parseMoney(inputsCirc[4].value); 
-        const pruebaAcido = pcp > 0 ? ((circ - inventarios) / pcp) : 0;
-        document.getElementById('kpi-acido').innerText = pruebaAcido.toFixed(2);
-        setKpiStatus('status-acido', pruebaAcido >= 1.0, 'Óptimo', 'Presión Tesorería');
     }
 
     function sumClaseAndProrate(className) {
@@ -821,8 +803,7 @@
         let tax = document.getElementsByClassName('val-er-tax');
         tax[0].value = "290000"; tax[1].value = "96000"; tax[2].value = "0";
 
-        // Amortización mensual de prueba directo ($18,333.33 al mes equivale a los $220,000 anuales previos)
-        document.getElementById('input-nueva-amortizacion').value = "18333.33";
+        document.getElementById('input-nueva-amortizacion').value = "220000";
 
         let inputs = document.querySelectorAll('.money-input');
         for(let input of inputs) { formatFormat(input); }
@@ -880,11 +861,11 @@
         });
         XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(erData), "Estado de Resultados");
 
-        let cpData = [[companyName.toUpperCase()], ["CAPACIDAD DE PAGO"], [], ["CONCEPTO", "MENSUAL", "ANUAL"]];
+        let cpData = [[companyName.toUpperCase()], ["CAPACIDAD DE PAGO"], [], ["CONCEPTO", "ANUAL", "MENSUAL"]];
         document.querySelector('#table-capacidad-pago tbody').rows.forEach(tr => {
             let input = tr.cells[1].querySelector('input');
-            let valMensual = input ? parseMoney(input.value) : parseMoney(tr.cells[1].innerText);
-            cpData.push([tr.cells[0].innerText.trim(), valMensual, parseMoney(tr.cells[2].innerText)]);
+            let valAnual = input ? parseMoney(input.value) : parseMoney(tr.cells[1].innerText);
+            cpData.push([tr.cells[0].innerText.trim(), valAnual, parseMoney(tr.cells[2].innerText)]);
         });
         XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(cpData), "Capacidad de Pago");
         XLSX.writeFile(wb, `Reporte_Financiero_${companyName.replace(/\s+/g, '_')}_${yearStr}.xlsx`);
