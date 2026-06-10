@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plataforma Financiera Corporativa - SWIMGYM</title>
+    <title>Plataforma Financiera Corporativa</title>
     <style>
         :root {
             --primary-dark: #0f172a;
@@ -33,7 +33,6 @@
             box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
         }
 
-        /* Cabecera Corporativa */
         header {
             text-align: center;
             margin-bottom: 40px;
@@ -161,8 +160,24 @@
         }
 
         .account-name { padding-left: 12px; width: 50%; color: #334155; }
+        
+        .account-name input[type="text"].custom-label {
+            width: 95%;
+            border: 1px dashed #cbd5e1;
+            background: #fff;
+            padding: 2px 6px;
+            font-size: 12px;
+            color: #334155;
+            border-radius: 4px;
+            font-style: italic;
+        }
+        
+        .account-name input[type="text"].custom-label:focus {
+            border: 1px solid var(--accent-blue);
+            outline: none;
+            background: #f8fafc;
+        }
 
-        /* Estilización de Inputs Monetarios */
         input[type="text"].money-input {
             width: 100%;
             border: 1px solid transparent;
@@ -202,7 +217,6 @@
         .grand-total { background-color: var(--primary-dark); color: white; font-weight: 700; }
         .grand-total .monthly-display { background-color: #1e293b; color: #fff; font-weight: 700; }
 
-        /* Grid de KPIs */
         .kpi-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -229,7 +243,6 @@
         .status-good { color: var(--accent-green); }
         .status-alert { color: var(--accent-orange); }
 
-        /* Botón de Exportación Excel */
         .excel-btn-container {
             text-align: center;
             margin: 30px 0;
@@ -261,21 +274,17 @@
             box-shadow: 0 6px 16px rgba(16, 124, 65, 0.3);
         }
 
-        footer { margin-top: 40px; display: flex; justify-content: space-around; }
-        .signature-box { text-align: center; border-top: 1px solid #0f172a; width: 280px; padding-top: 12px; font-size: 12px; font-weight: 600; color: #475569;}
-
         @media (max-width: 1150px) {
             .grid-two-columns { grid-template-columns: 1fr; }
         }
     </style>
-    <!-- Incluir SheetJS para la exportación directa a Excel -->
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 <body>
 
 <div class="main-container">
     <header>
-        <input type="text" id="comp-name" class="input-company" value="SWIMGYM" placeholder="Nombre de la Organización">
+        <input type="text" id="comp-name" class="input-company" value="NOMBRE O RAZON SOCIAL" placeholder="Nombre de la Organización">
         <div class="title-report">Estructura Financiera Dinámica Consolidada</div>
         <div class="meta-inputs">
             <label>Periodo / Corte: <input type="text" id="rep-date" value="31 de Enero" placeholder="Ej. 31 de Diciembre"></label>
@@ -283,11 +292,9 @@
         </div>
     </header>
 
-    <!-- 1. SECCIÓN: ESTADO DE SITUACIÓN FINANCIERA -->
     <h2>1. Estado de Situación Financiera (Balance General)</h2>
     <div class="grid-two-columns">
         
-        <!-- MATRIZ DE ACTIVOS -->
         <section>
             <table id="table-activos">
                 <thead>
@@ -306,13 +313,13 @@
                             </div>
                         </td>
                     </tr>
-                    <tr><td class="account-name">Caja</td><td><input type="text" class="money-input val-act-circ" value="$5,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                    <tr><td class="account-name">Bancos</td><td><input type="text" class="money-input val-act-circ" value="$1,582,985.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Caja</td><td><input type="text" class="money-input val-act-circ" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Bancos</td><td><input type="text" class="money-input val-act-circ" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr><td class="account-name">Fondo para contingencias</td><td><input type="text" class="money-input val-act-circ" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr><td class="account-name">Clientes</td><td><input type="text" class="money-input val-act-circ" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr><td class="account-name">Inventarios (Almacén)</td><td><input type="text" class="money-input val-act-circ" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr><td class="account-name">Cuentas por cobrar</td><td><input type="text" class="money-input val-act-circ" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                    <tr><td class="account-name">Deudores Diversos</td><td><input type="text" class="money-input val-act-circ" value="$700,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Deudores Diversos</td><td><input type="text" class="money-input val-act-circ" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr><td class="account-name">IRS a favor</td><td><input type="text" class="money-input val-act-circ" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr class="total-row"><td>Total Activo Circulante</td><td style="text-align: right;" id="sum-act-circ">$0.00</td><td class="monthly-display" id="m-sum-act-circ">$0.00</td></tr>
 
@@ -325,11 +332,11 @@
                         </td>
                     </tr>
                     <tr><td class="account-name">Terrenos</td><td><input type="text" class="money-input val-act-fijo" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                    <tr><td class="account-name">Edificios</td><td><input type="text" class="money-input val-act-fijo" value="$2,590,559.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                    <tr><td class="account-name">Mobiliario y Equipo</td><td><input type="text" class="money-input val-act-fijo" value="$1,810,102.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                    <tr><td class="account-name">Equipo de Transporte</td><td><input type="text" class="money-input val-act-fijo" value="$410,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                    <tr><td class="account-name">Equipo de Cómputo</td><td><input type="text" class="money-input val-act-fijo" value="$13.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                    <tr><td class="account-name">Mobiliario y Equipo de Oficina</td><td><input type="text" class="money-input val-act-fijo" value="$16,692.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Edificios</td><td><input type="text" class="money-input val-act-fijo" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Mobiliario y Equipo</td><td><input type="text" class="money-input val-act-fijo" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Equipo de Transporte</td><td><input type="text" class="money-input val-act-fijo" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Equipo de Cómputo</td><td><input type="text" class="money-input val-act-fijo" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Mobiliario y Equipo de Oficina</td><td><input type="text" class="money-input val-act-fijo" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr class="total-row"><td>Total Activo No Circulante</td><td style="text-align: right;" id="sum-act-fijo">$0.00</td><td class="monthly-display" id="m-sum-act-fijo">$0.00</td></tr>
 
                     <tr class="sub-category">
@@ -340,7 +347,7 @@
                             </div>
                         </td>
                     </tr>
-                    <tr><td class="account-name">Pagos anticipados PP de ISR</td><td><input type="text" class="money-input val-act-dif" value="$322,717.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Pagos anticipados PP de ISR</td><td><input type="text" class="money-input val-act-dif" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr class="total-row"><td>Total Activo Diferido</td><td style="text-align: right;" id="sum-act-dif">$0.00</td><td class="monthly-display" id="m-sum-act-dif">$0.00</td></tr>
 
                     <tr class="grand-total"><td>SUMA DEL ACTIVO</td><td style="text-align: right;" id="gran-total-activos">$0.00</td><td class="monthly-display" id="m-gran-total-activos">$0.00</td></tr>
@@ -348,7 +355,6 @@
             </table>
         </section>
 
-        <!-- MATRIZ DE PASIVOS Y CAPITAL -->
         <section>
             <table id="table-pasivos">
                 <thead>
@@ -370,7 +376,7 @@
                     <tr><td class="account-name">Proveedores</td><td><input type="text" class="money-input val-pas-cp" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr><td class="account-name">Acreedores Diversos</td><td><input type="text" class="money-input val-pas-cp" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr><td class="account-name">Impuestos por Pagar</td><td><input type="text" class="money-input val-pas-cp" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                    <tr><td class="account-name">Refaccionario FIDESON (C.P.)</td><td><input type="text" class="money-input val-pas-cp" value="$400,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Refaccionario FIDESON (C.P.)</td><td><input type="text" class="money-input val-pas-cp" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr class="total-row"><td>Total Pasivo a Corto Plazo</td><td style="text-align: right;" id="sum-pas-cp">$0.00</td><td class="monthly-display" id="m-sum-pas-cp">$0.00</td></tr>
 
                     <tr class="sub-category">
@@ -383,7 +389,7 @@
                     </tr>
                     <tr><td class="account-name">Documentos por Pagar (L.P.)</td><td><input type="text" class="money-input val-pas-lp" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr><td class="account-name">Acreedores diversos (L.P.)</td><td><input type="text" class="money-input val-pas-lp" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                    <tr><td class="account-name">Refaccionario FIDESON (L.P.)</td><td><input type="text" class="money-input val-pas-lp" value="$800,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Refaccionario FIDESON (L.P.)</td><td><input type="text" class="money-input val-pas-lp" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr class="total-row"><td>Total Pasivo a Largo Plazo</td><td style="text-align: right;" id="sum-pas-lp">$0.00</td><td class="monthly-display" id="m-sum-pas-lp">$0.00</td></tr>
                     <tr class="total-row" style="background:#cbd5e1"><td>SUMA DEL PASIVO</td><td style="text-align: right;" id="gran-total-pasivos">$0.00</td><td class="monthly-display" id="m-gran-total-pasivos">$0.00</td></tr>
 
@@ -396,7 +402,7 @@
                         </td>
                     </tr>
                     <tr><td class="account-name">Capital Social</td><td><input type="text" class="money-input val-cap" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                    <tr><td class="account-name">Utilidades Retenidas</td><td><input type="text" class="money-input val-cap" value="$4,920,318.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Utilidades Retenidas</td><td><input type="text" class="money-input val-cap" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr class="total-row" style="background:#f8fafc; color:#0284c7;">
                         <td class="account-name" style="padding-left:0; font-weight:700;">Resultado del ejercicio (Auto)</td>
                         <td style="text-align: right; font-family:'Courier New';" id="lbl-utilidad-anclada">$0.00</td>
@@ -410,83 +416,75 @@
         </section>
     </div>
 
-    <!-- 2. SECCIÓN: ESTADO DE RESULTADOS INTEGRAL -->
     <div class="section-separator">
         <h2>2. Estado de Resultados Integral</h2>
-        <div class="grid-two-columns" style="grid-template-columns: 1.3fr 0.7fr;">
-            <section>
-                <table id="table-resultados">
-                    <thead>
-                        <tr class="category-head">
-                            <th>Estructura Operativa (Ventas y Costos)</th>
-                            <th style="width: 25%;">Monto Base (Anual)</th>
-                            <th style="width: 25%;">Ref. Mensual</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="sub-category"><td colspan="3"><div class="sub-category-wrapper"><span>Ingresos y Costos</span><button class="btn-reset" onclick="resetSection('val-er-rev')">Reset ⟲</button></div></td></tr>
-                        <tr><td class="account-name">Ventas Totales</td><td><input type="text" class="money-input val-er-rev" value="$9,480,500.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                        <tr><td class="account-name">(-) Devoluciones y Descuentos</td><td><input type="text" class="money-input val-er-rev" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                        <tr class="total-row"><td>Ventas Netas</td><td style="text-align: right;" id="er-ventas-netas">$0.00</td><td class="monthly-display" id="m-er-ventas-netas">$0.00</td></tr>
-                        <tr><td class="account-name">(-) Costo de Ventas</td><td><input type="text" class="money-input val-er-rev" value="-$3,065,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                        <tr class="total-row"><td>Utilidad Bruta</td><td style="text-align: right;" id="er-util-bruta">$0.00</td><td class="monthly-display" id="m-er-util-bruta">$0.00</td></tr>
+        <div style="margin-bottom: 20px;">
+            <table id="table-resultados">
+                <thead>
+                    <tr class="category-head">
+                        <th>Estructura Operativa (Ventas y Costos)</th>
+                        <th style="width: 25%;">Monto Base (Anual)</th>
+                        <th style="width: 25%;">Ref. Mensual</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="sub-category"><td colspan="3"><div class="sub-category-wrapper"><span>Ingresos y Costos</span><button class="btn-reset" onclick="resetSection('val-er-rev')">Reset ⟲</button></div></td></tr>
+                    <tr><td class="account-name">Ventas Totales</td><td><input type="text" class="money-input val-er-rev" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">(-) Devoluciones y Descuentos</td><td><input type="text" class="money-input val-er-rev" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr class="total-row"><td>Ventas Netas</td><td style="text-align: right;" id="er-ventas-netas">$0.00</td><td class="monthly-display" id="m-er-ventas-netas">$0.00</td></tr>
+                    <tr><td class="account-name">(-) Costo de Ventas</td><td><input type="text" class="money-input val-er-rev" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr class="total-row"><td>Utilidad Bruta</td><td style="text-align: right;" id="er-util-bruta">$0.00</td><td class="monthly-display" id="m-er-util-bruta">$0.00</td></tr>
 
-                        <tr class="sub-category"><td colspan="3"><div class="sub-category-wrapper"><span>Gastos de Venta</span><button class="btn-reset" onclick="resetSection('val-er-gventas')">Reset ⟲</button></div></td></tr>
-                        <tr><td class="account-name">Sueldos de Vendedores</td><td><input type="text" class="money-input val-er-gventas" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                        <tr><td class="account-name">Publicidad y Propaganda</td><td><input type="text" class="money-input val-er-gventas" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                        <tr><td class="account-name">Renta de Local</td><td><input type="text" class="money-input val-er-gventas" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                        <tr><td class="account-name">Fletes y Envíos</td><td><input type="text" class="money-input val-er-gventas" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                        <tr><td class="account-name">Otros Gastos de Venta</td><td><input type="text" class="money-input val-er-gventas" value="-$1,997,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                        <tr class="total-row"><td>Total Gastos de Venta</td><td style="text-align: right;" id="er-total-gventas">$0.00</td><td class="monthly-display" id="m-er-total-gventas">$0.00</td></tr>
+                    <tr class="sub-category"><td colspan="3"><div class="sub-category-wrapper"><span>Gastos de Venta</span><button class="btn-reset" onclick="resetSection('val-er-gventas')">Reset ⟲</button></div></td></tr>
+                    <tr><td class="account-name">Sueldos de Vendedores</td><td><input type="text" class="money-input val-er-gventas" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Publicidad y Propaganda</td><td><input type="text" class="money-input val-er-gventas" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Renta de Local</td><td><input type="text" class="money-input val-er-gventas" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Fletes y Envíos</td><td><input type="text" class="money-input val-er-gventas" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Otros Gastos de Venta</td><td><input type="text" class="money-input val-er-gventas" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name"><input type="text" class="custom-label" placeholder="Cuenta adicional de Venta..." data-sheet-label="Gasto de Venta Personalizado"></td><td><input type="text" class="money-input val-er-gventas" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr class="total-row"><td>Total Gastos de Venta</td><td style="text-align: right;" id="er-total-gventas">$0.00</td><td class="monthly-display" id="m-er-total-gventas">$0.00</td></tr>
 
-                        <tr class="sub-category"><td colspan="3"><div class="sub-category-wrapper"><span>Gastos de Administración</span><button class="btn-reset" onclick="resetSection('val-er-gadmin')">Reset ⟲</button></div></td></tr>
-                        <tr><td class="account-name">Sueldos Administrativos</td><td><input type="text" class="money-input val-er-gadmin" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                        <tr><td class="account-name">Papelería y Útiles</td><td><input type="text" class="money-input val-er-gadmin" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                        <tr><td class="account-name">Servicios (Luz, Agua, Tel)</td><td><input type="text" class="money-input val-er-gadmin" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                        <tr><td class="account-name">Depreciaciones del periodo</td><td><input type="text" class="money-input val-er-gadmin" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                        <tr><td class="account-name">Otros Gastos de Administración</td><td><input type="text" class="money-input val-er-gadmin" value="-$2,338,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                        <tr class="total-row"><td>Total Gastos de Administración</td><td style="text-align: right;" id="er-total-gadmin">$0.00</td><td class="monthly-display" id="m-er-total-gadmin">$0.00</td></tr>
-                        <tr class="total-row" style="background:#cbd5e1"><td>Total Gastos de Operación</td><td style="text-align: right;" id="er-total-operacion-gtos">$0.00</td><td class="monthly-display" id="m-er-total-operacion-gtos">$0.00</td></tr>
-                        
-                        <tr class="total-row" style="background:#94a3b8; color:#fff;"><td>UTILIDAD DE OPERACIÓN</td><td style="text-align: right;" id="er-util-operacion">$0.00</td><td class="monthly-display" id="m-er-util-operacion">$0.00</td></tr>
+                    <tr class="sub-category"><td colspan="3"><div class="sub-category-wrapper"><span>Gastos de Administración</span><button class="btn-reset" onclick="resetSection('val-er-gadmin')">Reset ⟲</button></div></td></tr>
+                    <tr><td class="account-name">Sueldos Administrativos</td><td><input type="text" class="money-input val-er-gadmin" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Papelería y Útiles</td><td><input type="text" class="money-input val-er-gadmin" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Servicios (Luz, Agua, Tel)</td><td><input type="text" class="money-input val-er-gadmin" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Depreciaciones del periodo</td><td><input type="text" class="money-input val-er-gadmin" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Otros Gastos de Administración</td><td><input type="text" class="money-input val-er-gadmin" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name"><input type="text" class="custom-label" placeholder="Cuenta adicional de Administración..." data-sheet-label="Gasto de Admin Personalizado"></td><td><input type="text" class="money-input val-er-gadmin" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr class="total-row"><td>Total Gastos de Administración</td><td style="text-align: right;" id="er-total-gadmin">$0.00</td><td class="monthly-display" id="m-er-total-gadmin">$0.00</td></tr>
+                    <tr class="total-row" style="background:#cbd5e1"><td>Total Gastos de Operación</td><td style="text-align: right;" id="er-total-operacion-gtos">$0.00</td><td class="monthly-display" id="m-er-total-operacion-gtos">$0.00</td></tr>
+                    
+                    <tr class="total-row" style="background:#94a3b8; color:#fff;"><td>UTILIDAD DE OPERACIÓN</td><td style="text-align: right;" id="er-util-operacion">$0.00</td><td class="monthly-display" id="m-er-util-operacion">$0.00</td></tr>
 
-                        <tr class="sub-category"><td colspan="3"><div class="sub-category-wrapper"><span>Resultado Integral de Financiamiento (RIF)</span><button class="btn-reset" onclick="resetSection('val-er-rif')">Reset ⟲</button></div></td></tr>
-                        <tr><td class="account-name">(+) Productos Financieros</td><td><input type="text" class="money-input val-er-rif" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                        <tr><td class="account-name">(-) Gastos Financieros</td><td><input type="text" class="money-input val-er-rif" value="-$198,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                        <tr><td class="account-name">(+/-) Otros Ingresos/Gastos</td><td><input type="text" class="money-input val-er-rif" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                        <tr class="total-row"><td>Total RIF</td><td style="text-align: right;" id="er-total-rif">$0.00</td><td class="monthly-display" id="m-er-total-rif">$0.00</td></tr>
-                        
-                        <tr class="total-row"><td>UTILIDAD ANTES DE IMPUESTOS</td><td style="text-align: right;" id="er-util-antes-imp">$0.00</td><td class="monthly-display" id="m-er-util-antes-imp">$0.00</td></tr>
+                    <tr class="sub-category"><td colspan="3"><div class="sub-category-wrapper"><span>Resultado Integral de Financiamiento (RIF)</span><button class="btn-reset" onclick="resetSection('val-er-rif')">Reset ⟲</button></div></td></tr>
+                    <tr><td class="account-name">(+) Productos Financieros</td><td><input type="text" class="money-input val-er-rif" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">(-) Gastos Financieros</td><td><input type="text" class="money-input val-er-rif" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">(+/-) Otros Ingresos/Gastos</td><td><input type="text" class="money-input val-er-rif" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name"><input type="text" class="custom-label" placeholder="Cuenta adicional de RIF..." data-sheet-label="Concepto RIF Personalizado"></td><td><input type="text" class="money-input val-er-rif" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr class="total-row"><td>Total RIF</td><td style="text-align: right;" id="er-total-rif">$0.00</td><td class="monthly-display" id="m-er-total-rif">$0.00</td></tr>
+                    
+                    <tr class="total-row"><td>UTILIDAD ANTES DE IMPUESTOS</td><td style="text-align: right;" id="er-util-antes-imp">$0.00</td><td class="monthly-display" id="m-er-util-antes-imp">$0.00</td></tr>
 
-                        <tr class="sub-category"><td colspan="3"><div class="sub-category-wrapper"><span>Deducciones Impositivas</span><button class="btn-reset" onclick="resetSection('val-er-tax')">Reset ⟲</button></div></td></tr>
-                        <tr><td class="account-name">(-) ISR (30%)</td><td><input type="text" class="money-input val-er-tax" value="-$564,750.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                        <tr><td class="account-name">(-) PTU (10%)</td><td><input type="text" class="money-input val-er-tax" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                        
-                        <tr class="grand-total"><td>UTILIDAD NETA DEL EJERCICIO</td><td style="text-align: right;" id="er-util-neta">$0.00</td><td class="monthly-display" id="m-er-util-neta">$0.00</td></tr>
-                    </tbody>
-                </table>
-            </section>
-            
-            <section style="display: flex; flex-direction: column; justify-content: flex-start; gap: 15px;">
-                <div style="background: #f0fdf4; border-left: 4px solid var(--accent-green); padding: 20px; font-size: 12.5px; border-radius: 4px; line-height: 1.6; border: 1px solid #bbf7d0; border-left: 5px solid var(--accent-green);">
-                    <strong>Alineación Estratégica Financiera:</strong><br>
-                    Este panel unifica el cálculo operativo con el patrimonial. Cualquier ajuste en los flujos de gastos operativos o en el costo marginal de ventas impactará los indicadores fundamentales de rentabilidad al final del documento de forma inmediata.
-                </div>
-            </section>
+                    <tr class="sub-category"><td colspan="3"><div class="sub-category-wrapper"><span>Deducciones Impositivas</span><button class="btn-reset" onclick="resetSection('val-er-tax')">Reset ⟲</button></div></td></tr>
+                    <tr><td class="account-name">(-) ISR (30%)</td><td><input type="text" class="money-input val-er-tax" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">(-) PTU (10%)</td><td><input type="text" class="money-input val-er-tax" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name"><input type="text" class="custom-label" placeholder="Cuenta adicional impositiva..." data-sheet-label="Impuesto Personalizado"></td><td><input type="text" class="money-input val-er-tax" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    
+                    <tr class="grand-total"><td>UTILIDAD NETA DEL EJERCICIO</td><td style="text-align: right;" id="er-util-neta">$0.00</td><td class="monthly-display" id="m-er-util-neta">$0.00</td></tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
-    <!-- SECCIÓN DE ACCIÓN: BOTÓN EXCEL (Alineado Abajo de Estados Financieros) -->
     <div class="excel-btn-container">
         <button class="btn-excel" onclick="exportToCorporateExcel()">
-            <svg style="width:18px;height:18px" viewBox="0 0 24 24"><path fill="currentColor" d="M21.17 3.25Q21.5 3.25 21.76 3.5 22 3.74 22 4.08V19.92Q22 20.25 21.76 20.5 21.5 20.75 21.17 20.75H7.83Q7.5 20.75 7.24 20.5 7 20.25 7 19.92V17H2.83Q2.5 17 2.24 16.74 2 16.5 2 16.17V7.83Q2 7.5 2.24 7.24 2.5 7 2.83 7H7V4.08Q7 3.74 7.24 3.5 7.5 3.25 7.83 3.25H21.17M7 15V13H9V15H7M7 11V9H9V11H7M11 15V13H13V15H11M11 11V9H13V11H11M15 15V13H19V15H15M15 11V9H19V11H15M7 17H20V7H7V17M5.5 15.5H4V14.5H5.5V15.5M4 13.5V12.5H5.5V13.5H4M5.5 11.5H4V10.5H5.5V11.5M4 9.5V8.5H5.5V9.5H4Z"/></svg>
+            <svg style="width:18px;height:18px" viewBox="0 0 24 24"><path fill="currentColor" d="M21.17 3.25Q21.5 3.25 21.76 3.5 22 3.74 22 4.08V19.92Q22 20.25 21.76 20.5 21.5 20.75 21.17 20.75H7.83Q7.5 20.75 7.24 20.5 7 20.25 7 19.92V17H2.83Q2.5 17 2.24 16.74 2 16.5 2 16.17V7.83Q2 7.5 2.24 7.24 2.5 7 2.83 7H7V4.08Q7 3.74 7.24 3.5 7.5 3.25 7.83 3.25H21.17M7 15V13H9V15H7M7 11V9H9V11H7M11 15V13H13V15H11M11 11V9H13V11H11M15 15V13H19V15H15M15 11V9H19V11H15M7 17H20V7H7V17M5.5 15.5H4V14.5H5.5V15.5M4 13.5V12.5H5.5V13.5H4M5.5 11.5H4V10.5H5.5V11.5M4 9.5V8.5H5.5V9.5H4ZM14 14l-2.5-3 1.5-2h-2L10 10.5 8.5 9h-2l1.5 2-2.5 3h2l1.5-2 1.5 2h2Z"/></svg>
             Descargar Reporte en Excel (.xlsx)
         </button>
     </div>
 
-    <!-- 3. SECCIÓN: INTELIGENCIA DE NEGOCIO (KPIS CORPORATIVOS) -->
     <div class="section-separator">
-        <h2>3. Cuadro de Mando Integral (KPIs Analíticos)</h2>
+        <h2>3. Cuadro de Mando Integral (KPIs Analíticos Ampliados)</h2>
         <div class="kpi-grid">
             <div class="kpi-card" style="border-left-color: #2563eb;">
                 <div class="kpi-info"><h3>Liquidez Corriente</h3><p>Activo Circ. / Pasivo C.P. (Ideal &gt; 1.5)</p></div>
@@ -496,6 +494,10 @@
                 <div class="kpi-info"><h3>Prueba del Ácido</h3><p>Excluye Inventarios (Ideal &gt; 1.0)</p></div>
                 <div class="kpi-values"><div class="kpi-value" id="kpi-acido">0.00</div><div class="kpi-status" id="status-acido">-</div></div>
             </div>
+            <div class="kpi-card" style="border-left-color: #06b6d4;">
+                <div class="kpi-info"><h3>Capital de Trabajo Neto</h3><p>Activo Circulante - Pasivo C.P.</p></div>
+                <div class="kpi-values"><div class="kpi-value" id="kpi-capital-trabajo">$0.00</div><div class="kpi-status" id="status-capital-trabajo">-</div></div>
+            </div>
             <div class="kpi-card" style="border-left-color: #7c3aed;">
                 <div class="kpi-info"><h3>Apalancamiento Integral</h3><p>Pasivo Total / Activo Total (Máx 60%)</p></div>
                 <div class="kpi-values"><div class="kpi-value" id="kpi-endeuda">0.00%</div><div class="kpi-status" id="status-endeuda">-</div></div>
@@ -503,6 +505,10 @@
             <div class="kpi-card" style="border-left-color: #475569;">
                 <div class="kpi-info"><h3>Autonomía del Negocio</h3><p>Capital Total / Pasivo Total</p></div>
                 <div class="kpi-values"><div class="kpi-value" id="kpi-autonomia">0.00</div><div class="kpi-status" id="status-autonomia">-</div></div>
+            </div>
+            <div class="kpi-card" style="border-left-color: #f59e0b;">
+                <div class="kpi-info"><h3>Calidad de la Deuda</h3><p>Pasivo C.P. / Pasivo Total (Menor es mejor)</p></div>
+                <div class="kpi-values"><div class="kpi-value" id="kpi-calidad-deuda">0.00%</div><div class="kpi-status" id="status-calidad-deuda">-</div></div>
             </div>
             <div class="kpi-card" style="border-left-color: #16a34a;">
                 <div class="kpi-info"><h3>Rentabilidad Patrimonial (ROE)</h3><p>Utilidad Neta / Capital Social</p></div>
@@ -520,13 +526,16 @@
                 <div class="kpi-info"><h3>Margen Bruto de Operación</h3><p>Rendimiento antes de gastos estructurales</p></div>
                 <div class="kpi-values"><div class="kpi-value" id="kpi-margen-bruto">0.00%</div><div class="kpi-status" id="status-margen-bruto">-</div></div>
             </div>
+            <div class="kpi-card" style="border-left-color: #9333ea;">
+                <div class="kpi-info"><h3>Margen Operativo</h3><p>Utilidad Operativa / Ventas Netas</p></div>
+                <div class="kpi-values"><div class="kpi-value" id="kpi-margen-operativo">0.00%</div><div class="kpi-status" id="status-margen-operativo">-</div></div>
+            </div>
+            <div class="kpi-card" style="border-left-color: #ef4444;">
+                <div class="kpi-info"><h3>Punto de Equilibrio Estimado</h3><p>Costos Fijos Estructurales / Margen Bruto %</p></div>
+                <div class="kpi-values"><div class="kpi-value" id="kpi-punto-equilibrio">$0.00</div><div class="kpi-status" id="status-punto-equilibrio">-</div></div>
+            </div>
         </div>
     </div>
-
-    <footer>
-        <div class="signature-box">Director de Auditoría y Control Contable</div>
-        <div class="signature-box">Chief Financial Officer (CFO)</div>
-    </footer>
 </div>
 
 <script>
@@ -545,9 +554,10 @@
         calc();
     }
 
-    // Parsea string formateado a float
     function parseMoney(value) {
-        if(typeof value === 'string') return parseFloat(value.replace(/[\$,]/g, '')) || 0;
+        if(typeof value === 'string') {
+            return parseFloat(value.replace(/[\$,]/g, '')) || 0;
+        }
         return parseFloat(value) || 0;
     }
 
@@ -560,7 +570,7 @@
     }
 
     function calc() {
-        // --- 1. PROCESAR ESTADO DE RESULTADOS PRIMERO ---
+        // --- 1. PROCESAR ESTADO DE RESULTADOS ---
         const inputsRev = document.getElementsByClassName('val-er-rev');
         const ventasBrutas = parseMoney(inputsRev[0].value);
         const devoluciones = parseMoney(inputsRev[1].value);
@@ -594,7 +604,8 @@
         const prodFin = parseMoney(inputsRif[0].value);
         const gastFin = parseMoney(inputsRif[1].value);
         const otrosInc = parseMoney(inputsRif[2].value);
-        const totalRif = prodFin - Math.abs(gastFin) + otrosInc;
+        const personalizadoRif = parseMoney(inputsRif[3].value);
+        const totalRif = prodFin - Math.abs(gastFin) + otrosInc - Math.abs(personalizadoRif);
         document.getElementById('er-total-rif').innerText = formatter.format(totalRif);
         document.getElementById('m-er-total-rif').innerText = formatter.format(totalRif / 12);
 
@@ -605,12 +616,13 @@
         const inputsTax = document.getElementsByClassName('val-er-tax');
         const isr = parseMoney(inputsTax[0].value);
         const ptu = parseMoney(inputsTax[1].value);
+        const personalizadoTax = parseMoney(inputsTax[2].value);
         
-        const utilNeta = utilAntesImp - Math.abs(isr) - Math.abs(ptu);
+        const utilNeta = utilAntesImp - Math.abs(isr) - Math.abs(ptu) - Math.abs(personalizadoTax);
         document.getElementById('er-util-neta').innerText = formatter.format(utilNeta);
         document.getElementById('m-er-util-neta').innerText = formatter.format(utilNeta / 12);
 
-        // --- ENLACE DIRECTO E INYECCIÓN AL BALANCE ---
+        // ENLACE AL BALANCE
         document.getElementById('lbl-utilidad-anclada').innerText = formatter.format(utilNeta);
         document.getElementById('lbl-utilidad-anclada-m').innerText = formatter.format(utilNeta / 12);
 
@@ -640,6 +652,8 @@
         document.getElementById('gran-total-pasivos').innerText = formatter.format(totalPasivos);
         document.getElementById('m-gran-total-pasivos').innerText = formatter.format(totalPasivos / 12);
 
+        const inputsCap = document.getElementsByClassName('val-cap');
+        const capSocial = parseMoney(inputsCap[0].value);
         const capBase = sumClaseAndProrate('val-cap');
         const totalCapital = capBase + utilNeta; 
         const totalPasCap = totalPasivos + totalCapital;
@@ -650,38 +664,68 @@
         document.getElementById('m-gran-total-pas-cap').innerText = formatter.format(totalPasCap / 12);
 
         // --- 3. CUADRO DE MANDO INTEGRAL (KPIs) ---
+        // Liquidez Corriente
         const razonCirc = pcp > 0 ? (circ / pcp) : 0;
         document.getElementById('kpi-liquidez').innerText = razonCirc.toFixed(2);
         setKpiStatus('status-liquidez', razonCirc >= 1.5, 'Saludable', 'Revisar Liquidez');
 
+        // Prueba del Ácido
+        const inputsCirc = document.getElementsByClassName('val-act-circ');
         const inventarios = parseMoney(inputsCirc[4].value); 
         const pruebaAcido = pcp > 0 ? ((circ - inventarios) / pcp) : 0;
-        document.getElementById('kpi-acid').innerText = pruebaAcido.toFixed(2) ? (document.getElementById('kpi-acido').innerText = pruebaAcido.toFixed(2)) : 0;
+        document.getElementById('kpi-acido').innerText = pruebaAcido.toFixed(2);
         setKpiStatus('status-acido', pruebaAcido >= 1.0, 'Óptimo', 'Presión Tesorería');
 
+        // NUEVO: Capital de Trabajo Neto
+        const capTrabajo = circ - pcp;
+        document.getElementById('kpi-capital-trabajo').innerText = formatter.format(capTrabajo);
+        setKpiStatus('status-capital-trabajo', capTrabajo > 0, 'Positivo', 'Vulnerable');
+
+        // Apalancamiento Integral
         const leverage = totalActivos > 0 ? (totalPasivos / totalActivos) * 100 : 0;
         document.getElementById('kpi-endeuda').innerText = leverage.toFixed(1) + '%';
         setKpiStatus('status-endeuda', leverage <= 60, 'Equilibrado', 'Apalancamiento Alto');
 
+        // Autonomía del Negocio
         const autonomia = totalPasivos > 0 ? (totalCapital / totalPasivos) : 0;
         document.getElementById('kpi-autonomia').innerText = autonomia.toFixed(2);
         setKpiStatus('status-autonomia', autonomia >= 1.0, 'Fuerte', 'Riesgo Financiero');
 
+        // NUEVO: Calidad de la Deuda
+        const calDeuda = totalPasivos > 0 ? (pcp / totalPasivos) * 100 : 0;
+        document.getElementById('kpi-calidad-deuda').innerText = calDeuda.toFixed(1) + '%';
+        setKpiStatus('status-calidad-deuda', calDeuda <= 50, 'Estructura Sana', 'Carga Corto Plazo');
+
+        // ROE
         const roe = capSocial > 0 ? (utilNeta / capSocial) * 100 : 0;
         document.getElementById('kpi-roe').innerText = roe.toFixed(1) + '%';
         setKpiStatus('status-roe', roe >= 10, 'Rentable', 'Bajo Rendimiento');
 
+        // ROA
         const roa = totalActivos > 0 ? (utilOperacion / totalActivos) * 100 : 0;
         document.getElementById('kpi-roa').innerText = roa.toFixed(1) + '%';
         setKpiStatus('status-roa', roa >= 5, 'Eficiente', 'Revisar Activos');
 
+        // Margen Neto
         const margNeto = ventasNetas > 0 ? (utilNeta / ventasNetas) * 100 : 0;
         document.getElementById('kpi-margen-neto').innerText = margNeto.toFixed(1) + '%';
         setKpiStatus('status-margen-neto', margNeto >= 8, 'Óptimo', 'Margen Estrecho');
 
+        // Margen Bruto
         const margBruto = ventasNetas > 0 ? (utilBruta / ventasNetas) * 100 : 0;
         document.getElementById('kpi-margen-bruto').innerText = margBruto.toFixed(1) + '%';
         setKpiStatus('status-margen-bruto', margBruto >= 30, 'Saludable', 'Monitorear Costos');
+
+        // NUEVO: Margen Operativo
+        const margOp = ventasNetas > 0 ? (utilOperacion / ventasNetas) * 100 : 0;
+        document.getElementById('kpi-margen-operativo').innerText = margOp.toFixed(1) + '%';
+        setKpiStatus('status-margen-operativo', margOp >= 15, 'Eficiencia Op.', 'Gasto Alto');
+
+        // NUEVO: Punto de Equilibrio Operativo Estimado
+        const pctMargenBruto = ventasNetas > 0 ? (utilBruta / ventasNetas) : 0;
+        const puntoEquilibrio = pctMargenBruto > 0 ? (totalGastosOperacion / pctMargenBruto) : 0;
+        document.getElementById('kpi-punto-equilibrio').innerText = formatter.format(puntoEquilibrio);
+        setKpiStatus('status-punto-equilibrio', ventasNetas >= puntoEquilibrio && puntoEquilibrio > 0, 'Meta Cubierta', 'Zonas de Pérdida');
     }
 
     function sumClaseAndProrate(className) {
@@ -691,8 +735,10 @@
             let value = parseMoney(input.value);
             total += value;
             let row = input.closest('tr');
-            let mDisplay = row.querySelector('.monthly-display');
-            if(mDisplay) mDisplay.innerText = formatter.format(value / 12);
+            if(row) {
+                let mDisplay = row.querySelector('.monthly-display');
+                if(mDisplay) mDisplay.innerText = formatter.format(value / 12);
+            }
         }
         return total;
     }
@@ -705,13 +751,11 @@
         }
     }
 
-    // --- MOTOR DE EXPORTACIÓN CORPORATIVO (Mapeo dinámico y formateado a Excel) ---
     function exportToCorporateExcel() {
         const companyName = document.getElementById('comp-name').value || "EMPRESA";
         const dateStr = document.getElementById('rep-date').value || "Corte";
         const yearStr = document.getElementById('rep-year').value || "2026";
 
-        // Inicializar libro de SheetJS
         const wb = XLSX.utils.book_new();
         
         // --- HOJA 1: BALANCE GENERAL ---
@@ -723,7 +767,6 @@
             ["CUENTA CONCEPTO", "MONTO ANUAL ($)", "MONTO MENSUAL ($)"]
         ];
 
-        // Función auxiliar para extraer datos limpios de filas de tablas HTML
         function extraerFilasTabla(idTabla) {
             let filas = [];
             let tbody = document.querySelector(`#${idTabla} tbody`);
@@ -734,11 +777,18 @@
                     filas.push([tr.innerText.replace("Reset ⟲","").trim(), "", ""]);
                 } else {
                     let tdConcepto = tr.cells[0];
+                    let customInput = tdConcepto.querySelector('.custom-label');
+                    let nombreConcepto = tdConcepto.innerText.trim();
+                    
+                    if(customInput) {
+                        nombreConcepto = customInput.value.trim() || customInput.getAttribute('data-sheet-label');
+                    }
+                    
                     let input = tr.cells[1].querySelector('input');
                     let valAnual = input ? parseMoney(input.value) : parseMoney(tr.cells[1].innerText);
                     let valMensual = valAnual / 12;
                     
-                    filas.push([tdConcepto.innerText.trim(), valAnual, valMensual]);
+                    filas.push([nombreConcepto, valAnual, valMensual]);
                 }
             }
             return filas;
@@ -765,22 +815,23 @@
         const wsER = XLSX.utils.aoa_to_sheet(erData);
         XLSX.utils.book_append_sheet(wb, wsER, "Estado de Resultados");
 
-        // Guardar archivo Excel con nombre corporativo estructurado
         XLSX.writeFile(wb, `Reporte_Financiero_${companyName.replace(/\s+/g, '_')}_${yearStr}.xlsx`);
     }
 
     window.onload = function() {
-        let inputs = document.querySelectorAll('.money-input, .nav-input');
-        for(let input of inputs) {
-            if(input.classList.contains('money-input')) formatFormat(input);
-        }
+        // Forzar cálculo inicial en ceros
+        calc();
 
+        // Manejador dinámico universal para Enter y Tab en cualquier input
         document.body.addEventListener('keydown', function(e) {
             if (e.target.tagName === 'INPUT') {
-                if (e.key === 'Enter' || e.keyCode === 13) {
+                if (e.key === 'Enter') {
                     e.preventDefault();
-                    let totalFields = Array.from(document.querySelectorAll('.money-input, .nav-input, .meta-inputs input, .input-company'));
+                    
+                    // Re-mapear elementos activos dinámicamente en cada pulsación
+                    let totalFields = Array.from(document.querySelectorAll('.input-company, .meta-inputs input, .custom-label, .money-input'));
                     let currentIndex = totalFields.indexOf(e.target);
+                    
                     if (currentIndex > -1 && currentIndex < totalFields.length - 1) {
                         totalFields[currentIndex + 1].focus();
                     }
