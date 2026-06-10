@@ -3,65 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balance General Corporativo Avanzado & KPIs</title>
+    <title>Plataforma Financiera Corporativa Unificada</title>
     <style>
         :root {
-            --primary-dark: #1a252f;
+            --primary-dark: #1e272e;
             --secondary-bg: #f8f9fa;
-            --accent-blue: #2980b9;
-            --accent-green: #27ae60;
-            --accent-orange: #d35400;
+            --accent-blue: #0984e3;
+            --accent-green: #00b894;
+            --accent-orange: #e17055;
+            --accent-red: #d63031;
             --border-color: #dcdde1;
         }
 
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #f5f6fa;
+            background-color: #f1f2f6;
             margin: 0;
             padding: 20px;
-            color: #2f3640;
+            color: #2d3436;
         }
 
-        .balance-container {
+        .main-container {
             max-width: 1400px;
             margin: 0 auto;
             background: #fff;
             padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
         }
 
+        /* Cabecera Editable */
         header {
             text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 3px solid var(--primary-dark);
-            padding-bottom: 15px;
+            margin-bottom: 35px;
+            border-bottom: 4px solid var(--primary-dark);
+            padding-bottom: 20px;
         }
 
-        h1 { margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 24px; color: var(--primary-dark); }
-        h2 { margin: 0 0 15px 0; text-transform: uppercase; font-size: 16px; color: var(--primary-dark); border-bottom: 2px solid var(--border-color); padding-bottom: 5px;}
-        .date-line { font-style: italic; color: #718093; margin-top: 5px; }
+        .input-company {
+            font-size: 26px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            border: 1px dashed #b2bec3;
+            width: 80%;
+            padding: 6px;
+            color: var(--primary-dark);
+            background: #fffdf0;
+            margin-bottom: 10px;
+        }
 
-        .grid-balance {
+        .title-report {
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 5px 0;
+            color: #636e72;
+            font-weight: 600;
+        }
+
+        .meta-inputs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .meta-inputs input {
+            border: 1px dashed #b2bec3;
+            background: #fffdf0;
+            padding: 4px 8px;
+            font-style: italic;
+            text-align: center;
+            color: #2d3436;
+        }
+
+        h2 { 
+            margin: 0 0 15px 0; 
+            text-transform: uppercase; 
+            font-size: 16px; 
+            color: var(--primary-dark); 
+            border-bottom: 2px solid var(--border-color); 
+            padding-bottom: 5px;
+        }
+
+        .grid-two-columns {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
             margin-bottom: 40px;
         }
 
-        .grid-analysis {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 30px;
-            margin-top: 20px;
-            border-top: 2px dashed var(--border-color);
-            padding-top: 30px;
-        }
-
-        .kpi-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
+        .section-separator {
+            margin: 40px 0;
+            border-top: 3px double var(--primary-dark);
+            padding-top: 20px;
         }
 
         table {
@@ -76,8 +112,6 @@
             font-size: 12px;
         }
 
-        th { text-align: center; }
-
         .category-head {
             background-color: var(--primary-dark);
             color: white;
@@ -85,16 +119,40 @@
             text-transform: uppercase;
         }
 
+        /* Subcategorías con botón de Reset inline */
         .sub-category {
             font-weight: bold;
-            padding-left: 10px;
             background-color: #f1f2f6;
             color: #2f3640;
         }
 
-        .account-name { padding-left: 20px; width: 45%; }
+        .sub-category-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 0;
+        }
 
-        /* Inputs estilizados como celdas financieras */
+        .btn-reset {
+            background: var(--accent-red);
+            color: white;
+            border: none;
+            border-radius: 3px;
+            font-size: 10px;
+            padding: 2px 6px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .btn-reset:hover {
+            background: #b33939;
+        }
+
+        .account-name { padding-left: 15px; width: 45%; }
+
+        /* Campos Financieros */
         input[type="text"].money-input {
             width: 100%;
             border: 1px solid transparent;
@@ -125,25 +183,17 @@
             background-color: #dcdde1;
         }
         
-        .total-row .monthly-display {
-            background-color: #e5e7e9;
-            color: #2c3e50;
-            font-weight: bold;
+        .total-row .monthly-display { background-color: #e5e7e9; color: #2c3e50; font-weight: bold; }
+        .grand-total { background-color: var(--primary-dark); color: white; font-weight: bold; }
+        .grand-total .monthly-display { background-color: #2c3e50; color: #fff; font-weight: bold; }
+
+        /* Estilos KPIs */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
         }
 
-        .grand-total {
-            background-color: var(--primary-dark);
-            color: white;
-            font-weight: bold;
-        }
-        
-        .grand-total .monthly-display {
-            background-color: #2c3e50;
-            color: #fff;
-            font-weight: bold;
-        }
-
-        /* KPIs Avanzados */
         .kpi-card {
             background: var(--secondary-bg);
             border-radius: 6px;
@@ -158,100 +208,91 @@
         .kpi-info h3 { margin: 0; font-size: 13px; color: #2f3640; }
         .kpi-info p { margin: 3px 0 0 0; font-size: 10px; color: #7f8c8d; }
         .kpi-values { text-align: right; }
-        .kpi-value { font-size: 16px; font-weight: bold; color: var(--primary-dark); font-family: 'Courier New', Courier, monospace;}
+        .kpi-value { font-size: 15px; font-weight: bold; color: var(--primary-dark); font-family: 'Courier New', Courier, monospace;}
         .kpi-status { font-size: 10px; font-weight: bold; margin-top: 2px; }
         
         .status-good { color: var(--accent-green); }
         .status-alert { color: var(--accent-orange); }
 
         /* Simulador */
-        .form-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 12px;
-            align-items: center;
-            font-size: 13px;
-        }
+        .calc-box { background: #edf2f7; padding: 20px; border-radius: 6px; border: 1px solid #cbd5e0; }
+        .form-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; align-items: center; font-size: 13px; }
+        .form-group input { border: 1px solid var(--border-color); border-radius: 4px; padding: 6px; text-align: right; }
 
-        .form-group input {
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            padding: 6px;
-            text-align: right;
-        }
-
-        .calc-box {
-            background: #edf2f7;
-            padding: 20px;
-            border-radius: 6px;
-            border: 1px solid #cbd5e0;
-        }
-
-        footer {
-            margin-top: 50px;
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .signature-box {
-            text-align: center;
-            border-top: 1px solid #000;
-            width: 250px;
-            padding-top: 10px;
-            font-size: 12px;
-        }
+        footer { margin-top: 50px; display: flex; justify-content: space-around; }
+        .signature-box { text-align: center; border-top: 1px solid #000; width: 250px; padding-top: 10px; font-size: 12px; }
 
         @media (max-width: 1100px) {
-            .grid-balance, .grid-analysis, .kpi-grid { grid-template-columns: 1fr; }
+            .grid-two-columns { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<div class="balance-container">
+<div class="main-container">
     <header>
-        <h1>Estado de Situación Financiera Corporativo</h1>
-        <div class="date-line">Ejercicio Anual con Prorrateo Mensual Equivalente</div>
+        <input type="text" class="input-company" value="CORPORACIÓN FINANCIERA S.A. DE C.V." placeholder="Nombre de la Empresa Comercial">
+        <div class="title-report">Estados Financieros Consolidados Integrales</div>
+        <div class="meta-inputs">
+            <label>Corte al: <input type="text" value="31 de Diciembre" placeholder="Ej. 31 de Diciembre"></label>
+            <label>Año del Ejercicio: <input type="text" value="2025" placeholder="Ej. 2025"></label>
+        </div>
     </header>
 
-    <div class="grid-balance">
+    <h2>1. Estado de Situación Financiera (Balance General)</h2>
+    <div class="grid-two-columns">
         <section>
             <table>
                 <thead>
                     <tr class="category-head">
-                        <th>Cuentas del Activo</th>
+                        <th>Estructura de Activos</th>
                         <th style="width: 28%;">Monto Anual</th>
-                        <th style="width: 27%;">Ref. Mensual (Anual/12)</th>
+                        <th style="width: 27%;">Ref. Mensual</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="sub-category"><td colspan="3">Activo Circulante (Corto Plazo)</td></tr>
-                    <tr><td class="account-name">Caja General</td><td><input type="text" class="money-input val-act-circ" value="$25,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-caja">$0.00</td></tr>
-                    <tr><td class="account-name">Bancos de Disponibilidad Inmediata</td><td><input type="text" class="money-input val-act-circ" value="$145,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-bancos">$0.00</td></tr>
-                    <tr><td class="account-name">Inversiones Valores Negociables</td><td><input type="text" class="money-input val-act-circ" value="$50,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-inv-temp">$0.00</td></tr>
-                    <tr><td class="account-name">Clientes y Cuentas por Cobrar comerciales</td><td><input type="text" class="money-input val-act-circ" value="$88,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-clientes">$0.00</td></tr>
-                    <tr><td class="account-name">(-) Estimación de Cuentas Incobrables</td><td><input type="text" class="money-input val-act-circ" value="-$4,500.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-incobrables">$0.00</td></tr>
-                    <tr><td class="account-name">Inventario de Materia Prima</td><td><input type="text" class="money-input val-act-circ" value="$40,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-inv-mp">$0.00</td></tr>
-                    <tr><td class="account-name">Inventario de Producto Terminado</td><td><input type="text" class="money-input val-act-circ" value="$65,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-inv-pt">$0.00</td></tr>
-                    <tr><td class="account-name">Impuestos a Favor e IVA Acreditable</td><td><input type="text" class="money-input val-act-circ" value="$12,500.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-iva-fac">$0.00</td></tr>
-                    <tr><td class="account-name">Deudores Diversos</td><td><input type="text" class="money-input val-act-circ" value="$8,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-deudores">$0.00</td></tr>
+                    <tr class="sub-category">
+                        <td colspan="3">
+                            <div class="sub-category-wrapper">
+                                <span>Activo Circulante (Corto Plazo)</span>
+                                <button class="btn-reset" onclick="resetSection('val-act-circ')">Reset ⟲</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr><td class="account-name">Caja General</td><td><input type="text" class="money-input val-act-circ" value="$25,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Bancos e Instituciones de Crédito</td><td><input type="text" class="money-input val-act-circ" value="$145,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Inversiones Corto Plazo</td><td><input type="text" class="money-input val-act-circ" value="$50,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Clientes (Cuentas por Cobrar)</td><td><input type="text" class="money-input val-act-circ" value="$88,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">(-) Estimación Cuentas Incobrables</td><td><input type="text" class="money-input val-act-circ" value="-$4,500.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Inventarios Totales</td><td><input type="text" class="money-input val-act-circ" value="$105,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">IVA Favor / Otros Impuestos</td><td><input type="text" class="money-input val-act-circ" value="$12,500.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr class="total-row"><td>Total Activo Circulante</td><td style="text-align: right;" id="sum-act-circ">$0.00</td><td class="monthly-display" id="m-sum-act-circ">$0.00</td></tr>
 
-                    <tr class="sub-category"><td colspan="3">Activo No Circulante (Propiedades, Planta y Equipo)</td></tr>
-                    <tr><td class="account-name">Terrenos Operativos</td><td><input type="text" class="money-input val-act-fijo" value="$250,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-terrenos">$0.00</td></tr>
-                    <tr><td class="account-name">Edificios e Instalaciones Industriales</td><td><input type="text" class="money-input val-act-fijo" value="$380,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-edificios">$0.00</td></tr>
-                    <tr><td class="account-name">Maquinaria y Equipo de Producción</td><td><input type="text" class="money-input val-act-fijo" value="$120,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-maquinaria">$0.00</td></tr>
-                    <tr><td class="account-name">Equipo de Transporte y Logística</td><td><input type="text" class="money-input val-act-fijo" value="$65,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-transporte">$0.00</td></tr>
-                    <tr><td class="account-name">Mobiliario y Equipo de Oficina</td><td><input type="text" class="money-input val-act-fijo" value="$22,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-mobiliario">$0.00</td></tr>
-                    <tr><td class="account-name">Equipo de Cómputo y Sistemas</td><td><input type="text" class="money-input val-act-fijo" value="$35,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-computo">$0.00</td></tr>
-                    <tr><td class="account-name">(-) Depreciación Acumulada Gral.</td><td><input type="text" class="money-input val-act-fijo" value="-$55,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-depreciacion">$0.00</td></tr>
+                    <tr class="sub-category">
+                        <td colspan="3">
+                            <div class="sub-category-wrapper">
+                                <span>Activo No Circulante (Fijo)</span>
+                                <button class="btn-reset" onclick="resetSection('val-act-fijo')">Reset ⟲</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr><td class="account-name">Terrenos e Inmuebles</td><td><input type="text" class="money-input val-act-fijo" value="$250,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Planta, Edificios e Infraestructura</td><td><input type="text" class="money-input val-act-fijo" value="$380,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Maquinaria y Herramental Industrial</td><td><input type="text" class="money-input val-act-fijo" value="$120,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Equipo de Logística y Transporte</td><td><input type="text" class="money-input val-act-fijo" value="$65,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">(-) Depreciación Acumulada Structural</td><td><input type="text" class="money-input val-act-fijo" value="-$55,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr class="total-row"><td>Total Activo Fijo</td><td style="text-align: right;" id="sum-act-fijo">$0.00</td><td class="monthly-display" id="m-sum-act-fijo">$0.00</td></tr>
 
-                    <tr class="sub-category"><td colspan="3">Activo Diferido e Intangibles</td></tr>
-                    <tr><td class="account-name">Gastos de Organización y Constitución</td><td><input type="text" class="money-input val-act-dif" value="$15,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-g-org">$0.00</td></tr>
-                    <tr><td class="account-name">Patentes, Marcas y Licencias Softwares</td><td><input type="text" class="money-input val-act-dif" value="$40,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-patentes">$0.00</td></tr>
-                    <tr><td class="account-name">Primas de Seguros Pagadas por Anticipado</td><td><input type="text" class="money-input val-act-dif" value="$18,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-seguros">$0.00</td></tr>
+                    <tr class="sub-category">
+                        <td colspan="3">
+                            <div class="sub-category-wrapper">
+                                <span>Activo Diferido e Intangibles</span>
+                                <button class="btn-reset" onclick="resetSection('val-act-dif')">Reset ⟲</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr><td class="account-name">Marcas, Patentes y Software Licenciados</td><td><input type="text" class="money-input val-act-dif" value="$40,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Gastos Pagados por Anticipado Corto/Largo</td><td><input type="text" class="money-input val-act-dif" value="$18,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr class="total-row"><td>Total Activo Diferido</td><td style="text-align: right;" id="sum-act-dif">$0.00</td><td class="monthly-display" id="m-sum-act-dif">$0.00</td></tr>
 
                     <tr class="grand-total"><td>TOTAL ACTIVOS</td><td style="text-align: right;" id="gran-total-activos">$0.00</td><td class="monthly-display" id="m-gran-total-activos">$0.00</td></tr>
@@ -263,33 +304,50 @@
             <table>
                 <thead>
                     <tr class="category-head">
-                        <th>Cuentas del Pasivo y Capital</th>
+                        <th>Financiamiento (Pasivos y Patrimonio)</th>
                         <th style="width: 28%;">Monto Anual</th>
-                        <th style="width: 27%;">Ref. Mensual (Anual/12)</th>
+                        <th style="width: 27%;">Ref. Mensual</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="sub-category"><td colspan="3">Pasivo a Corto Plazo (Obligaciones < 1 año)</td></tr>
-                    <tr><td class="account-name">Proveedores Nacionales</td><td><input type="text" class="money-input val-pas-cp" value="$65,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-proveedores">$0.00</td></tr>
-                    <tr><td class="account-name">Acreedores Diversos / Gastos por Pagar</td><td><input type="text" class="money-input val-pas-cp" value="$18,500.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-acreedores">$0.00</td></tr>
-                    <tr><td class="account-name">Impuestos Federales y Retenciones por Pagar</td><td><input type="text" class="money-input val-pas-cp" value="$24,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-impuestos">$0.00</td></tr>
-                    <tr><td class="account-name">Líneas de Crédito Bancario Short-Term</td><td><input type="text" class="money-input val-pas-cp" value="$35,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-cred-cp">$0.00</td></tr>
-                    <tr><td class="account-name">Dividendos decretados por pagar</td><td><input type="text" class="money-input val-pas-cp" value="$12,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-div-pagar">$0.00</td></tr>
+                    <tr class="sub-category">
+                        <td colspan="3">
+                            <div class="sub-category-wrapper">
+                                <span>Pasivo a Corto Plazo (&lt; 1 Año)</span>
+                                <button class="btn-reset" onclick="resetSection('val-pas-cp')">Reset ⟲</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr><td class="account-name">Proveedores de Operación Primaria</td><td><input type="text" class="money-input val-pas-cp" value="$65,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Acreedores y Gastos Devengados</td><td><input type="text" class="money-input val-pas-cp" value="$18,500.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Obligaciones Fiscales por Pagar</td><td><input type="text" class="money-input val-pas-cp" value="$24,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Créditos y Pagarés Bancarios Corto Plazo</td><td><input type="text" class="money-input val-pas-cp" value="$35,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr class="total-row"><td>Total Pasivo C.P.</td><td style="text-align: right;" id="sum-pas-cp">$0.00</td><td class="monthly-display" id="m-sum-pas-cp">$0.00</td></tr>
 
-                    <tr class="sub-category"><td colspan="3">Pasivo a Largo Plazo (Estructural de Financiamiento)</td></tr>
-                    <tr><td class="account-name">Créditos Sindicados Largo Plazo</td><td><input type="text" class="money-input val-pas-lp" value="$110,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-cred-lp">$0.00</td></tr>
-                    <tr><td class="account-name">Acreedores Hipotecarios Inmobiliarios</td><td><input type="text" class="money-input val-pas-lp" value="$150,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-hipotecas">$0.00</td></tr>
-                    <tr><td class="account-name">Provisiones para Pasivos Contingentes / Retiro</td><td><input type="text" class="money-input val-pas-lp" value="$20,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-contingentes">$0.00</td></tr>
+                    <tr class="sub-category">
+                        <td colspan="3">
+                            <div class="sub-category-wrapper">
+                                <span>Pasivo a Largo Plazo</span>
+                                <button class="btn-reset" onclick="resetSection('val-pas-lp')">Reset ⟲</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr><td class="account-name">Financiamientos Estructurados LP</td><td><input type="text" class="money-input val-pas-lp" value="$110,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Garantías Hipotecarias Bancarias</td><td><input type="text" class="money-input val-pas-lp" value="$150,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr class="total-row"><td>Total Pasivo L.P.</td><td style="text-align: right;" id="sum-pas-lp">$0.00</td><td class="monthly-display" id="m-sum-pas-lp">$0.00</td></tr>
                     <tr class="total-row" style="background:#bdc3c7"><td>TOTAL PASIVOS</td><td style="text-align: right;" id="gran-total-pasivos">$0.00</td><td class="monthly-display" id="m-gran-total-pasivos">$0.00</td></tr>
 
-                    <tr class="sub-category"><td colspan="3">Capital Contable / Patrimonio Neto</td></tr>
-                    <tr><td class="account-name">Capital Social Aportado</td><td><input type="text" class="money-input val-cap" value="$500,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-cap-soc">$0.00</td></tr>
-                    <tr><td class="account-name">Prima en Venta de Acciones</td><td><input type="text" class="money-input val-cap" value="$30,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-prima-acc">$0.00</td></tr>
-                    <tr><td class="account-name">Utilidades Acumuladas de Ejercicios Anteriores</td><td><input type="text" class="money-input val-cap" value="$110,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-util-ret">$0.00</td></tr>
-                    <tr><td class="account-name">Utilidad Neta del Ejercicio en Curso</td><td><input type="text" class="money-input val-cap" value="$134,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-util-ej">$0.00</td></tr>
-                    <tr><td class="account-name">Reserva Legal Obligatoria</td><td><input type="text" class="money-input val-cap" value="$20,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display" id="m-res-leg">$0.00</td></tr>
+                    <tr class="sub-category">
+                        <td colspan="3">
+                            <div class="sub-category-wrapper">
+                                <span>Capital Contable (Patrimonio Neto)</span>
+                                <button class="btn-reset" onclick="resetSection('val-cap')">Reset ⟲</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr><td class="account-name">Capital Social Suscrito y Pagado</td><td><input type="text" class="money-input val-cap" value="$500,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Utilidades Netas de Ejercicios Anteriores</td><td><input type="text" class="money-input val-cap" value="$110,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                    <tr><td class="account-name">Reserva Legal y Contingente</td><td><input type="text" class="money-input val-cap" value="$20,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr class="total-row"><td>Total Capital Contable</td><td style="text-align: right;" id="sum-cap">$0.00</td><td class="monthly-display" id="m-sum-cap">$0.00</td></tr>
 
                     <tr class="grand-total"><td>PASIVO + CAPITAL</td><td style="text-align: right;" id="gran-total-pas-cap">$0.00</td><td class="monthly-display" id="m-gran-total-pas-cap">$0.00</td></tr>
@@ -298,255 +356,278 @@
         </section>
     </div>
 
-    <div class="grid-analysis">
-        <section>
-            <h2>Business Intelligence Dashboard (KPIs Expandidos)</h2>
-            <div class="kpi-grid">
-                
-                <div class="kpi-card" style="border-left-color: #2980b9;">
-                    <div class="kpi-info">
-                        <h3>Razón Circulante (Liquidez)</h3>
-                        <p>Solvencia I nmediata. Target: > 1.50</p>
-                    </div>
-                    <div class="kpi-values">
-                        <div class="kpi-value" id="kpi-liquidez">0.00</div>
-                        <div class="kpi-status" id="status-liquidez">-</div>
-                    </div>
-                </div>
+    <div class="section-separator">
+        <h2>2. Estado de Resultados Integral (Pérdidas y Ganancias)</h2>
+        <div class="grid-two-columns" style="grid-template-columns: 1.3fr 0.7fr;">
+            <section>
+                <table>
+                    <thead>
+                        <tr class="category-head">
+                            <th>Estructura Operativa del Rendimiento</th>
+                            <th style="width: 25%;">Monto Anual</th>
+                            <th style="width: 25%;">Ref. Mensual</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="sub-category"><td colspan="3"><div class="sub-category-wrapper"><span>Ingresos y Costos de Venta</span><button class="btn-reset" onclick="resetSection('val-er-rev')">Reset ⟲</button></div></td></tr>
+                        // Las utilidades del ejercicio ahora se leen dinámicamente de aquí para cuadrar el balance.
+                        <tr><td class="account-name">Ingresos por Ventas Brutas Totales</td><td><input type="text" class="money-input val-er-rev" value="$950,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                        <tr><td class="account-name">(-) Costo de lo Vendido (Producción/Adquisición)</td><td><input type="text" class="money-input val-er-rev" value="-$420,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                        <tr class="total-row"><td>Utilidad Bruta</td><td style="text-align: right;" id="er-util-bruta">$0.00</td><td class="monthly-display" id="m-er-util-bruta">$0.00</td></tr>
 
-                <div class="kpi-card" style="border-left-color: #1abc9c;">
-                    <div class="kpi-info">
-                        <h3>Prueba del Ácido (Quick Ratio)</h3>
-                        <p>Liquidez sin depender de inventarios. Target: > 1.00</p>
-                    </div>
-                    <div class="kpi-values">
-                        <div class="kpi-value" id="kpi-acido">0.00</div>
-                        <div class="kpi-status" id="status-acido">-</div>
-                    </div>
-                </div>
+                        <tr class="sub-category"><td colspan="3"><div class="sub-category-wrapper"><span>Gastos de Estructura Operativa</span><button class="btn-reset" onclick="resetSection('val-er-exp')">Reset ⟲</button></div></td></tr>
+                        <tr><td class="account-name">Gastos Administrativos (Nóminas/Estructura)</td><td><input type="text" class="money-input val-er-exp" value="-$180,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                        <tr><td class="account-name">Gastos de Venta, Marketing y Distribución</td><td><input type="text" class="money-input val-er-exp" value="-$110,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                        <tr class="total-row"><td>Utilidad de Operación (EBIT)</td><td style="text-align: right;" id="er-util-operacion">$0.00</td><td class="monthly-display" id="m-er-util-operacion">$0.00</td></tr>
 
-                <div class="kpi-card" style="border-left-color: #27ae60;">
-                    <div class="kpi-info">
-                        <h3>Capital de Trabajo Neto</h3>
-                        <p>Músculo financiero operativo (Anual / Mensual)</p>
-                    </div>
-                    <div class="kpi-values">
-                        <div class="kpi-value" id="kpi-ctn">$0.00</div>
-                        <div class="kpi-value" id="kpi-ctn-m" style="font-size:11px; color:#666;">M: $0.00</div>
-                    </div>
+                        <tr class="sub-category"><td colspan="3"><div class="sub-category-wrapper"><span>Resultado Financiero e Impuestos</span><button class="btn-reset" onclick="resetSection('val-er-tax')">Reset ⟲</button></div></td></tr>
+                        <tr><td class="account-name">Gastos Financieros (Intereses de Deuda)</td><td><input type="text" class="money-input val-er-tax" value="-$32,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                        <tr><td class="account-name">Impuesto sobre la Renta (Provisión ISR)</td><td><input type="text" class="money-input val-er-tax" value="-$54,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                        <tr class="grand-total"><td>UTILIDAD NETA DEL EJERCICIO</td><td style="text-align: right;" id="er-util-neta">$0.00</td><td class="monthly-display" id="m-er-util-neta">$0.00</td></tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <section style="display: flex; flex-direction: column; justify-content: center;">
+                <div style="background: #fff8e1; border-left: 5px solid #ffb300; padding: 15px; font-size: 12px; border-radius: 4px; line-height: 1.5;">
+                    <strong>Nota del Sistema Contable:</strong><br>
+                    La <em>Utilidad Neta del Ejercicio</em> calculada en el Estado de Resultados se indexa de forma automática en tiempo real al Capital Contable del Balance General, garantizando la partida doble y el cuadre exacto de la ecuación contable: 
+                    <br><br><span style="font-family:'Courier New'; font-weight:bold;">Activo = Pasivo + Capital</span>.
                 </div>
+            </section>
+        </div>
+    </div>
 
-                <div class="kpi-card" style="border-left-color: #9b59b6;">
-                    <div class="kpi-info">
-                        <h3>Apalancamiento de Activos</h3>
-                        <p>Deuda Total vs Activos Totales. Max: 60%</p>
+    <div class="section-separator">
+        <div class="grid-two-columns" style="grid-template-columns: 1.2fr 0.8fr;">
+            <section>
+                <h2>3. Cuadro de Mando Integral Corporativo (KPIs Cruzados)</h2>
+                <div class="kpi-grid">
+                    <div class="kpi-card" style="border-left-color: #0984e3;">
+                        <div class="kpi-info"><h3>Liquidez Corriente</h3><p>Activo C. / Pasivo C. (Target: &gt; 1.50)</p></div>
+                        <div class="kpi-values"><div class="kpi-value" id="kpi-liquidez">0.00</div><div class="kpi-status" id="status-liquidez">-</div></div>
                     </div>
-                    <div class="kpi-values">
-                        <div class="kpi-value" id="kpi-endeuda">0.00%</div>
-                        <div class="kpi-status" id="status-endeuda">-</div>
+                    <div class="kpi-card" style="border-left-color: #00cec9;">
+                        <div class="kpi-info"><h3>Prueba del Ácido</h3><p>Sin depender de Inventarios (Target: &gt; 1.00)</p></div>
+                        <div class="kpi-values"><div class="kpi-value" id="kpi-acido">0.00</div><div class="kpi-status" id="status-acido">-</div></div>
+                    </div>
+                    <div class="kpi-card" style="border-left-color: #6c5ce7;">
+                        <div class="kpi-info"><h3>Apalancamiento de Activos</h3><p>Pasivo Total / Activo Total (Max: 60%)</p></div>
+                        <div class="kpi-values"><div class="kpi-value" id="kpi-endeuda">0.00%</div><div class="kpi-status" id="status-endeuda">-</div></div>
+                    </div>
+                    <div class="kpi-card" style="border-left-color: #2d3436;">
+                        <div class="kpi-info"><h3>Autonomía Financiera</h3><p>Capital Neto / Pasivo Total (Target: &gt; 1.00)</p></div>
+                        <div class="kpi-values"><div class="kpi-value" id="kpi-autonomia">0.00</div><div class="kpi-status" id="status-autonomia">-</div></div>
+                    </div>
+                    <div class="kpi-card" style="border-left-color: #00b894;">
+                        <div class="kpi-info"><h3>Rentabilidad sobre Capital (ROE)</h3><p>Utilidad Neta / Capital Social</p></div>
+                        <div class="kpi-values"><div class="kpi-value" id="kpi-roe">0.00%</div><div class="kpi-status" id="status-roe">-</div></div>
+                    </div>
+                    <div class="kpi-card" style="border-left-color: #55efc4;">
+                        <div class="kpi-info"><h3>Rentabilidad de Activos (ROA)</h3><p>Utilidad de Operación / Activo Total</p></div>
+                        <div class="kpi-values"><div class="kpi-value" id="kpi-roa">0.00%</div><div class="kpi-status" id="status-roa">-</div></div>
+                    </div>
+                    <div class="kpi-card" style="border-left-color: #fdcb6e;">
+                        <div class="kpi-info"><h3>Margen Neto de Ventas</h3><p>Ganancia Real por cada $1 vendido</p></div>
+                        <div class="kpi-values"><div class="kpi-value" id="kpi-margen-neto">0.00%</div><div class="kpi-status" id="status-margen-neto">-</div></div>
+                    </div>
+                    <div class="kpi-card" style="border-left-color: #e17055;">
+                        <div class="kpi-info"><h3>Rotación de Inventarios (Veces)</h3><p>Velocidad de venta (Costo / Inventario)</p></div>
+                        <div class="kpi-values"><div class="kpi-value" id="kpi-rot-inv">0.00 x</div><div class="kpi-status" id="status-rot-inv">-</div></div>
                     </div>
                 </div>
+            </section>
 
-                <div class="kpi-card" style="border-left-color: #e67e22;">
-                    <div class="kpi-info">
-                        <h3>Índice de Calidad de Deuda</h3>
-                        <p>Pasivo C.P. / Pasivo Total. Menor es más estable a largo plazo.</p>
+            <section>
+                <h2>4. Estrés de Tesorería por Apalancamiento</h2>
+                <div class="calc-box">
+                    <div class="form-group">
+                        <label>Monto de Crédito Proyectado:</label>
+                        <input type="text" id="credit-monto" value="$100,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this); calcAmortization();" style="font-family:'Courier New'; font-weight:bold;">
                     </div>
-                    <div class="kpi-values">
-                        <div class="kpi-value" id="kpi-calidad-deuda">0.00%</div>
-                        <div class="kpi-status" id="status-calidad-deuda">-</div>
+                    <div class="form-group">
+                        <label>Tasa Anual de Referencia (%):</label>
+                        <input type="number" id="credit-tasa" value="14.0" step="0.1" oninput="calcAmortization()">
+                    </div>
+                    <div class="form-group">
+                        <label>Plazo Contractual (Meses):</label>
+                        <input type="number" id="credit-plazo" value="36" oninput="calcAmortization()">
+                    </div>
+                    <hr style="border:0; border-top:1px solid #cbd5e0; margin:15px 0;">
+                    <div class="form-group" style="font-weight:bold; color:var(--primary-dark)">
+                        <label>Cuota Mensual Estructurada:</label>
+                        <span id="res-pmt" style="font-family:'Courier New'; font-size:15px;">$0.00</span>
+                    </div>
+                    <div class="form-group" style="font-size:12px; color:#4a5568;"><label>Intereses Totales Devengados:</label><span id="res-interes">$0.00</span></div>
+                    <div class="form-group" style="font-size:12px; color:#2f3640; border-top:1px solid #cbd5e0; padding-top:8px; font-weight:bold;">
+                        <label>Índice de Estrés de Tesorería:</label><span id="res-impacto-caja" style="color:var(--accent-orange);">0.00%</span>
                     </div>
                 </div>
-
-                <div class="kpi-card" style="border-left-color: #34495e;">
-                    <div class="kpi-info">
-                        <h3>Autonomía Financiera</h3>
-                        <p>Capital Propio vs Deuda de Terceros. Target: > 1.0</p>
-                    </div>
-                    <div class="kpi-values">
-                        <div class="kpi-value" id="kpi-autonomia">0.00</div>
-                        <div class="kpi-status" id="status-autonomia">-</div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section>
-            <h2>Simulador de Estructura de Financiamiento</h2>
-            <div class="calc-box">
-                <div class="form-group">
-                    <label>Nuevo Crédito Solicitado:</label>
-                    <input type="text" id="credit-monto" value="$100,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this); calcAmortization();" style="font-family:'Courier New'; font-weight:bold;">
-                </div>
-                <div class="form-group">
-                    <label>Tasa Nominal Anual (%):</label>
-                    <input type="number" id="credit-tasa" value="14.5" step="0.1" oninput="calcAmortization()">
-                </div>
-                <div class="form-group">
-                    <label>Plazo Amortización (Meses):</label>
-                    <input type="number" id="credit-plazo" value="36" oninput="calcAmortization()">
-                </div>
-                
-                <hr style="border: 0; border-top: 1px solid #cbd5e0; margin: 15px 0;">
-                
-                <div class="form-group" style="font-weight: bold; color: var(--primary-dark)">
-                    <label>Cuota Fija Mensual (PMT):</label>
-                    <span id="res-pmt" style="font-family:'Courier New'; font-size:15px;">$0.00</span>
-                </div>
-                <div class="form-group" style="font-size: 12px; color: #4a5568;">
-                    <label>Carga Global de Intereses:</label>
-                    <span id="res-interes">$0.00</span>
-                </div>
-                <div class="form-group" style="font-size: 12px; color: #4a5568;">
-                    <label>Monto Total de Salida de Efectivo:</label>
-                    <span id="res-total-pago">$0.00</span>
-                </div>
-                <div class="form-group" style="font-size: 12px; color: #2f3640; border-top: 1px solid #cbd5e0; padding-top: 8px; font-weight: bold;">
-                    <label>Estrés sobre Tesorería Mensual (%):</label>
-                    <span id="res-impacto-caja" style="color:var(--accent-orange);">0.00%</span>
-                </div>
-            </div>
-            <p style="font-size: 11px; color: #718093; font-style: italic; margin-top: 10px;">
-                * El indicador de Estrés sobre Tesorería evalúa el impacto financiero directo de la cuota mensual calculada respecto a la liquidez total promediada mensualmente en Caja y Bancos.
-            </p>
-        </section>
+            </section>
+        </div>
     </div>
 
     <footer>
-        <div class="signature-box">Contralor Corporativo / CFO</div>
-        <div class="signature-box">Director General de Finanzas / CEO</div>
+        <div class="signature-box">Director Corporativo de Finanzas (CFO)</div>
+        <div class="signature-box">Presidente Ejecutivo (CEO)</div>
     </footer>
 </div>
 
 <script>
-    // Formateador de moneda integrado global
-    const formatter = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        minimumFractionDigits: 2
-    });
+    const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
 
-    // Remueve formato para edición pura
     function clearFormat(input) {
         let val = input.value.replace(/[\$,]/g, '');
-        if (!isNaN(val) && val !== '') {
-            input.value = val;
-        }
+        if (!isNaN(val) && val !== '') input.value = val;
     }
 
-    // Aplica el formato contable al salir del input
     function formatFormat(input) {
         let val = parseFloat(input.value);
         if (isNaN(val)) val = 0;
         input.value = formatter.format(val);
-        calc(); // Detona recálculo estructural
+        calc();
     }
 
     function parseMoney(value) {
-        if(typeof value === 'string') {
-            return parseFloat(value.replace(/[\$,]/g, '')) || 0;
-        }
+        if(typeof value === 'string') return parseFloat(value.replace(/[\$,]/g, '')) || 0;
         return parseFloat(value) || 0;
     }
 
+    // Función de Limpieza de Sección solicitada
+    function resetSection(className) {
+        let inputs = document.getElementsByClassName(className);
+        for(let input of inputs) {
+            input.value = formatter.format(0);
+        }
+        calc(); // Recalcula toda la estructura inmediatamente
+    }
+
     function calc() {
-        // 1. Procesar clases de Activos, renderizando dinámicamente el mensual por fila
-        const circ = sumClaseAndProrate('val-act-circ', 'sum-act-circ', 'm-sum-act-circ');
-        const fijo = sumClaseAndProrate('val-act-fijo', 'sum-act-fijo', 'm-sum-act-fijo');
-        const dif = sumClaseAndProrate('val-act-dif', 'sum-act-dif', 'm-sum-act-dif');
+        // --- 1. PROCESAR ESTADO DE RESULTADOS PRIMERO (Para inyectar utilidad neta al balance) ---
+        const erRev = sumClaseAndProrate('val-er-rev');
+        const erExp = sumClaseAndProrate('val-er-exp');
+        const erTax = sumClaseAndProrate('val-er-tax');
         
+        // Cuentas de Control de Resultados
+        const inputsRev = document.getElementsByClassName('val-er-rev');
+        const ventasTotales = parseMoney(inputsRev[0].value);
+        const costoVendido = parseMoney(inputsRev[1].value);
+        const utilBruta = ventasTotales + costoVendido; // costo ya viene negativo
+        
+        document.getElementById('er-util-bruta').innerText = formatter.format(utilBruta);
+        document.getElementById('m-er-util-bruta').innerText = formatter.format(utilBruta / 12);
+
+        const utilOperacion = utilBruta + erExp; // Gtos administrativos y ventas vienen negativos
+        document.getElementById('er-util-operacion').innerText = formatter.format(utilOperacion);
+        document.getElementById('m-er-util-operacion').innerText = formatter.format(utilOperacion / 12);
+
+        const utilNeta = utilOperacion + erTax; // Gastos fin e impuestos vienen negativos
+        document.getElementById('er-util-neta').innerText = formatter.format(utilNeta);
+        document.getElementById('m-er-util-neta').innerText = formatter.format(utilNeta / 12);
+
+        // --- 2. PROCESAR BALANCE GENERAL ---
+        const circ = sumClaseAndProrate('val-act-circ');
+        const fijo = sumClaseAndProrate('val-act-fijo');
+        const dif = sumClaseAndProrate('val-act-dif');
         const totalActivos = circ + fijo + dif;
+        
+        document.getElementById('sum-act-circ').innerText = formatter.format(circ);
+        document.getElementById('m-sum-act-circ').innerText = formatter.format(circ / 12);
+        document.getElementById('sum-act-fijo').innerText = formatter.format(fijo);
+        document.getElementById('m-sum-act-fijo').innerText = formatter.format(fijo / 12);
+        document.getElementById('sum-act-dif').innerText = formatter.format(dif);
+        document.getElementById('m-sum-act-dif').innerText = formatter.format(dif / 12);
         document.getElementById('gran-total-activos').innerText = formatter.format(totalActivos);
         document.getElementById('m-gran-total-activos').innerText = formatter.format(totalActivos / 12);
 
-        // 2. Procesar clases de Pasivos
-        const pcp = sumClaseAndProrate('val-pas-cp', 'sum-pas-cp', 'm-sum-pas-cp');
-        const plp = sumClaseAndProrate('val-pas-lp', 'sum-pas-lp', 'm-sum-pas-lp');
-        
+        const pcp = sumClaseAndProrate('val-pas-cp');
+        const plp = sumClaseAndProrate('val-pas-lp');
         const totalPasivos = pcp + plp;
+        
+        document.getElementById('sum-pas-cp').innerText = formatter.format(pcp);
+        document.getElementById('m-sum-pas-cp').innerText = formatter.format(pcp / 12);
+        document.getElementById('sum-pas-lp').innerText = formatter.format(plp);
+        document.getElementById('m-sum-pas-lp').innerText = formatter.format(plp / 12);
         document.getElementById('gran-total-pasivos').innerText = formatter.format(totalPasivos);
         document.getElementById('m-gran-total-pasivos').innerText = formatter.format(totalPasivos / 12);
 
-        // 3. Procesar Capital Contable
-        const cap = sumClaseAndProrate('val-cap', 'sum-cap', 'm-sum-cap');
-        
-        const totalPasCap = totalPasivos + cap;
+        // Inyección dinámica de Utilidad Neta en el cálculo del Capital Contable
+        const capBase = sumClaseAndProrate('val-cap');
+        const totalCapital = capBase + utilNeta; // Se auto-suma la Utilidad del Ejercicio
+        const totalPasCap = totalPasivos + totalCapital;
+
+        document.getElementById('sum-cap').innerText = formatter.format(totalCapital);
+        document.getElementById('m-sum-cap').innerText = formatter.format(totalCapital / 12);
         document.getElementById('gran-total-pas-cap').innerText = formatter.format(totalPasCap);
         document.getElementById('m-gran-total-pas-cap').innerText = formatter.format(totalPasCap / 12);
 
-        // --- MÓDULO INTELIGENTE DE DATOS: KPIs CORPORATIVOS ---
-        
-        // Liquidez Inmediata
+        // --- 3. BUSINESS INTELLIGENCE DASHBOARD (KPIs EXPANSDIDOS) ---
+        // Liquidez Corriente
         const razonCirc = pcp > 0 ? (circ / pcp) : 0;
         document.getElementById('kpi-liquidez').innerText = razonCirc.toFixed(2);
-        setKpiStatus('status-liquidez', razonCirc >= 1.5, 'LCR Óptimo', 'Riesgo de Liquidez');
+        setKpiStatus('status-liquidez', razonCirc >= 1.5, 'LCR Óptimo', 'Ajustar Liquidez');
 
-        // Prueba de Fuego (Ácido sin Inventarios)
+        // Prueba del Ácido
         const inputsCirc = document.getElementsByClassName('val-act-circ');
-        const invMP = parseMoney(inputsCirc[5].value);
-        const invPT = parseMoney(inputsCirc[6].value);
-        const totalInventarios = invMP + invPT;
-        
-        const pruebaAcido = pcp > 0 ? ((circ - totalInventarios) / pcp) : 0;
+        const inventarios = parseMoney(inputsCirc[5].value);
+        const pruebaAcido = pcp > 0 ? ((circ - inventarios) / pcp) : 0;
         document.getElementById('kpi-acido').innerText = pruebaAcido.toFixed(2);
-        setKpiStatus('status-acido', pruebaAcido >= 1.0, 'Excelente Tesorería', 'Dependencia Inventario');
+        setKpiStatus('status-acido', pruebaAcido >= 1.0, 'Excelente', 'Riesgo de Caja');
 
-        // Capital de Trabajo Neto Neto
-        const ctn = circ - pcp;
-        document.getElementById('kpi-ctn').innerText = formatter.format(ctn);
-        document.getElementById('kpi-ctn-m').innerText = "M: " + formatter.format(ctn / 12);
-
-        // Nivel de Estructura de Endeudamiento (Leverage)
+        // Apalancamiento
         const leverage = totalActivos > 0 ? (totalPasivos / totalActivos) * 100 : 0;
-        document.getElementById('kpi-endeuda').innerText = leverage.toFixed(2) + '%';
-        setKpiStatus('status-endeuda', leverage <= 60, 'Estructura Equilibrada', 'Apalancamiento Crítico');
-
-        // Calidad de la Deuda (Exposición a Corto Plazo)
-        const calidadDeuda = totalPasivos > 0 ? (pcp / totalPasivos) * 100 : 0;
-        document.getElementById('kpi-calidad-deuda').innerText = calidadDeuda.toFixed(2) + '%';
-        setKpiStatus('status-calidad-deuda', calidadDeuda <= 50, 'Vencimiento Estructurado', 'Presión de Pago Inmediato');
+        document.getElementById('kpi-endeuda').innerText = leverage.toFixed(1) + '%';
+        setKpiStatus('status-endeuda', leverage <= 60, 'Saludable', 'Apalancamiento Alto');
 
         // Autonomía Financiera
-        const autonomia = totalPasivos > 0 ? (cap / totalPasivos) : 0;
+        const autonomia = totalPasivos > 0 ? (totalCapital / totalPasivos) : 0;
         document.getElementById('kpi-autonomia').innerText = autonomia.toFixed(2);
-        setKpiStatus('status-autonomia', autonomia >= 1.0, 'Independencia de Fondos', 'Dependencia Crediticia');
+        setKpiStatus('status-autonomia', autonomia >= 1.0, 'Estable', 'Dependiente');
 
-        // Refrescar simulador al cambiar la base del balance
+        // ROE (Return On Equity)
+        const inputsCap = document.getElementsByClassName('val-cap');
+        const capSocial = parseMoney(inputsCap[0].value);
+        const roe = capSocial > 0 ? (utilNeta / capSocial) * 100 : 0;
+        document.getElementById('kpi-roe').innerText = roe.toFixed(2) + '%';
+        setKpiStatus('status-roe', roe > 10, 'Rentabilidad Alta', 'Bajo Rendimiento');
+
+        // ROA (Return On Assets)
+        const roa = totalActivos > 0 ? (utilOperacion / totalActivos) * 100 : 0;
+        document.getElementById('kpi-roa').innerText = roa.toFixed(2) + '%';
+        setKpiStatus('status-roa', roa > 5, 'Eficiencia Óptima', 'Revisar Activos');
+
+        // Margen Neto
+        const margNeto = ventasTotales > 0 ? (utilNeta / ventasTotales) * 100 : 0;
+        document.getElementById('kpi-margen-neto').innerText = margNeto.toFixed(2) + '%';
+        setKpiStatus('status-margen-neto', margNeto > 8, 'Margen Competitivo', 'Margen Estrecho');
+
+        // Rotación de Inventarios
+        const rotInv = inventarios > 0 ? (Math.abs(costoVendido) / inventarios) : 0;
+        document.getElementById('kpi-rot-inv').innerText = rotInv.toFixed(1) + ' x';
+        setKpiStatus('status-rot-inv', rotInv >= 4, 'Alta Rotación', 'Lento Movimiento');
+
         calcAmortization();
     }
 
-    function sumClaseAndProrate(clase, resultId, monthlyId) {
-        let inputs = document.getElementsByClassName(clase);
+    function sumClaseAndProrate(className) {
+        let inputs = document.getElementsByClassName(className);
         let total = 0;
         for (let input of inputs) {
             let annualVal = parseMoney(input.value);
             total += annualVal;
-            
-            // Buscar la celda hermana de visualización mensual (la siguiente en la estructura de la fila)
             let row = input.closest('tr');
-            let monthlyCell = row.querySelector('.monthly-display');
-            if(monthlyCell) {
-                monthlyCell.innerText = formatter.format(annualVal / 12);
-            }
+            let mDisplay = row.querySelector('.monthly-display');
+            if(mDisplay) mDisplay.innerText = formatter.format(annualVal / 12);
         }
-        document.getElementById(resultId).innerText = formatter.format(total);
-        document.getElementById(monthlyId).innerText = formatter.format(total / 12);
         return total;
     }
 
     function setKpiStatus(id, condition, goodText, badText) {
         const el = document.getElementById(id);
-        if(condition) {
-            el.innerText = goodText;
-            el.className = "kpi-status status-good";
-        } else {
-            el.innerText = badText;
-            el.className = "kpi-status status-alert";
-        }
+        if(condition) { el.innerText = goodText; el.className = "kpi-status status-good"; }
+        else { el.innerText = badText; el.className = "kpi-status status-alert"; }
     }
 
-    // --- CÁLCULO DE AMORTIZACIÓN CON ENFOQUE DE RIESGO ---
     function calcAmortization() {
         const monto = parseMoney(document.getElementById('credit-monto').value);
         const tasaAnual = parseFloat(document.getElementById('credit-tasa').value) || 0;
@@ -555,42 +636,32 @@
         if (monto <= 0 || tasaAnual <= 0 || plazo <= 0) {
             document.getElementById('res-pmt').innerText = "$0.00";
             document.getElementById('res-interes').innerText = "$0.00";
-            document.getElementById('res-total-pago').innerText = "$0.00";
             document.getElementById('res-impacto-caja').innerText = "0.00%";
             return;
         }
 
         const i = (tasaAnual / 100) / 12;
         const pmt = (monto * i) / (1 - Math.pow(1 + i, -plazo));
-        const totalPago = pmt * plazo;
-        const totalInteres = totalPago - monto;
+        const totalInteres = (pmt * plazo) - monto;
 
         document.getElementById('res-pmt').innerText = formatter.format(pmt);
         document.getElementById('res-interes').innerText = formatter.format(totalInteres);
-        document.getElementById('res-total-pago').innerText = formatter.format(totalPago);
 
-        // Stress-Test sobre Liquidez Disponible Mensual (Caja + Bancos)
+        // Estrés sobre flujo operativo mensual promediado (Caja + Bancos)
         const inputsCirc = document.getElementsByClassName('val-act-circ');
-        const cajaAnual = parseMoney(inputsCirc[0].value);
-        const bancosAnual = parseMoney(inputsCirc[1].value);
-        const efectivoMensualPromedio = (cajaAnual + bancosAnual) / 12;
+        const efectivoMensual = (parseMoney(inputsCirc[0].value) + parseMoney(inputsCirc[1].value)) / 12;
 
-        if(efectivoMensualPromedio > 0) {
-            const impacto = (pmt / efectivoMensualPromedio) * 100;
-            document.getElementById('res-impacto-caja').innerText = impacto.toFixed(2) + '%';
+        if(efectivoMensual > 0) {
+            document.getElementById('res-impacto-caja').innerText = ((pmt / efectivoMensual) * 100).toFixed(2) + '%';
         } else {
-            document.getElementById('res-impacto-caja').innerText = 'N/A (Caja Crítica)';
+            document.getElementById('res-impacto-caja').innerText = 'N/A (Sin Liquidez)';
         }
     }
 
-    // Forzar formateo visual inicial de todos los inputs en pantalla al cargar
     window.onload = function() {
         let inputs = document.getElementsByClassName('money-input');
-        for(let input of inputs) {
-            formatFormat(input);
-        }
-        let cred = document.getElementById('credit-monto');
-        formatFormat(cred);
+        for(let input of inputs) formatFormat(input);
+        formatFormat(document.getElementById('credit-monto'));
     };
 </script>
 
