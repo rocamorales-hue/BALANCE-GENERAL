@@ -212,7 +212,6 @@
         .grand-total { background-color: var(--primary-dark); color: white; font-weight: 700; }
         .grand-total .monthly-display { background-color: #1e293b; color: #fff; font-weight: 700; }
 
-        /* Controles Superiores */
         .control-panel {
             display: flex;
             justify-content: center;
@@ -248,7 +247,7 @@
             padding: 16px;
             border-left: 5px solid var(--accent-blue);
             display: flex;
-            justify-content: space-between;
+            justify-space-between: space-between;
             align-items: center;
             border: 1px solid #e2e8f0;
         }
@@ -318,7 +317,6 @@
 
     <h2>1. Estado de Situación Financiera (Balance General)</h2>
     <div class="grid-two-columns">
-        
         <section>
             <table id="table-activos">
                 <thead>
@@ -329,9 +327,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="sub-category">
-                        <td colspan="3"><div class="sub-category-wrapper"><span>Activo Circulante</span><button class="btn-reset" onclick="resetSection('val-act-circ')">Reset ⟲</button></div></td>
-                    </tr>
+                    <tr class="sub-category"><td colspan="3"><div class="sub-category-wrapper"><span>Activo Circulante</span><button class="btn-reset" onclick="resetSection('val-act-circ')">Reset ⟲</button></div></td></tr>
                     <tr><td class="account-name">Caja</td><td><input type="text" class="money-input val-act-circ" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr><td class="account-name">Bancos</td><td><input type="text" class="money-input val-act-circ" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr><td class="account-name">Fondo para contingencias</td><td><input type="text" class="money-input val-act-circ" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
@@ -343,9 +339,7 @@
                     <tr><td class="account-name"><input type="text" class="free-label-input" placeholder="Otro Activo Circulante..."></td><td><input type="text" class="money-input val-act-circ" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr class="total-row"><td>Total Activo Circulante</td><td style="text-align: right;" id="sum-act-circ">$0.00</td><td class="monthly-display" id="m-sum-act-circ">$0.00</td></tr>
 
-                    <tr class="sub-category">
-                        <td colspan="3"><div class="sub-category-wrapper"><span>Activo No Circulante (Fijo)</span><button class="btn-reset" onclick="resetSection('val-act-fijo')">Reset ⟲</button></div></td>
-                    </tr>
+                    <tr class="sub-category"><td colspan="3"><div class="sub-category-wrapper"><span>Activo No Circulante (Fijo)</span><button class="btn-reset" onclick="resetSection('val-act-fijo')">Reset ⟲</button></div></td></tr>
                     <tr><td class="account-name">Terrenos</td><td><input type="text" class="money-input val-act-fijo" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr><td class="account-name">Edificios</td><td><input type="text" class="money-input val-act-fijo" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr><td class="account-name">Mobiliario y Equipo</td><td><input type="text" class="money-input val-act-fijo" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
@@ -355,13 +349,10 @@
                     <tr><td class="account-name"><input type="text" class="free-label-input" placeholder="Otro Activo No Circulante..."></td><td><input type="text" class="money-input val-act-fijo" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr class="total-row"><td>Total Activo No Circulante</td><td style="text-align: right;" id="sum-act-fijo">$0.00</td><td class="monthly-display" id="m-sum-act-fijo">$0.00</td></tr>
 
-                    <tr class="sub-category">
-                        <td colspan="3"><div class="sub-category-wrapper"><span>Activo Diferido</span><button class="btn-reset" onclick="resetSection('val-act-dif')">Reset ⟲</button></div></td>
-                    </tr>
+                    <tr class="sub-category"><td colspan="3"><div class="sub-category-wrapper"><span>Activo Diferido</span><button class="btn-reset" onclick="resetSection('val-act-dif')">Reset ⟲</button></div></td></tr>
                     <tr><td class="account-name">Pagos anticipados PP de ISR</td><td><input type="text" class="money-input val-act-dif" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr><td class="account-name"><input type="text" class="free-label-input" placeholder="Otro Activo Diferido..."></td><td><input type="text" class="money-input val-act-dif" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr class="total-row"><td>Total Activo Diferido</td><td style="text-align: right;" id="sum-act-dif">$0.00</td><td class="monthly-display" id="m-sum-act-dif">$0.00</td></tr>
-
                     <tr class="grand-total"><td>SUMA DEL ACTIVO</td><td style="text-align: right;" id="gran-total-activos">$0.00</td><td class="monthly-display" id="m-gran-total-activos">$0.00</td></tr>
                 </tbody>
             </table>
@@ -377,9 +368,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="sub-category">
-                        <td colspan="3"><div class="sub-category-wrapper"><span>Pasivo a Corto Plazo</span><button class="btn-reset" onclick="resetSection('val-pas-cp')">Reset ⟲</button></div></td>
-                    </tr>
+                    <tr class="sub-category"><td colspan="3"><div class="sub-category-wrapper"><span>Pasivo a Corto Plazo</span><button class="btn-reset" onclick="resetSection('val-pas-cp')">Reset ⟲</button></div></td></tr>
                     <tr><td class="account-name">Proveedores</td><td><input type="text" class="money-input val-pas-cp" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr><td class="account-name">Acreedores Diversos</td><td><input type="text" class="money-input val-pas-cp" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr><td class="account-name">Impuestos por Pagar</td><td><input type="text" class="money-input val-pas-cp" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
@@ -387,9 +376,7 @@
                     <tr><td class="account-name"><input type="text" class="free-label-input" placeholder="Otro Pasivo C.P...."></td><td><input type="text" class="money-input val-pas-cp" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr class="total-row"><td>Total Pasivo a Corto Plazo</td><td style="text-align: right;" id="sum-pas-cp">$0.00</td><td class="monthly-display" id="m-sum-pas-cp">$0.00</td></tr>
 
-                    <tr class="sub-category">
-                        <td colspan="3"><div class="sub-category-wrapper"><span>Pasivo a Largo Plazo</span><button class="btn-reset" onclick="resetSection('val-pas-lp')">Reset ⟲</button></div></td>
-                    </tr>
+                    <tr class="sub-category"><td colspan="3"><div class="sub-category-wrapper"><span>Pasivo a Largo Plazo</span><button class="btn-reset" onclick="resetSection('val-pas-lp')">Reset ⟲</button></div></td></tr>
                     <tr><td class="account-name">Documentos por Pagar (L.P.)</td><td><input type="text" class="money-input val-pas-lp" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr><td class="account-name">Acreedores diversos (L.P.)</td><td><input type="text" class="money-input val-pas-lp" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr><td class="account-name">Refaccionario FIDESON (L.P.)</td><td><input type="text" class="money-input val-pas-lp" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
@@ -397,9 +384,7 @@
                     <tr class="total-row"><td>Total Pasivo a Largo Plazo</td><td style="text-align: right;" id="sum-pas-lp">$0.00</td><td class="monthly-display" id="m-sum-pas-lp">$0.00</td></tr>
                     <tr class="total-row" style="background:#cbd5e1"><td>SUMA DEL PASIVO</td><td style="text-align: right;" id="gran-total-pasivos">$0.00</td><td class="monthly-display" id="m-gran-total-pasivos">$0.00</td></tr>
 
-                    <tr class="sub-category">
-                        <td colspan="3"><div class="sub-category-wrapper"><span>Capital Contable</span><button class="btn-reset" onclick="resetSection('val-cap')">Reset ⟲</button></div></td>
-                    </tr>
+                    <tr class="sub-category"><td colspan="3"><div class="sub-category-wrapper"><span>Capital Contable</span><button class="btn-reset" onclick="resetSection('val-cap')">Reset ⟲</button></div></td></tr>
                     <tr><td class="account-name">Capital Social</td><td><input type="text" class="money-input val-cap" id="input-cap-social" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr><td class="account-name">Utilidades Retenidas</td><td><input type="text" class="money-input val-cap" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                     <tr><td class="account-name"><input type="text" class="free-label-input" placeholder="Otro Concepto Capital..."></td><td><input type="text" class="money-input val-cap" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
@@ -409,7 +394,6 @@
                         <td class="monthly-display" id="lbl-utilidad-anclada-m">$0.00</td>
                     </tr>
                     <tr class="total-row"><td>Total Capital Contable</td><td style="text-align: right;" id="sum-cap">$0.00</td><td class="monthly-display" id="m-sum-cap">$0.00</td></tr>
-
                     <tr class="grand-total"><td>SUMA PASIVO + CAPITAL</td><td style="text-align: right;" id="gran-total-pas-cap">$0.00</td><td class="monthly-display" id="m-gran-total-pas-cap">$0.00</td></tr>
                 </tbody>
             </table>
@@ -419,7 +403,6 @@
     <div class="section-separator">
         <h2>2. Estado de Resultados Integral</h2>
         <div class="grid-two-columns" id="table-resultados">
-            
             <section>
                 <table>
                     <thead>
@@ -494,21 +477,26 @@
         <table id="table-capacidad-pago">
             <thead>
                 <tr class="category-head">
-                    <th>Algoritmo de Cobertura Estructurada</th>
+                    <th>Algoritmo de Cobertura Estructurada (Desglosado)</th>
                     <th style="width: 25%;">Monto Anual ($)</th>
                     <th style="width: 25%;">Ref. Mensual ($)</th>
                 </tr>
             </thead>
             <tbody>
                 <tr><td>Ventas Netas</td><td style="text-align: right; font-weight: 600;" id="cp-ventas">$0.00</td><td class="monthly-display" id="cp-ventas-m">$0.00</td></tr>
-                <tr><td style="color: var(--accent-red);">(menos) Costo de Ventas</td><td style="text-align: right; color: var(--accent-red);" id="cp-costo">$0.00</td><td class="monthly-display" id="cp-costo-m">$0.00</td></tr>
-                <tr><td style="color: var(--accent-red);">(menos) Gastos Operativos (Venta)</td><td style="text-align: right; color: var(--accent-red);" id="cp-gventas">$0.00</td><td class="monthly-display" id="cp-gventas-m">$0.00</td></tr>
-                <tr><td style="color: var(--accent-red);">(menos) Gastos Administrativos</td><td style="text-align: right; color: var(--accent-red);" id="cp-gadmin">$0.00</td><td class="monthly-display" id="cp-gadmin-m">$0.00</td></tr>
-                <tr class="total-row" style="background: #cbd5e1;"><td>UTILIDAD OPERATIVA</td><td style="text-align: right;" id="cp-utilidad">$0.00</td><td class="monthly-display" id="cp-utilidad-m">$0.00</td></tr>
-                <tr><td style="color: var(--accent-orange); font-weight: 600;">(menos) Compromisos crediticios anteriores (Gastos Financieros RIF)</td><td style="text-align: right; color: var(--accent-orange);" id="cp-compromisos">$0.00</td><td class="monthly-display" id="cp-compromisos-m">$0.00</td></tr>
+                <tr><td style="color: var(--accent-red); padding-left: 20px;">(-) Costo de Ventas</td><td style="text-align: right; color: var(--accent-red);" id="cp-costo">$0.00</td><td class="monthly-display" id="cp-costo-m">$0.00</td></tr>
+                <tr><td style="color: var(--accent-red); padding-left: 20px;">(-) Gastos Operativos (Estructura de Ventas)</td><td style="text-align: right; color: var(--accent-red);" id="cp-gventas">$0.00</td><td class="monthly-display" id="cp-gventas-m">$0.00</td></tr>
+                <tr><td style="color: var(--accent-red); padding-left: 20px;">(-) Gastos Administrativos (Estructura de Oficina)</td><td style="text-align: right; color: var(--accent-red);" id="cp-gadmin">$0.00</td><td class="monthly-display" id="cp-gadmin-m">$0.00</td></tr>
+                <tr class="total-row" style="background: #cbd5e1;"><td>UTILIDAD OPERATIVA GENERADA</td><td style="text-align: right;" id="cp-utilidad">$0.00</td><td class="monthly-display" id="cp-utilidad-m">$0.00</td></tr>
+                <tr><td style="color: var(--accent-orange);">(-) Compromisos crediticios anteriores (Gastos Financieros RIF)</td><td style="text-align: right; color: var(--accent-orange);" id="cp-compromisos">$0.00</td><td class="monthly-display" id="cp-compromisos-m">$0.00</td></tr>
                 <tr class="total-row" style="background: #94a3b8; color: #fff;"><td>UTILIDAD RESTANDO COMPROMISOS CREDITICIOS</td><td style="text-align: right;" id="cp-utilidad-restando">$0.00</td><td class="monthly-display" id="cp-utilidad-restando-m">$0.00</td></tr>
                 <tr style="background: #fefcf0;"><td style="font-weight: 700; color: var(--accent-blue);">NUEVA AMORTIZACIÓN A EVALUAR (Capital + Interés)</td><td><input type="text" class="money-input" id="input-nueva-amortizacion" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)" style="border: 1px solid var(--accent-blue);"></td><td class="monthly-display" id="cp-nueva-amortizacion-m">$0.00</td></tr>
-                <tr class="grand-total"><td>CAPACIDAD DE PAGO REMANENTE</td><td style="text-align: right; font-family: 'Courier New';" id="cp-remanente">$0.00</td><td class="monthly-display" id="cp-remanente-m">$0.00</td></tr>
+                <tr class="total-row" style="background: #f1f5f9; color: var(--primary-dark); border-top: 2px solid var(--primary-dark)">
+                    <td style="font-weight: 700;">ÍNDICE DE COBERTURA DE CAPACIDAD DE PAGO (Auto)</td>
+                    <td style="text-align: right; font-weight: 800; font-size: 14px;" id="cp-indice-pago-tabla">0.00x</td>
+                    <td class="monthly-display" id="cp-indice-pago-tabla-status" style="font-weight:700; text-align:center;">-</td>
+                </tr>
+                <tr class="grand-total"><td>CAPACIDAD DE PAGO REMANENTE FLUJO LIBRE</td><td style="text-align: right; font-family: 'Courier New';" id="cp-remanente">$0.00</td><td class="monthly-display" id="cp-remanente-m">$0.00</td></tr>
             </tbody>
         </table>
     </div>
@@ -590,9 +578,9 @@
         document.getElementById('er-total-gadmin').innerText = formatter.format(gadmin);
         document.getElementById('m-er-total-gadmin').innerText = formatter.format(gadmin / 12);
 
-        const totalGastosOperacion = Math.abs(gventas) + Math.abs(gadmin);
-        document.getElementById('er-total-operacion-gtos').innerText = formatter.format(-totalGastosOperacion);
-        document.getElementById('m-er-total-operacion-gtos').innerText = formatter.format(-totalGastosOperacion / 12);
+        const totalGastosOperacion = gventas + gadmin;
+        document.getElementById('er-total-operacion-gtos').innerText = formatter.format(totalGastosOperacion);
+        document.getElementById('m-er-total-operacion-gtos').innerText = formatter.format(totalGastosOperacion / 12);
 
         const utilOperacion = utilBruta - totalGastosOperacion;
         document.getElementById('er-util-operacion').innerText = formatter.format(utilOperacion);
@@ -658,21 +646,28 @@
 
         document.getElementById('cp-ventas').innerText = formatter.format(ventasNetas);
         document.getElementById('cp-ventas-m').innerText = formatter.format(ventasNetas / 12);
-        document.getElementById('cp-costo').innerText = formatter.format(-costoVentas);
-        document.getElementById('cp-costo-m').innerText = formatter.format(-costoVentas / 12);
-        document.getElementById('cp-gventas').innerText = formatter.format(-gventas);
-        document.getElementById('cp-gventas-m').innerText = formatter.format(-gventas / 12);
-        document.getElementById('cp-gadmin').innerText = formatter.format(-gadmin);
-        document.getElementById('cp-gadmin-m').innerText = formatter.format(-gadmin / 12);
+        document.getElementById('cp-costo').innerText = formatter.format(costoVentas);
+        document.getElementById('cp-costo-m').innerText = formatter.format(costoVentas / 12);
+        document.getElementById('cp-gventas').innerText = formatter.format(gventas);
+        document.getElementById('cp-gventas-m').innerText = formatter.format(gventas / 12);
+        document.getElementById('cp-gadmin').innerText = formatter.format(gadmin);
+        document.getElementById('cp-gadmin-m').innerText = formatter.format(gadmin / 12);
         document.getElementById('cp-utilidad').innerText = formatter.format(utilOperacion);
         document.getElementById('cp-utilidad-m').innerText = formatter.format(utilOperacion / 12);
-        document.getElementById('cp-compromisos').innerText = formatter.format(-compCrediticios);
-        document.getElementById('cp-compromisos-m').innerText = formatter.format(-compCrediticios / 12);
+        document.getElementById('cp-compromisos').innerText = formatter.format(compCrediticios);
+        document.getElementById('cp-compromisos-m').innerText = formatter.format(compCrediticios / 12);
         document.getElementById('cp-utilidad-restando').innerText = formatter.format(utilResting);
         document.getElementById('cp-utilidad-restando-m').innerText = formatter.format(utilResting / 12);
         document.getElementById('cp-nueva-amortizacion-m').innerText = formatter.format(nuevaAmortizacion / 12);
         document.getElementById('cp-remanente').innerText = formatter.format(remanenteCap);
         document.getElementById('cp-remanente-m').innerText = formatter.format(remanenteCap / 12);
+
+        const coberturaNueva = nuevaAmortizacion > 0 ? utilResting / nuevaAmortizacion : 0;
+        document.getElementById('cp-indice-pago-tabla').innerText = coberturaNueva.toFixed(2) + 'x';
+        
+        const elStatusTabla = document.getElementById('cp-indice-pago-tabla-status');
+        if(coberturaNueva >= 1.25) { elStatusTabla.innerText = "VIABLE"; elStatusTabla.style.color = "var(--accent-green)"; }
+        else { elStatusTabla.innerText = "INSUFICIENTE"; elStatusTabla.style.color = "var(--accent-red)"; }
 
         // --- 4. CUADRO DE MANDO INTEGRAL (KPIs) ---
         const razonCirc = pcp > 0 ? (circ / pcp) : 0;
@@ -726,7 +721,6 @@
         document.getElementById('kpi-margen-op').innerText = margOp.toFixed(1) + '%';
         setKpiStatus('status-margen-op', margOp >= 10, 'Óptimo', 'Margen Estrecho');
 
-        const coberturaNueva = nuevaAmortizacion > 0 ? utilResting / nuevaAmortizacion : 0;
         document.getElementById('kpi-indice-pago').innerText = coberturaNueva.toFixed(2) + 'x';
         setKpiStatus('status-indice-pago', coberturaNueva >= 1.25, 'Viable', 'Insuficiente');
     }
@@ -754,11 +748,11 @@
         let libre = parseMoney(inputs[3].value);
 
         if(inputs[0].closest('tr').querySelector('.monthly-display')) inputs[0].closest('tr').querySelector('.monthly-display').innerText = formatter.format(prodFin / 12);
-        if(inputs[1].closest('tr').querySelector('.monthly-display')) inputs[1].closest('tr').querySelector('.monthly-display').innerText = formatter.format(-gastFin / 12);
+        if(inputs[1].closest('tr').querySelector('.monthly-display')) inputs[1].closest('tr').querySelector('.monthly-display').innerText = formatter.format(gastFin / 12);
         if(inputs[2].closest('tr').querySelector('.monthly-display')) inputs[2].closest('tr').querySelector('.monthly-display').innerText = formatter.format(otros / 12);
         if(inputs[3].closest('tr').querySelector('.monthly-display')) inputs[3].closest('tr').querySelector('.monthly-display').innerText = formatter.format(libre / 12);
 
-        return prodFin - Math.abs(gastFin) + otros + libre;
+        return prodFin - gastFin + otros + libre;
     }
 
     function setKpiStatus(id, condition, goodText, badText) {
@@ -769,119 +763,61 @@
         }
     }
 
-    // --- FUNCIÓN DE AUTO-LLENADO CON UN CASO CONGRUENTE ---
     function cargarCasoExito() {
-        document.getElementById('comp-name').value = "Comercializadora Agroindustrial del Noroeste S.A.";
+        document.getElementById('comp-name').value = "Distribuidora de Alimentos de Sonora S.A.";
         document.getElementById('rep-date').value = "31 de Diciembre";
         document.getElementById('rep-year').value = "2026";
 
-        // Balance General - Activo Circulante
         let actCirc = document.getElementsByClassName('val-act-circ');
-        actCirc[0].value = "85000";     // Caja
-        actCirc[1].value = "450000";    // Bancos
-        actCirc[2].value = "100000";    // Contingencias
-        actCirc[3].value = "320000";    // Clientes
-        actCirc[4].value = "600000";    // Inventarios
-        actCirc[5].value = "115000";    // CxC
-        actCirc[6].value = "30000";     // Deudores
-        actCirc[7].value = "45000";     // IRS a favor
-        actCirc[8].value = "0";          // Libre
+        actCirc[0].value = "85000"; actCirc[1].value = "450000"; actCirc[2].value = "100000"; actCirc[3].value = "320000";
+        actCirc[4].value = "600000"; actCirc[5].value = "115000"; actCirc[6].value = "30000"; actCirc[7].value = "45000"; actCirc[8].value = "0";
 
-        // Activo Fijo
         let actFijo = document.getElementsByClassName('val-act-fijo');
-        actFijo[0].value = "1200000";   // Terrenos
-        actFijo[1].value = "2500000";   // Edificios
-        actFijo[2].value = "350000";    // Mobiliario
-        actFijo[3].value = "680000";    // Transporte
-        actFijo[4].value = "140000";    // Cómputo
-        actFijo[5].value = "95000";     // Oficina
-        actFijo[6].value = "0";
+        actFijo[0].value = "1200000"; actFijo[1].value = "2500000"; actFijo[2].value = "350000"; actFijo[3].value = "680000";
+        actFijo[4].value = "140000"; actFijo[5].value = "95000"; actFijo[6].value = "0";
 
-        // Activo Diferido
-        let actDif = document.getElementsByClassName('val-act-dif');
-        actDif[0].value = "60000";      // Pagos ant.
+        document.getElementsByClassName('val-act-dif')[0].value = "60000";
 
-        // Pasivo Corto Plazo
         let pasCP = document.getElementsByClassName('val-pas-cp');
-        pasCP[0].value = "280000";     // Proveedores
-        pasCP[1].value = "95000";      // Acreedores
-        pasCP[2].value = "120000";     // Impuestos
-        pasCP[3].value = "150000";     // FIDESON CP
-        pasCP[4].value = "0";
+        pasCP[0].value = "280000"; pasCP[1].value = "95000"; pasCP[2].value = "120000"; pasCP[3].value = "150000"; pasCP[4].value = "0";
 
-        // Pasivo Largo Plazo
         let pasLP = document.getElementsByClassName('val-pas-lp');
-        pasLP[0].value = "200000";     // DxP LP
-        pasLP[1].value = "0";          // Acreedores LP
-        pasLP[2].value = "450000";     // FIDESON LP
-        pasLP[3].value = "0";
+        pasLP[0].value = "200000"; pasLP[1].value = "0"; pasLP[2].value = "450000"; pasLP[3].value = "0";
 
-        // Capital
         let cap = document.getElementsByClassName('val-cap');
-        cap[0].value = "3500000";    // Capital Social
-        cap[1].value = "850000";     // Utilidades Retenidas
-        cap[2].value = "0";
+        cap[0].value = "3500000"; cap[1].value = "850000"; cap[2].value = "0";
 
-        // Estado de Resultados - Ingresos y Costos
         let rev = document.getElementsByClassName('val-er-rev');
-        rev[0].value = "6200000";    // Ventas Totales
-        rev[1].value = "50000";      // Devoluciones
-        document.getElementById('input-costo-ventas').value = "3400000"; // Costo de Ventas
+        rev[0].value = "6200000"; rev[1].value = "50000";
+        document.getElementById('input-costo-ventas').value = "3400000";
 
-        // Gastos de Venta
         let gv = document.getElementsByClassName('val-er-gventas');
-        gv[0].value = "240000";      // Sueldos
-        gv[1].value = "110000";      // Publicidad
-        gv[2].value = "180000";      // Renta
-        gv[3].value = "95000";       // Fletes
-        gv[4].value = "20000";       // Otros
-        gv[5].value = "0";
+        gv[0].value = "240000"; gv[1].value = "110000"; gv[2].value = "180000"; gv[3].value = "95000"; gv[4].value = "20000"; gv[5].value = "0";
 
-        // Gastos de Administración
         let ga = document.getElementsByClassName('val-er-gadmin');
-        ga[0].value = "380000";      // Sueldos Admin
-        ga[1].value = "15000";       // Papelería
-        ga[2].value = "85000";       // Servicios
-        ga[3].value = "120000";      // Depreciaciones
-        ga[4].value = "30000";       // Otros
-        ga[5].value = "0";
+        ga[0].value = "380000"; ga[1].value = "15000"; ga[2].value = "85000"; ga[3].value = "120000"; ga[4].value = "30000"; ga[5].value = "0";
 
-        // RIF
         let rif = document.getElementsByClassName('val-er-rif');
-        rif[0].value = "12000";      // Productos fin.
-        document.getElementById('input-gastos-financieros').value = "68000"; // Gastos Financieros (Compromisos)
-        rif[2].value = "5000";       // Otros inc.
-        rif[3].value = "0";
+        rif[0].value = "12000"; document.getElementById('input-gastos-financieros').value = "68000"; rif[2].value = "5000"; rif[3].value = "0";
 
-        // Impuestos
         let tax = document.getElementsByClassName('val-er-tax');
-        tax[0].value = "290000";     // ISR
-        tax[1].value = "96000";      // PTU
-        tax[2].value = "0";
+        tax[0].value = "290000"; tax[1].value = "96000"; tax[2].value = "0";
 
-        // Nueva Amortización a evaluar
         document.getElementById('input-nueva-amortizacion').value = "220000";
 
-        // Formatear visualmente todas las casillas tras llenarlas
         let inputs = document.querySelectorAll('.money-input');
         for(let input of inputs) { formatFormat(input); }
     }
 
-    // --- FUNCIÓN DE LIMPIEZA TOTAL ABSOLUTA ---
     function limpiarTodoFormulario() {
         document.getElementById('comp-name').value = "NOMBRE O RAZON SOCIAL";
         document.getElementById('rep-date').value = "";
         document.getElementById('rep-year').value = "";
-
-        // Limpiar todas las cajas numéricas y las etiquetas de conceptos libres
         let moneyInputs = document.querySelectorAll('.money-input');
         for(let input of moneyInputs) { input.value = "$0.00"; }
-        
         let freeLabels = document.querySelectorAll('.free-label-input');
         for(let label of freeLabels) { label.value = ""; }
-
         document.getElementById('input-nueva-amortizacion').value = "$0.00";
-        
         calc();
     }
 
@@ -889,122 +825,65 @@
         const companyName = document.getElementById('comp-name').value || "EMPRESA";
         const dateStr = document.getElementById('rep-date').value || "Corte";
         const yearStr = document.getElementById('rep-year').value || "2026";
-
         const wb = XLSX.utils.book_new();
         
-        // --- BALANCE GENERAL ---
-        let bgData = [
-            [companyName.toUpperCase()],
-            ["ESTADO DE SITUACIÓN FINANCIERA (BALANCE GENERAL)"],
-            [`Al ${dateStr} de ${yearStr}`],
-            [],
-            ["CUENTA CONCEPTO", "MONTO ANUAL ($)", "MONTO MENSUAL ($)"]
-        ];
-
+        let bgData = [[companyName.toUpperCase()], ["BALANCE GENERAL"], [`Al ${dateStr} de ${yearStr}`], [], ["CONCEPTO", "ANUAL", "MENSUAL"]];
         function extraerFilasTabla(idTabla) {
-            let filas = [];
-            let tbody = document.querySelector(`#${idTabla} tbody`);
-            if(!tbody) return filas;
-            
+            let filas = []; let tbody = document.querySelector(`#${idTabla} tbody`); if(!tbody) return filas;
             for(let tr of tbody.rows) {
-                if(tr.classList.contains('sub-category')) {
-                    filas.push([tr.innerText.replace("Reset ⟲","").trim(), "", ""]);
-                } else {
-                    let tdConcepto = tr.cells[0];
-                    let freeInput = tdConcepto.querySelector('.free-label-input');
-                    let nombreConcepto = freeInput ? (freeInput.value.trim() || freeInput.placeholder) : tdConcepto.innerText.trim();
-                    
+                if(tr.classList.contains('sub-category')) { filas.push([tr.innerText.replace("Reset ⟲","").trim(), "", ""]); }
+                else {
+                    let tdConcepto = tr.cells[0]; let freeInput = tdConcepto.querySelector('.free-label-input');
+                    let nombre = freeInput ? (freeInput.value.trim() || freeInput.placeholder) : tdConcepto.innerText.trim();
                     let input = tr.cells[1].querySelector('input');
                     let valAnual = input ? parseMoney(input.value) : parseMoney(tr.cells[1].innerText);
-                    let valMensual = valAnual / 12;
-                    
-                    filas.push([nombreConcepto, valAnual, valMensual]);
+                    filas.push([nombre, valAnual, valAnual / 12]);
                 }
             }
             return filas;
         }
+        bgData = bgData.concat([["ACTIVOS", "", ""]]).concat(extraerFilasTabla('table-activos')).concat([[], ["PASIVOS Y CAPITAL", "", ""]]).concat(extraerFilasTabla('table-pasivos'));
+        XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(bgData), "Balance General");
 
-        bgData = bgData.concat([["ACTIVOS", "", ""]]);
-        bgData = bgData.concat(extraerFilasTabla('table-activos'));
-        bgData = bgData.concat([[], ["PASIVOS Y PATRIMONIO", "", ""]]);
-        bgData = bgData.concat(extraerFilasTabla('table-pasivos'));
-
-        const wsBG = XLSX.utils.aoa_to_sheet(bgData);
-        XLSX.utils.book_append_sheet(wb, wsBG, "Balance General");
-
-        // --- ESTADO DE RESULTADOS ---
-        let erData = [
-            [companyName.toUpperCase()],
-            ["ESTADO DE RESULTADOS INTEGRAL"],
-            [`Periodo consolidado al ${dateStr} de ${yearStr}`],
-            [],
-            ["ESTRUCTURA OPERATIVA", "MONTO ANUAL ($)", "MONTO MENSUAL ($)"]
-        ];
-        
-        // Extraer dinámicamente de las dos tablas paralelas en el DOM
-        let tablasER = document.querySelectorAll('#table-resultados table');
-        tablasER.forEach(tabla => {
+        let erData = [[companyName.toUpperCase()], ["ESTADO DE RESULTADOS"], [`Al ${dateStr} de ${yearStr}`], [], ["CONCEPTO", "ANUAL", "MENSUAL"]];
+        document.querySelectorAll('#table-resultados table').forEach(tabla => {
             let tbody = tabla.querySelector('tbody');
             for(let tr of tbody.rows) {
-                if(tr.classList.contains('sub-category')) {
-                    erData.push([tr.innerText.replace("Reset ⟲","").trim(), "", ""]);
-                } else {
-                    let tdConcepto = tr.cells[0];
-                    let freeInput = tdConcepto.querySelector('.free-label-input');
-                    let nombreConcepto = freeInput ? (freeInput.value.trim() || freeInput.placeholder) : tdConcepto.innerText.trim();
-                    
+                if(tr.classList.contains('sub-category')) { erData.push([tr.innerText.replace("Reset ⟲","").trim(), "", ""]); }
+                else {
+                    let tdConcepto = tr.cells[0]; let freeInput = tdConcepto.querySelector('.free-label-input');
+                    let nombre = freeInput ? (freeInput.value.trim() || freeInput.placeholder) : tdConcepto.innerText.trim();
                     let input = tr.cells[1].querySelector('input');
                     let valAnual = input ? parseMoney(input.value) : parseMoney(tr.cells[1].innerText);
-                    let valMensual = valAnual / 12;
-                    erData.push([nombreConcepto, valAnual, valMensual]);
+                    erData.push([nombre, valAnual, valAnual / 12]);
                 }
             }
         });
-        
-        const wsER = XLSX.utils.aoa_to_sheet(erData);
-        XLSX.utils.book_append_sheet(wb, wsER, "Estado de Resultados");
+        XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(erData), "Estado de Resultados");
 
-        // --- CAPACIDAD DE PAGO ---
-        let cpData = [
-            [companyName.toUpperCase()],
-            ["EVALUACIÓN DE CAPACIDAD DE PAGO Y COBERTURA"],
-            [],
-            ["CONCEPTO ANALÍTICO", "MONTO ANUAL ($)", "MONTO MENSUAL ($)"]
-        ];
-        let tbodyCP = document.querySelector('#table-capacidad-pago tbody');
-        for(let tr of tbodyCP.rows) {
-            let tdConcepto = tr.cells[0];
-            let label = tdConcepto.innerText.trim();
+        let cpData = [[companyName.toUpperCase()], ["CAPACIDAD DE PAGO"], [], ["CONCEPTO", "ANUAL", "MENSUAL"]];
+        document.querySelector('#table-capacidad-pago tbody').rows.forEach(tr => {
             let input = tr.cells[1].querySelector('input');
             let valAnual = input ? parseMoney(input.value) : parseMoney(tr.cells[1].innerText);
-            let valMensual = parseMoney(tr.cells[2].innerText);
-            cpData.push([label, valAnual, valMensual]);
-        }
-        const wsCP = XLSX.utils.aoa_to_sheet(cpData);
-        XLSX.utils.book_append_sheet(wb, wsCP, "Capacidad de Pago");
-
+            cpData.push([tr.cells[0].innerText.trim(), valAnual, parseMoney(tr.cells[2].innerText)]);
+        });
+        XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(cpData), "Capacidad de Pago");
         XLSX.writeFile(wb, `Reporte_Financiero_${companyName.replace(/\s+/g, '_')}_${yearStr}.xlsx`);
     }
 
     window.onload = function() {
         calc();
-
         document.body.addEventListener('keydown', function(e) {
             if (e.target.tagName === 'INPUT') {
                 if (e.key === 'Enter') {
                     e.preventDefault();
-                    let inputs = Array.from(document.querySelectorAll(
-                        '#comp-name, #rep-date, #rep-year, .money-input, .free-label-input'
-                    ));
+                    let inputs = Array.from(document.querySelectorAll('#comp-name, #rep-date, #rep-year, .money-input, .free-label-input'));
                     let currentIndex = inputs.indexOf(e.target);
-                    if (currentIndex > -1 && currentIndex < inputs.length - 1) {
-                        inputs[currentIndex + 1].focus();
-                    }
+                    if (currentIndex > -1 && currentIndex < inputs.length - 1) inputs[currentIndex + 1].focus();
                 }
             }
         });
     };
 </script>
-
 </body>
 </html>
