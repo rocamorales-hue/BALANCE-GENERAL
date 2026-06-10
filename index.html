@@ -370,7 +370,6 @@
                     </thead>
                     <tbody>
                         <tr class="sub-category"><td colspan="3"><div class="sub-category-wrapper"><span>Ingresos y Costos de Venta</span><button class="btn-reset" onclick="resetSection('val-er-rev')">Reset ⟲</button></div></td></tr>
-                        // Las utilidades del ejercicio ahora se leen dinámicamente de aquí para cuadrar el balance.
                         <tr><td class="account-name">Ingresos por Ventas Brutas Totales</td><td><input type="text" class="money-input val-er-rev" value="$950,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                         <tr><td class="account-name">(-) Costo de lo Vendido (Producción/Adquisición)</td><td><input type="text" class="money-input val-er-rev" value="-$420,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
                         <tr class="total-row"><td>Utilidad Bruta</td><td style="text-align: right;" id="er-util-bruta">$0.00</td><td class="monthly-display" id="m-er-util-bruta">$0.00</td></tr>
@@ -443,15 +442,15 @@
                 <div class="calc-box">
                     <div class="form-group">
                         <label>Monto de Crédito Proyectado:</label>
-                        <input type="text" id="credit-monto" value="$100,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this); calcAmortization();" style="font-family:'Courier New'; font-weight:bold;">
+                        <input type="text" id="credit-monto" class="money-input" value="$100,000.00" onfocus="clearFormat(this)" onblur="formatFormat(this); calcAmortization();" style="font-family:'Courier New'; font-weight:bold;">
                     </div>
                     <div class="form-group">
                         <label>Tasa Anual de Referencia (%):</label>
-                        <input type="number" id="credit-tasa" value="14.0" step="0.1" oninput="calcAmortization()">
+                        <input type="number" id="credit-tasa" class="nav-input" value="14.0" step="0.1" oninput="calcAmortization()">
                     </div>
                     <div class="form-group">
                         <label>Plazo Contractual (Meses):</label>
-                        <input type="number" id="credit-plazo" value="36" oninput="calcAmortization()">
+                        <input type="number" id="credit-plazo" class="nav-input" value="36" oninput="calcAmortization()">
                     </div>
                     <hr style="border:0; border-top:1px solid #cbd5e0; margin:15px 0;">
                     <div class="form-group" style="font-weight:bold; color:var(--primary-dark)">
@@ -479,6 +478,9 @@
     function clearFormat(input) {
         let val = input.value.replace(/[\$,]/g, '');
         if (!isNaN(val) && val !== '') input.value = val;
+        
+        // REQUERIMIENTO 1: Seleccionar automáticamente todo el texto de la casilla al hacer click/foco
+        setTimeout(() => { input.select(); }, 10);
     }
 
     function formatFormat(input) {
@@ -493,35 +495,33 @@
         return parseFloat(value) || 0;
     }
 
-    // Función de Limpieza de Sección solicitada
     function resetSection(className) {
         let inputs = document.getElementsByClassName(className);
         for(let input of inputs) {
             input.value = formatter.format(0);
         }
-        calc(); // Recalcula toda la estructura inmediatamente
+        calc();
     }
 
     function calc() {
-        // --- 1. PROCESAR ESTADO DE RESULTADOS PRIMERO (Para inyectar utilidad neta al balance) ---
+        // --- 1. PROCESAR ESTADO DE RESULTADOS PRIMERO ---
         const erRev = sumClaseAndProrate('val-er-rev');
         const erExp = sumClaseAndProrate('val-er-exp');
         const erTax = sumClaseAndProrate('val-er-tax');
         
-        // Cuentas de Control de Resultados
         const inputsRev = document.getElementsByClassName('val-er-rev');
         const ventasTotales = parseMoney(inputsRev[0].value);
         const costoVendido = parseMoney(inputsRev[1].value);
-        const utilBruta = ventasTotales + costoVendido; // costo ya viene negativo
+        const utilBruta = ventasTotales + costoVendido;
         
         document.getElementById('er-util-bruta').innerText = formatter.format(utilBruta);
         document.getElementById('m-er-util-bruta').innerText = formatter.format(utilBruta / 12);
 
-        const utilOperacion = utilBruta + erExp; // Gtos administrativos y ventas vienen negativos
+        const utilOperacion = utilBruta + erExp;
         document.getElementById('er-util-operacion').innerText = formatter.format(utilOperacion);
         document.getElementById('m-er-util-operacion').innerText = formatter.format(utilOperacion / 12);
 
-        const utilNeta = utilOperacion + erTax; // Gastos fin e impuestos vienen negativos
+        const utilNeta = utilOperacion + erTax;
         document.getElementById('er-util-neta').innerText = formatter.format(utilNeta);
         document.getElementById('m-er-util-neta').innerText = formatter.format(utilNeta / 12);
 
@@ -551,9 +551,8 @@
         document.getElementById('gran-total-pasivos').innerText = formatter.format(totalPasivos);
         document.getElementById('m-gran-total-pasivos').innerText = formatter.format(totalPasivos / 12);
 
-        // Inyección dinámica de Utilidad Neta en el cálculo del Capital Contable
         const capBase = sumClaseAndProrate('val-cap');
-        const totalCapital = capBase + utilNeta; // Se auto-suma la Utilidad del Ejercicio
+        const totalCapital = capBase + utilNeta;
         const totalPasCap = totalPasivos + totalCapital;
 
         document.getElementById('sum-cap').innerText = formatter.format(totalCapital);
@@ -561,47 +560,39 @@
         document.getElementById('gran-total-pas-cap').innerText = formatter.format(totalPasCap);
         document.getElementById('m-gran-total-pas-cap').innerText = formatter.format(totalPasCap / 12);
 
-        // --- 3. BUSINESS INTELLIGENCE DASHBOARD (KPIs EXPANSDIDOS) ---
-        // Liquidez Corriente
+        // --- 3. BUSINESS INTELLIGENCE DASHBOARD ---
         const razonCirc = pcp > 0 ? (circ / pcp) : 0;
         document.getElementById('kpi-liquidez').innerText = razonCirc.toFixed(2);
         setKpiStatus('status-liquidez', razonCirc >= 1.5, 'LCR Óptimo', 'Ajustar Liquidez');
 
-        // Prueba del Ácido
         const inputsCirc = document.getElementsByClassName('val-act-circ');
         const inventarios = parseMoney(inputsCirc[5].value);
         const pruebaAcido = pcp > 0 ? ((circ - inventarios) / pcp) : 0;
         document.getElementById('kpi-acido').innerText = pruebaAcido.toFixed(2);
         setKpiStatus('status-acido', pruebaAcido >= 1.0, 'Excelente', 'Riesgo de Caja');
 
-        // Apalancamiento
         const leverage = totalActivos > 0 ? (totalPasivos / totalActivos) * 100 : 0;
         document.getElementById('kpi-endeuda').innerText = leverage.toFixed(1) + '%';
         setKpiStatus('status-endeuda', leverage <= 60, 'Saludable', 'Apalancamiento Alto');
 
-        // Autonomía Financiera
         const autonomia = totalPasivos > 0 ? (totalCapital / totalPasivos) : 0;
         document.getElementById('kpi-autonomia').innerText = autonomia.toFixed(2);
         setKpiStatus('status-autonomia', autonomia >= 1.0, 'Estable', 'Dependiente');
 
-        // ROE (Return On Equity)
         const inputsCap = document.getElementsByClassName('val-cap');
         const capSocial = parseMoney(inputsCap[0].value);
         const roe = capSocial > 0 ? (utilNeta / capSocial) * 100 : 0;
         document.getElementById('kpi-roe').innerText = roe.toFixed(2) + '%';
         setKpiStatus('status-roe', roe > 10, 'Rentabilidad Alta', 'Bajo Rendimiento');
 
-        // ROA (Return On Assets)
         const roa = totalActivos > 0 ? (utilOperacion / totalActivos) * 100 : 0;
         document.getElementById('kpi-roa').innerText = roa.toFixed(2) + '%';
         setKpiStatus('status-roa', roa > 5, 'Eficiencia Óptima', 'Revisar Activos');
 
-        // Margen Neto
         const margNeto = ventasTotales > 0 ? (utilNeta / ventasTotales) * 100 : 0;
         document.getElementById('kpi-margen-neto').innerText = margNeto.toFixed(2) + '%';
         setKpiStatus('status-margen-neto', margNeto > 8, 'Margen Competitivo', 'Margen Estrecho');
 
-        // Rotación de Inventarios
         const rotInv = inventarios > 0 ? (Math.abs(costoVendido) / inventarios) : 0;
         document.getElementById('kpi-rot-inv').innerText = rotInv.toFixed(1) + ' x';
         setKpiStatus('status-rot-inv', rotInv >= 4, 'Alta Rotación', 'Lento Movimiento');
@@ -647,7 +638,6 @@
         document.getElementById('res-pmt').innerText = formatter.format(pmt);
         document.getElementById('res-interes').innerText = formatter.format(totalInteres);
 
-        // Estrés sobre flujo operativo mensual promediado (Caja + Bancos)
         const inputsCirc = document.getElementsByClassName('val-act-circ');
         const efectivoMensual = (parseMoney(inputsCirc[0].value) + parseMoney(inputsCirc[1].value)) / 12;
 
@@ -658,10 +648,37 @@
         }
     }
 
+    // --- REQUERIMIENTO 2: MOTOR DE NAVEGACIÓN INTELIGENTE (ENTER COMO TAB) ---
     window.onload = function() {
-        let inputs = document.getElementsByClassName('money-input');
-        for(let input of inputs) formatFormat(input);
+        // Renderizado y formateo inicial
+        let inputs = document.querySelectorAll('.money-input, .nav-input');
+        for(let input of inputs) {
+            if(input.classList.contains('money-input')) {
+                formatFormat(input);
+            }
+        }
         formatFormat(document.getElementById('credit-monto'));
+
+        // Registrar captura de teclado en el contenedor principal
+        document.body.addEventListener('keydown', function(e) {
+            // Verificar si el elemento activo es un input del formulario
+            if (e.target.tagName === 'INPUT') {
+                
+                // Si presiona ENTER (Keycode 13)
+                if (e.key === 'Enter' || e.keyCode === 13) {
+                    e.preventDefault(); // Detener el envío o salto por defecto del navegador
+
+                    // Obtener lista ordenada de todos los campos editables del documento
+                    let totalFields = Array.from(document.querySelectorAll('input[type="text"], input[type="number"]'));
+                    let currentIndex = totalFields.indexOf(e.target);
+                    
+                    if (currentIndex > -1 && currentIndex < totalFields.length - 1) {
+                        // Mover el foco a la siguiente celda disponible
+                        totalFields[currentIndex + 1].focus();
+                    }
+                }
+            }
+        });
     };
 </script>
 
