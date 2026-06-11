@@ -605,7 +605,6 @@
             let val = parseMoney(elements[i].value);
             total += val;
             
-            // Corrección explícita: actualiza de forma síncrona el display mensual de cada renglón individual
             let tr = elements[i].closest('tr');
             if (tr) {
                 let display = tr.querySelector('.monthly-display');
@@ -622,7 +621,6 @@
         const vTotales = parseMoney(document.getElementsByClassName('val-er-rev')[0].value);
         const devDesc = parseMoney(document.getElementsByClassName('val-er-rev')[1].value);
         
-        // Renderizado explícito para Ventas Totales y Devoluciones
         let revInputs = document.getElementsByClassName('val-er-rev');
         if(revInputs[0] && revInputs[0].closest('tr')) revInputs[0].closest('tr').querySelector('.monthly-display').innerText = formatter.format(vTotales / 12);
         if(revInputs[1] && revInputs[1].closest('tr')) revInputs[1].closest('tr').querySelector('.monthly-display').innerText = formatter.format(devDesc / 12);
@@ -675,14 +673,14 @@
 
         // --- 2. PROCESAR BALANCE GENERAL ---
         const circ = sumClaseAndProrate('val-act-circ');
-        const固定 = sumClaseAndProrate('val-act-fijo');
+        const fijo = sumClaseAndProrate('val-act-fijo');
         const dif = sumClaseAndProrate('val-act-dif');
-        const totalActivos = circ +固定 + dif;
+        const totalActivos = circ + fijo + dif;
 
         document.getElementById('sum-act-circ').innerText = formatter.format(circ);
         document.getElementById('m-sum-act-circ').innerText = formatter.format(circ / 12);
-        document.getElementById('sum-act-fijo').innerText = formatter.format(固定);
-        document.getElementById('m-sum-act-fijo').innerText = formatter.format(固定 / 12);
+        document.getElementById('sum-act-fijo').innerText = formatter.format(fijo);
+        document.getElementById('m-sum-act-fijo').innerText = formatter.format(fijo / 12);
         document.getElementById('sum-act-dif').innerText = formatter.format(dif);
         document.getElementById('m-sum-act-dif').innerText = formatter.format(dif / 12);
         document.getElementById('gran-total-activos').innerText = formatter.format(totalActivos);
@@ -732,7 +730,6 @@
         document.getElementById('cp-flujo-libre-anual').innerText = formatter.format(flujoLibreAnual);
         document.getElementById('cp-flujo-libre-mensual').innerText = formatter.format(flujoLibreMensual);
 
-        // Bloque de Evaluación del Crédito (Cálculo 100% Mensual)
         const amortizacionMensual = parseMoney(document.getElementById('input-amortizacion-mensual').value);
         
         let indiceCobertura = 0;
@@ -753,7 +750,7 @@
 
         setKpiStatus('status-indice-cobertura', indiceCobertura >= 1.20, 'Capacidad Óptima', 'Flujo Insuficiente');
 
-        // --- 4. INDICADORES DE GESTIÓN CORPORATIVA (KPIs) ---
+        // --- 4. INDICADORES DE GESTIÓN (KPIs) ---
         const liquidez = pasCp > 0 ? (circ / pasCp) : 0;
         document.getElementById('kpi-liquidez').innerText = liquidez.toFixed(2);
         setKpiStatus('status-liquidez', liquidez >= 1.5, 'Saludable', 'Riesgo Iliquidez');
@@ -808,46 +805,54 @@
     }
 
     function cargarCasoExito() {
-        document.getElementById('comp-name').value = "Distribuidora de Alimentos de Sonora S.A.";
+        document.getElementById('comp-name').value = "Distribuidora Corporativa del Noroeste S.A.";
         document.getElementById('rep-date').value = "31 de Diciembre";
         document.getElementById('rep-year').value = "2026";
         
         let actCirc = document.getElementsByClassName('val-act-circ');
-        actCirc[0].value = formatter.format(85000);
-        actCirc[1].value = formatter.format(450000);
-        actCirc[3].value = formatter.format(120000);
-        actCirc[4].value = formatter.format(350000);
+        actCirc[0].value = formatter.format(120000);  // Caja
+        actCirc[1].value = formatter.format(650000);  // Bancos
+        actCirc[2].value = formatter.format(50000);   // Contingencias
+        actCirc[3].value = formatter.format(280000);  // Clientes
+        actCirc[4].value = formatter.format(450000);  // Inventarios
+        actCirc[5].value = formatter.format(60000);   // Cuentas x Cobrar
         
         let actFijo = document.getElementsByClassName('val-act-fijo');
-        actFijo[0].value = formatter.format(1200000);
-        actFijo[2].value = formatter.format(150000);
-        actFijo[3].value = formatter.format(450000);
+        actFijo[0].value = formatter.format(1500000); // Terrenos
+        actFijo[1].value = formatter.format(2100000); // Edificios
+        actFijo[2].value = formatter.format(350000);  // Mobiliario
+        actFijo[3].value = formatter.format(680000);  // Transporte
+        actFijo[4].value = formatter.format(140000);  // Cómputo
         
         let pasCp = document.getElementsByClassName('val-pas-cp');
-        pasCp[0].value = formatter.format(180000);
-        pasCp[2].value = formatter.format(45000);
+        pasCp[0].value = formatter.format(320000);   // Proveedores
+        pasCp[1].value = formatter.format(90000);    // Acreedores
+        pasCp[2].value = formatter.format(110000);   // Impuestos por pagar
         
         let pasLp = document.getElementsByClassName('val-pas-lp');
-        pasLp[2].value = formatter.format(350000);
+        pasLp[0].value = formatter.format(400000);   // Docs LP
+        pasLp[2].value = formatter.format(850000);   // FIDESON LP
         
-        document.getElementById('input-cap-social').value = formatter.format(1500000);
+        document.getElementById('input-cap-social').value = formatter.format(3000000); // Capital Social
         
         let rev = document.getElementsByClassName('val-er-rev');
-        rev[0].value = formatter.format(2400000);
-        rev[1].value = formatter.format(30000);
+        rev[0].value = formatter.format(5400000);     // Ventas Totales
+        rev[1].value = formatter.format(150000);      // Devoluciones
         
-        document.getElementById('input-costo-ventas').value = formatter.format(1100000);
+        document.getElementById('input-costo-ventas').value = formatter.format(2600000); // Costo de ventas
         
         let gv = document.getElementsByClassName('val-er-gventas');
-        gv[0].value = formatter.format(180000);
-        gv[1].value = formatter.format(45000);
+        gv[0].value = formatter.format(420000);       // Sueldos Ventas
+        gv[1].value = formatter.format(110000);       // Publicidad
+        gv[2].value = formatter.format(180000);       // Renta
         
         let ga = document.getElementsByClassName('val-er-gadmin');
-        ga[0].value = formatter.format(220000);
-        ga[3].value = formatter.format(60000);
+        ga[0].value = formatter.format(530000);       // Sueldos Admin
+        ga[3].value = formatter.format(95000);        // Servicios
+        ga[4].value = formatter.format(70000);        // Combustibles
         
-        document.getElementById('input-gast-fin').value = formatter.format(35000);
-        document.getElementById('input-amortizacion-mensual').value = formatter.format(25000);
+        document.getElementById('input-gast-fin').value = formatter.format(85000);     // Gastos Financieros
+        document.getElementById('input-amortizacion-mensual').value = formatter.format(35000); // Amortización propuesta
         
         calc();
     }
@@ -929,17 +934,22 @@
     window.onload = function() {
         calc();
         
-        // Manejador del Evento Enter para ir a la siguiente casilla de forma fluida
+        // Manejador Dinámico Universal de Evento Enter para ir a la siguiente casilla editable continua
         document.body.addEventListener('keydown', function(e) {
             if (e.target.tagName === 'INPUT') {
                 if (e.key === 'Enter') {
                     e.preventDefault();
-                    let inputs = Array.from(document.querySelectorAll('#comp-name, #rep-date, #rep-year, .money-input, .free-label-input, #input-amortizacion-mensual'));
+                    
+                    // Mapea dinámicamente todos los elementos editables en el orden secuencial del HTML
+                    let selectores = 'input[type="text"]:not([readonly]):not([disabled])';
+                    let inputs = Array.from(document.querySelectorAll(selectores));
+                    
                     let currentIndex = inputs.indexOf(e.target);
                     if (currentIndex !== -1 && currentIndex < inputs.length - 1) {
-                        inputs[currentIndex + 1].focus();
-                        if(inputs[currentIndex + 1].select) {
-                            inputs[currentIndex + 1].select();
+                        let nextInput = inputs[currentIndex + 1];
+                        nextInput.focus();
+                        if (nextInput.select) {
+                            nextInput.select();
                         }
                     }
                 }
