@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plataforma Financiera Corporativa Comparativa</title>
+    <title>Plataforma Financiera Corporativa de 4 Columnas</title>
     <style>
         :root {
             --primary-dark: #0f172a;
@@ -20,43 +20,43 @@
             font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
             background-color: #f1f5f9;
             margin: 0;
-            padding: 24px;
+            padding: 20px;
             color: var(--text-main);
         }
 
         .main-container {
-            max-width: 1600px;
+            max-width: 1800px;
             margin: 0 auto;
             background: #fff;
-            padding: 40px;
+            padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
         }
 
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             border-bottom: 3px solid var(--primary-dark);
-            padding-bottom: 20px;
+            padding-bottom: 15px;
         }
 
         .input-company {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 800;
             text-transform: uppercase;
             text-align: center;
             border: 1px dashed #94a3b8;
-            width: 60%;
-            padding: 8px;
+            width: 50%;
+            padding: 6px;
             color: var(--primary-dark);
             background: #fefcf0;
             border-radius: 4px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             letter-spacing: 1px;
         }
 
         .title-report {
-            font-size: 15px;
+            font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #64748b;
@@ -67,12 +67,12 @@
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .btn-panel {
-            padding: 10px 20px;
-            font-size: 13px;
+            padding: 9px 18px;
+            font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
             border-radius: 4px;
@@ -87,29 +87,29 @@
         .btn-clear:hover { background-color: #9f1239; }
 
         h2 { 
-            margin: 35px 0 20px 0; 
+            margin: 30px 0 15px 0; 
             text-transform: uppercase; 
-            font-size: 16px; 
+            font-size: 15px; 
             letter-spacing: 1px;
             color: var(--primary-dark); 
             border-bottom: 2px solid #cbd5e1; 
-            padding-bottom: 8px;
+            padding-bottom: 6px;
         }
 
         .table-responsive {
             width: 100%;
             overflow-x: auto;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 12px;
+            font-size: 11.5px;
         }
 
         th, td {
-            padding: 6px 10px;
+            padding: 5px 8px;
             border: 1px solid #e2e8f0;
             text-align: left;
         }
@@ -119,22 +119,14 @@
             color: white;
             font-weight: 700;
             text-align: center;
-            font-size: 11px;
+            font-size: 10.5px;
             text-transform: uppercase;
         }
 
         .th-subhead {
             background-color: #334155;
             color: #f8fafc;
-            font-size: 10.5px;
-        }
-
-        .category-head {
-            background-color: var(--primary-dark);
-            color: white;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-size: 10px;
         }
 
         .sub-category {
@@ -142,23 +134,17 @@
             background-color: #f1f5f9;
             color: #1e293b;
             text-transform: uppercase;
+            font-size: 11px;
         }
 
         .account-name { 
-            width: 25%; 
+            width: 22%; 
             color: #334155; 
             font-weight: 600;
         }
 
-        .free-label-input {
-            width: 100%;
-            border: 1px dashed #94a3b8;
-            background: #fffbeb;
-            padding: 3px 5px;
-            font-size: 11.5px;
-            border-radius: 3px;
-            color: #334155;
-            box-sizing: border-box;
+        .account-deduct {
+            color: #dc2626;
             font-style: italic;
         }
 
@@ -166,12 +152,12 @@
             width: 100%;
             border: 1px solid transparent;
             text-align: right;
-            padding: 4px 6px;
+            padding: 3px 5px;
             background: #fefcf0;
             box-sizing: border-box;
             font-family: 'Courier New', Courier, monospace;
             font-weight: 700;
-            font-size: 12px;
+            font-size: 11.5px;
             border-radius: 3px;
             color: #0f172a;
         }
@@ -189,10 +175,11 @@
             color: #64748b;
             font-weight: 600;
             background-color: #f8fafc;
-            width: 12%;
+            width: 8.5%;
+            font-size: 11px;
         }
 
-        .col-money { width: 13%; }
+        .col-money { width: 10%; }
 
         .total-row {
             font-weight: 700;
@@ -209,8 +196,8 @@
             border: 1px dashed #cbd5e1;
             background: #ffffff;
             color: #0f172a;
-            padding: 2px 6px;
-            font-size: 11px;
+            padding: 2px 4px;
+            font-size: 10.5px;
             border-radius: 3px;
             text-align: center;
             font-weight: bold;
@@ -218,27 +205,27 @@
 
         .kpi-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 16px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
         }
 
         .kpi-card {
             background: var(--secondary-bg);
             border-radius: 6px;
-            padding: 16px;
-            border-left: 5px solid var(--accent-blue);
+            padding: 12px;
+            border-left: 4px solid var(--accent-blue);
             display: flex;
             justify-content: space-between;
             align-items: center;
             border: 1px solid #e2e8f0;
         }
 
-        .kpi-info h3 { margin: 0; font-size: 13px; color: #1e293b; font-weight: 700; }
-        .kpi-info p { margin: 4px 0 0 0; font-size: 10.5px; color: #64748b; }
+        .kpi-info h3 { margin: 0; font-size: 12px; color: #1e293b; font-weight: 700; }
+        .kpi-info p { margin: 3px 0 0 0; font-size: 10px; color: #64748b; }
         .kpi-values { text-align: right; }
-        .kpi-value { font-size: 15px; font-weight: 700; color: var(--primary-dark); font-family: 'Courier New', Courier, monospace;}
-        .kpi-status { font-size: 10px; font-weight: 700; margin-top: 2px; text-transform: uppercase; }
+        .kpi-value { font-size: 14px; font-weight: 700; color: var(--primary-dark); font-family: 'Courier New', Courier, monospace;}
+        .kpi-status { font-size: 9.5px; font-weight: 700; margin-top: 2px; text-transform: uppercase; }
         
         .status-good { color: var(--accent-green); }
         .status-alert { color: var(--accent-orange); }
@@ -246,11 +233,11 @@
         .grid-two-columns {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-top: 20px;
+            gap: 20px;
+            margin-top: 15px;
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 1200px) {
             .grid-two-columns { grid-template-columns: 1fr; }
         }
     </style>
@@ -260,7 +247,7 @@
 <div class="main-container">
     <header>
         <input type="text" id="comp-name" class="input-company" value="NOMBRE O RAZON SOCIAL" placeholder="Nombre de la Organización">
-        <div class="title-report">Estructura Financiera Dinámica Comparativa Multianual</div>
+        <div class="title-report">Estructura Financiera Comparativa - 4 Periodos Estratégicos</div>
     </header>
 
     <div class="control-panel">
@@ -274,99 +261,126 @@
         <table id="table-balance">
             <thead>
                 <tr>
-                    <th rowspan="2" style="width: 25%;">Estructura Financiera</th>
+                    <th rowspan="2" style="width: 22%;">Estructura Financiera</th>
                     <th colspan="2">
-                        Corte Parcial Actual: Al 
-                        <input type="text" class="meta-header-input" id="bg-dia-act" value="31" style="width: 30px;"> de 
-                        <input type="text" class="meta-header-input" id="bg-mes-act" value="Enero" style="width: 80px;"> de 
-                        <input type="text" class="meta-header-input" id="bg-anio-act" value="2026" style="width: 55px;">
-                        <br>
-                        <span style="font-weight: normal; font-size: 9.5px; opacity: 0.9;">
-                            (Meses evaluados: 
-                            <select id="bg-num-meses" onchange="calc()" style="font-size: 10px; border-radius: 2px;">
-                                <option value="1" selected>1 mes</option>
-                                <option value="2">2 meses</option>
-                                <option value="3">3 meses</option>
-                                <option value="4">4 meses</option>
-                                <option value="5">5 meses</option>
-                                <option value="6">6 meses</option>
-                                <option value="7">7 meses</option>
-                                <option value="8">8 meses</option>
-                                <option value="9">9 meses</option>
-                                <option value="10">10 meses</option>
-                                <option value="11">11 meses</option>
-                                <option value="12">12 meses</option>
-                            </select>)
-                        </span>
+                        1. Año 2<br>
+                        <span style="font-weight: normal; font-size: 9px;">Al 31 de Diciembre de </span>
+                        <input type="text" class="meta-header-input" id="bg-anio-2" value="2024" style="width: 45px;">
                     </th>
                     <th colspan="2">
-                        Al 31 de Diciembre de 
-                        <input type="text" class="meta-header-input" id="bg-anio-ant1" value="2025" style="width: 55px;">
+                        2. Año 1 (Anterior)<br>
+                        <span style="font-weight: normal; font-size: 9px;">Al 31 de Diciembre de </span>
+                        <input type="text" class="meta-header-input" id="bg-anio-1" value="2025" style="width: 45px;">
                     </th>
                     <th colspan="2">
-                        Al 31 de Diciembre de 
-                        <input type="text" class="meta-header-input" id="bg-anio-ant2" value="2024" style="width: 55px;">
+                        3. Parcial (Actual)<br>
+                        <span style="font-weight: normal; font-size: 9px;">Al </span>
+                        <input type="text" class="meta-header-input" id="bg-dia-act" value="31" style="width: 22px;"> de 
+                        <input type="text" class="meta-header-input" id="bg-mes-act" value="Ene" style="width: 45px;"> 
+                        <input type="text" class="meta-header-input" id="bg-anio-act" value="2026" style="width: 45px;">
+                        <span style="font-weight: normal; font-size: 9px;">(
+                        <select id="bg-num-meses" onchange="calc()" style="font-size: 9.5px;">
+                            <option value="1" selected>1m</option><option value="2">2m</option><option value="3">3m</option><option value="4">4m</option><option value="5">5m</option><option value="6">6m</option><option value="7">7m</option><option value="8">8m</option><option value="9">9m</option><option value="10">10m</option><option value="11">11m</option><option value="12">12m</option>
+                        </select>)</span>
+                    </th>
+                    <th colspan="2">
+                        4. Proyección Año 1<br>
+                        <span style="font-weight: normal; font-size: 9px;">Anualización Cierre </span>
+                        <span id="lbl-proy-anio">2026</span>
                     </th>
                 </tr>
                 <tr class="th-subhead">
-                    <th class="col-money">Monto Parcial ($)</th>
-                    <th>Prom. Mensual</th>
-                    <th class="col-money">Monto Anual ($)</th>
-                    <th>Prom. Mensual</th>
-                    <th class="col-money">Monto Anual ($)</th>
-                    <th>Prom. Mensual</th>
+                    <th class="col-money">Monto ($)</th><th>Prom. Mensual</th>
+                    <th class="col-money">Monto ($)</th><th>Prom. Mensual</th>
+                    <th class="col-money">Parcial ($)</th><th>Prom. Mensual</th>
+                    <th class="col-money">Proyección ($)</th><th>Prom. Mensual</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- ACTIVO CIRCULANTE -->
-                <tr class="sub-category"><td colspan="7">Activo Circulante</td></tr>
-                <tr><td class="account-name">Caja</td><td><input type="text" class="money-input act-circ p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-circ p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-circ p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr><td class="account-name">Bancos</td><td><input type="text" class="money-input act-circ p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-circ p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-circ p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr><td class="account-name">Fondo para contingencias</td><td><input type="text" class="money-input act-circ p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-circ p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-circ p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr><td class="account-name">Clientes</td><td><input type="text" class="money-input act-circ p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-circ p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-circ p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr><td class="account-name">Inventarios (Almacén)</td><td><input type="text" class="money-input act-circ p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-circ p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-circ p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr><td class="account-name">Cuentas por cobrar / Deudores</td><td><input type="text" class="money-input act-circ p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-circ p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-circ p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr><td class="account-name"><input type="text" class="free-label-input" placeholder="Otro Activo Circulante..."></td><td><input type="text" class="money-input act-circ p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-circ p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-circ p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr class="total-row"><td>Total Activo Circulante</td><td style="text-align: right;" id="tot-act-circ-p1">$0.00</td><td class="monthly-display" id="m-tot-act-circ-p1">$0.00</td><td style="text-align: right;" id="tot-act-circ-p2">$0.00</td><td class="monthly-display" id="m-tot-act-circ-p2">$0.00</td><td style="text-align: right;" id="tot-act-circ-p3">$0.00</td><td class="monthly-display" id="m-tot-act-circ-p3">$0.00</td></tr>
+                <tr class="sub-category"><td colspan="9">ACTIVO CIRCULANTE</td></tr>
+                <tr><td class="account-name">Caja</td><td><input type="text" class="money-input act-caja c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-caja c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-caja c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-caja-c4">$0.00</td><td class="monthly-display" id="m-act-caja-c4">$0.00</td></tr>
+                <tr><td class="account-name">Bancos</td><td><input type="text" class="money-input act-bancos c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-bancos c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-bancos c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-bancos-c4">$0.00</td><td class="monthly-display" id="m-act-bancos-c4">$0.00</td></tr>
+                <tr><td class="account-name">Inversiones Temporales</td><td><input type="text" class="money-input act-invtemp c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-invtemp c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-invtemp c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-invtemp-c4">$0.00</td><td class="monthly-display" id="m-act-invtemp-c4">$0.00</td></tr>
+                <tr><td class="account-name">Clientes</td><td><input type="text" class="money-input act-cli c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-cli c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-cli c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-cli-c4">$0.00</td><td class="monthly-display" id="m-act-cli-c4">$0.00</td></tr>
+                <tr><td class="account-name account-deduct">Estimación para Cuentas Incobrables (-)</td><td><input type="text" class="money-input act-estinc c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-estinc c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-estinc c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-estinc-c4">$0.00</td><td class="monthly-display" id="m-act-estinc-c4">$0.00</td></tr>
+                <tr><td class="account-name">Documentos por Cobrar</td><td><input type="text" class="money-input act-dxc c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-dxc c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-dxc c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-dxc-c4">$0.00</td><td class="monthly-display" id="m-act-dxc-c4">$0.00</td></tr>
+                <tr><td class="account-name">Deudores Diversos</td><td><input type="text" class="money-input act-deud c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-deud c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-deud c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-deud-c4">$0.00</td><td class="monthly-display" id="m-act-deud-c4">$0.00</td></tr>
+                <tr><td class="account-name">IVA Acreditable</td><td><input type="text" class="money-input act-iva c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-iva c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-iva c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-iva-c4">$0.00</td><td class="monthly-display" id="m-act-iva-c4">$0.00</td></tr>
+                <tr><td class="account-name">Impuestos a Favor</td><td><input type="text" class="money-input act-impfav c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-impfav c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-impfav c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-impfav-c4">$0.00</td><td class="monthly-display" id="m-act-impfav-c4">$0.00</td></tr>
+                <tr><td class="account-name">Inventarios</td><td><input type="text" class="money-input act-inv c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-inv c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-inv c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-inv-c4">$0.00</td><td class="monthly-display" id="m-act-inv-c4">$0.00</td></tr>
+                <tr><td class="account-name">Anticipo a Proveedores</td><td><input type="text" class="money-input act-antprov c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-antprov c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-antprov c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-antprov-c4">$0.00</td><td class="monthly-display" id="m-act-antprov-c4">$0.00</td></tr>
+                <tr><td class="account-name">Pagos Anticipados</td><td><input type="text" class="money-input act-pagant c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-pagant c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-pagant c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-pagant-c4">$0.00</td><td class="monthly-display" id="m-act-pagant-c4">$0.00</td></tr>
+                <tr><td class="account-name">Otros Activos Circulantes</td><td><input type="text" class="money-input act-otrcirc c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-otrcirc c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-otrcirc c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-otrcirc-c4">$0.00</td><td class="monthly-display" id="m-act-otrcirc-c4">$0.00</td></tr>
+                <tr class="total-row"><td>Total Activo Circulante</td><td style="text-align:right;" id="tot-act-circ-c1">$0.00</td><td class="monthly-display" id="m-tot-act-circ-c1">$0.00</td><td style="text-align:right;" id="tot-act-circ-c2">$0.00</td><td class="monthly-display" id="m-tot-act-circ-c2">$0.00</td><td style="text-align:right;" id="tot-act-circ-c3">$0.00</td><td class="monthly-display" id="m-tot-act-circ-c3">$0.00</td><td style="text-align:right;" id="tot-act-circ-c4">$0.00</td><td class="monthly-display" id="m-tot-act-circ-c4">$0.00</td></tr>
 
                 <!-- ACTIVO NO CIRCULANTE -->
-                <tr class="sub-category"><td colspan="7">Activo No Circulante (Fijo)</td></tr>
-                <tr><td class="account-name">Terrenos y Edificios</td><td><input type="text" class="money-input act-fijo p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-fijo p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-fijo p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr><td class="account-name">Mobiliario y Equipo</td><td><input type="text" class="money-input act-fijo p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-fijo p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-fijo p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr><td class="account-name">Equipo de Transporte y Cómputo</td><td><input type="text" class="money-input act-fijo p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-fijo p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-fijo p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr><td class="account-name"><input type="text" class="free-label-input" placeholder="Otro Activo Fijo / Diferido..."></td><td><input type="text" class="money-input act-fijo p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-fijo p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-fijo p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr class="total-row"><td>Total Activo No Circulante</td><td style="text-align: right;" id="tot-act-fijo-p1">$0.00</td><td class="monthly-display" id="m-tot-act-fijo-p1">$0.00</td><td style="text-align: right;" id="tot-act-fijo-p2">$0.00</td><td class="monthly-display" id="m-tot-act-fijo-p2">$0.00</td><td style="text-align: right;" id="tot-act-fijo-p3">$0.00</td><td class="monthly-display" id="m-tot-act-fijo-p3">$0.00</td></tr>
+                <tr class="sub-category"><td colspan="9">ACTIVO NO CIRCULANTE</td></tr>
+                <tr><td class="account-name">Terrenos</td><td><input type="text" class="money-input act-terr c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-terr c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-terr c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-terr-c4">$0.00</td><td class="monthly-display" id="m-act-terr-c4">$0.00</td></tr>
+                <tr><td class="account-name">Edificios</td><td><input type="text" class="money-input act-edif c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-edif c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-edif c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-edif-c4">$0.00</td><td class="monthly-display" id="m-act-edif-c4">$0.00</td></tr>
+                <tr><td class="account-name account-deduct">Depreciación Acumulada de Edificios (-)</td><td><input type="text" class="money-input act-depedif c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-depedif c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-depedif c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-depedif-c4">$0.00</td><td class="monthly-display" id="m-act-depedif-c4">$0.00</td></tr>
+                <tr><td class="account-name">Maquinaria y Equipo</td><td><input type="text" class="money-input act-maq c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-maq c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-maq c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-maq-c4">$0.00</td><td class="monthly-display" id="m-act-maq-c4">$0.00</td></tr>
+                <tr><td class="account-name account-deduct">Depreciación Acumulada de Maquinaria (-)</td><td><input type="text" class="money-input act-depmaq c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-depmaq c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-depmaq c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-depmaq-c4">$0.00</td><td class="monthly-display" id="m-act-depmaq-c4">$0.00</td></tr>
+                <tr><td class="account-name">Equipo de Transporte</td><td><input type="text" class="money-input act-trans c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-trans c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-trans c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-trans-c4">$0.00</td><td class="monthly-display" id="m-act-trans-c4">$0.00</td></tr>
+                <tr><td class="account-name account-deduct">Depreciación Acum. Equipo de Trans. (-)</td><td><input type="text" class="money-input act-deptrans c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-deptrans c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-deptrans c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-deptrans-c4">$0.00</td><td class="monthly-display" id="m-act-deptrans-c4">$0.00</td></tr>
+                <tr><td class="account-name">Mobiliario y Equipo de Oficina</td><td><input type="text" class="money-input act-mob c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-mob c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-mob c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-mob-c4">$0.00</td><td class="monthly-display" id="m-act-mob-c4">$0.00</td></tr>
+                <tr><td class="account-name account-deduct">Depreciación Acumulada de Mobiliario (-)</td><td><input type="text" class="money-input act-depmob c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-depmob c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-depmob c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-depmob-c4">$0.00</td><td class="monthly-display" id="m-act-depmob-c4">$0.00</td></tr>
+                <tr><td class="account-name">Equipo de Cómputo</td><td><input type="text" class="money-input act-comp c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-comp c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-comp c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-comp-c4">$0.00</td><td class="monthly-display" id="m-act-comp-c4">$0.00</td></tr>
+                <tr><td class="account-name account-deduct">Depreciación Acum. Equipo de Cómputo (-)</td><td><input type="text" class="money-input act-depcomp c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-depcomp c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-depcomp c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-depcomp-c4">$0.00</td><td class="monthly-display" id="m-act-depcomp-c4">$0.00</td></tr>
+                <tr><td class="account-name">Activos Intangibles</td><td><input type="text" class="money-input act-intang c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-intang c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-intang c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-intang-c4">$0.00</td><td class="monthly-display" id="m-act-intang-c4">$0.00</td></tr>
+                <tr><td class="account-name account-deduct">Amortización Acumulada de Intangibles (-)</td><td><input type="text" class="money-input act-amort c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-amort c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-amort c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-amort-c4">$0.00</td><td class="monthly-display" id="m-act-amort-c4">$0.00</td></tr>
+                <tr><td class="account-name">Depósitos en Garantía</td><td><input type="text" class="money-input act-depgar c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-depgar c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-depgar c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-depgar-c4">$0.00</td><td class="monthly-display" id="m-act-depgar-c4">$0.00</td></tr>
+                <tr><td class="account-name">Otros Activos No Circulantes</td><td><input type="text" class="money-input act-otrnocirc c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-otrnocirc c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input act-otrnocirc c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="act-otrnocirc-c4">$0.00</td><td class="monthly-display" id="m-act-otrnocirc-c4">$0.00</td></tr>
+                <tr class="total-row"><td>Total Activo No Circulante</td><td style="text-align:right;" id="tot-act-nocirc-c1">$0.00</td><td class="monthly-display" id="m-tot-act-nocirc-c1">$0.00</td><td style="text-align:right;" id="tot-act-nocirc-c2">$0.00</td><td class="monthly-display" id="m-tot-act-nocirc-c2">$0.00</td><td style="text-align:right;" id="tot-act-nocirc-c3">$0.00</td><td class="monthly-display" id="m-tot-act-nocirc-c3">$0.00</td><td style="text-align:right;" id="tot-act-nocirc-c4">$0.00</td><td class="monthly-display" id="m-tot-act-nocirc-c4">$0.00</td></tr>
 
-                <tr class="grand-total"><td>SUMA DEL ACTIVO</td><td style="text-align: right;" id="gran-tot-act-p1">$0.00</td><td class="monthly-display" id="m-gran-tot-act-p1">$0.00</td><td style="text-align: right;" id="gran-tot-act-p2">$0.00</td><td class="monthly-display" id="m-gran-tot-act-p2">$0.00</td><td style="text-align: right;" id="gran-tot-act-p3">$0.00</td><td class="monthly-display" id="m-gran-tot-act-p3">$0.00</td></tr>
+                <tr class="grand-total"><td>SUMA DEL ACTIVO</td><td style="text-align:right;" id="gran-tot-act-c1">$0.00</td><td class="monthly-display" id="m-gran-tot-act-c1">$0.00</td><td style="text-align:right;" id="gran-tot-act-c2">$0.00</td><td class="monthly-display" id="m-gran-tot-act-c2">$0.00</td><td style="text-align:right;" id="gran-tot-act-c3">$0.00</td><td class="monthly-display" id="m-gran-tot-act-c3">$0.00</td><td style="text-align:right;" id="gran-tot-act-c4">$0.00</td><td class="monthly-display" id="m-gran-tot-act-c4">$0.00</td></tr>
 
-                <!-- PASIVO C.P. -->
-                <tr class="sub-category"><td colspan="7">Pasivo a Corto Plazo</td></tr>
-                <tr><td class="account-name">Proveedores</td><td><input type="text" class="money-input pas-cp p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-cp p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-cp p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr><td class="account-name">Acreedores / Impuestos por Pagar</td><td><input type="text" class="money-input pas-cp p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-cp p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-cp p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr><td class="account-name">Créditos Bancarios C.P.</td><td><input type="text" class="money-input pas-cp p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-cp p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-cp p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr class="total-row"><td>Total Pasivo Corto Plazo</td><td style="text-align: right;" id="tot-pas-cp-p1">$0.00</td><td class="monthly-display" id="m-tot-pas-cp-p1">$0.00</td><td style="text-align: right;" id="tot-pas-cp-p2">$0.00</td><td class="monthly-display" id="m-tot-pas-cp-p2">$0.00</td><td style="text-align: right;" id="tot-pas-cp-p3">$0.00</td><td class="monthly-display" id="m-tot-pas-cp-p3">$0.00</td></tr>
+                <!-- PASIVO CIRCULANTE -->
+                <tr class="sub-category"><td colspan="9">PASIVO CIRCULANTE</td></tr>
+                <tr><td class="account-name">Proveedores</td><td><input type="text" class="money-input pas-prov c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-prov c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-prov c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="pas-prov-c4">$0.00</td><td class="monthly-display" id="m-pas-prov-c4">$0.00</td></tr>
+                <tr><td class="account-name">Documentos por Pagar</td><td><input type="text" class="money-input pas-dxp c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-dxp c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-dxp c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="pas-dxp-c4">$0.00</td><td class="monthly-display" id="m-pas-dxp-c4">$0.00</td></tr>
+                <tr><td class="account-name">Acreedores Diversos</td><td><input type="text" class="money-input pas-acred c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-acred c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-acred c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="pas-acred-c4">$0.00</td><td class="monthly-display" id="m-pas-acred-c4">$0.00</td></tr>
+                <tr><td class="account-name">Préstamos Bancarios</td><td><input type="text" class="money-input pas-pbanc c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-pbanc c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-pbanc c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="pas-pbanc-c4">$0.00</td><td class="monthly-display" id="m-pas-pbanc-c4">$0.00</td></tr>
+                <tr><td class="account-name">Anticipo de Clientes</td><td><input type="text" class="money-input pas-antcli c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-antcli c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-antcli c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="pas-antcli-c4">$0.00</td><td class="monthly-display" id="m-pas-antcli-c4">$0.00</td></tr>
+                <tr><td class="account-name">Impuestos por Pagar</td><td><input type="text" class="money-input pas-imppag c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-imppag c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-imppag c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="pas-imppag-c4">$0.00</td><td class="monthly-display" id="m-pas-imppag-c4">$0.00</td></tr>
+                <tr><td class="account-name">Nómina por Pagar</td><td><input type="text" class="money-input pas-nompag c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-nompag c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-nompag c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="pas-nompag-c4">$0.00</td><td class="monthly-display" id="m-pas-nompag-c4">$0.00</td></tr>
+                <tr><td class="account-name">Dividendos por Pagar</td><td><input type="text" class="money-input pas-divpag c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-divpag c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-divpag c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="pas-divpag-c4">$0.00</td><td class="monthly-display" id="m-pas-divpag-c4">$0.00</td></tr>
+                <tr><td class="account-name">Otros Pasivos Circulantes</td><td><input type="text" class="money-input pas-otrcirc c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-otrcirc c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-otrcirc c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="pas-otrcirc-c4">$0.00</td><td class="monthly-display" id="m-pas-otrcirc-c4">$0.00</td></tr>
+                <tr class="total-row"><td>Total Pasivo Circulante</td><td style="text-align:right;" id="tot-pas-circ-c1">$0.00</td><td class="monthly-display" id="m-tot-pas-circ-c1">$0.00</td><td style="text-align:right;" id="tot-pas-circ-c2">$0.00</td><td class="monthly-display" id="m-tot-pas-circ-c2">$0.00</td><td style="text-align:right;" id="tot-pas-circ-c3">$0.00</td><td class="monthly-display" id="m-tot-pas-circ-c3">$0.00</td><td style="text-align:right;" id="tot-pas-circ-c4">$0.00</td><td class="monthly-display" id="m-tot-pas-circ-c4">$0.00</td></tr>
 
-                <!-- PASIVO L.P. -->
-                <tr class="sub-category"><td colspan="7">Pasivo a Largo Plazo</td></tr>
-                <tr><td class="account-name">Créditos Bancarios / Refaccionarios L.P.</td><td><input type="text" class="money-input pas-lp p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-lp p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-lp p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr class="total-row"><td>Total Pasivo Largo Plazo</td><td style="text-align: right;" id="tot-pas-lp-p1">$0.00</td><td class="monthly-display" id="m-tot-pas-lp-p1">$0.00</td><td style="text-align: right;" id="tot-pas-lp-p2">$0.00</td><td class="monthly-display" id="m-tot-pas-lp-p2">$0.00</td><td style="text-align: right;" id="tot-pas-lp-p3">$0.00</td><td class="monthly-display" id="m-tot-pas-lp-p3">$0.00</td></tr>
-                <tr class="total-row" style="background:#cbd5e1"><td>SUMA DEL PASIVO</td><td style="text-align: right;" id="gran-tot-pas-p1">$0.00</td><td class="monthly-display" id="m-gran-tot-pas-p1">$0.00</td><td style="text-align: right;" id="gran-tot-pas-p2">$0.00</td><td class="monthly-display" id="m-gran-tot-pas-p2">$0.00</td><td style="text-align: right;" id="gran-tot-pas-p3">$0.00</td><td class="monthly-display" id="m-gran-tot-pas-p3">$0.00</td></tr>
+                <!-- PASIVO NO CIRCULANTE -->
+                <tr class="sub-category"><td colspan="9">PASIVO NO CIRCULANTE</td></tr>
+                <tr><td class="account-name">Préstamos Bancarios a Largo Plazo</td><td><input type="text" class="money-input pas-pblp c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-pblp c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-pblp c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="pas-pblp-c4">$0.00</td><td class="monthly-display" id="m-pas-pblp-c4">$0.00</td></tr>
+                <tr><td class="account-name">Hipotecas por Pagar</td><td><input type="text" class="money-input pas-hip c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-hip c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-hip c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="pas-hip-c4">$0.00</td><td class="monthly-display" id="m-pas-hip-c4">$0.00</td></tr>
+                <tr><td class="account-name">Arrendamientos por Pagar</td><td><input type="text" class="money-input pas-arr c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-arr c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-arr c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="pas-arr-c4">$0.00</td><td class="monthly-display" id="m-pas-arr-c4">$0.00</td></tr>
+                <tr><td class="account-name">Impuestos Diferidos Pasivos</td><td><input type="text" class="money-input pas-impdif c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-impdif c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-impdif c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="pas-impdif-c4">$0.00</td><td class="monthly-display" id="m-pas-impdif-c4">$0.00</td></tr>
+                <tr><td class="account-name">Otros Pasivos No Circulantes</td><td><input type="text" class="money-input pas-otrnocirc c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-otrnocirc c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input pas-otrnocirc c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="pas-otrnocirc-c4">$0.00</td><td class="monthly-display" id="m-pas-otrnocirc-c4">$0.00</td></tr>
+                <tr class="total-row"><td>Total Pasivo No Circulante</td><td style="text-align:right;" id="tot-pas-nocirc-c1">$0.00</td><td class="monthly-display" id="m-tot-pas-nocirc-c1">$0.00</td><td style="text-align:right;" id="tot-pas-nocirc-c2">$0.00</td><td class="monthly-display" id="m-tot-pas-nocirc-c2">$0.00</td><td style="text-align:right;" id="tot-pas-nocirc-c3">$0.00</td><td class="monthly-display" id="m-tot-pas-nocirc-c3">$0.00</td><td style="text-align:right;" id="tot-pas-nocirc-c4">$0.00</td><td class="monthly-display" id="m-tot-pas-nocirc-c4">$0.00</td></tr>
+
+                <tr class="total-row" style="background:#cbd5e1"><td>SUMA DEL PASIVO</td><td style="text-align:right;" id="gran-tot-pas-c1">$0.00</td><td class="monthly-display" id="m-gran-tot-pas-c1">$0.00</td><td style="text-align:right;" id="gran-tot-pas-c2">$0.00</td><td class="monthly-display" id="m-gran-tot-pas-c2">$0.00</td><td style="text-align:right;" id="gran-tot-pas-c3">$0.00</td><td class="monthly-display" id="m-gran-tot-pas-c3">$0.00</td><td style="text-align:right;" id="gran-tot-pas-c4">$0.00</td><td class="monthly-display" id="m-gran-tot-pas-c4">$0.00</td></tr>
 
                 <!-- CAPITAL CONTABLE -->
-                <tr class="sub-category"><td colspan="7">Capital Contable</td></tr>
-                <tr><td class="account-name">Capital Social</td><td><input type="text" class="money-input cap-soc p1" id="cap-soc-p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input cap-soc p2" id="cap-soc-p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input cap-soc p3" id="cap-soc-p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr><td class="account-name">Utilidades Retenidas / Ejercicios Anteriores</td><td><input type="text" class="money-input cap-ret p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input cap-ret p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input cap-ret p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
+                <tr class="sub-category"><td colspan="9">CAPITAL CONTRIBUIDO</td></tr>
+                <tr><td class="account-name">Capital Social</td><td><input type="text" class="money-input cap-soc c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input cap-soc c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input cap-soc c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="cap-soc-c4">$0.00</td><td class="monthly-display" id="m-cap-soc-c4">$0.00</td></tr>
+                <tr><td class="account-name">Prima en Venta de Acciones</td><td><input type="text" class="money-input cap-prim c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input cap-prim c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input cap-prim c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="cap-prim-c4">$0.00</td><td class="monthly-display" id="m-cap-prim-c4">$0.00</td></tr>
+                <tr><td class="account-name">Aportaciones para Futuros Aumentos de Cap.</td><td><input type="text" class="money-input cap-aport c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input cap-aport c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input cap-aport c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="cap-aport-c4">$0.00</td><td class="monthly-display" id="m-cap-aport-c4">$0.00</td></tr>
+                <tr><td class="account-name">Otros Componentes del Capital Contribuido</td><td><input type="text" class="money-input cap-otrcontrib c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input cap-otrcontrib c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input cap-otrcontrib c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="cap-otrcontrib-c4">$0.00</td><td class="monthly-display" id="m-cap-otrcontrib-c4">$0.00</td></tr>
+
+                <tr class="sub-category"><td colspan="9">CAPITAL GANADO</td></tr>
+                <tr><td class="account-name">Utilidades Retenidas</td><td><input type="text" class="money-input cap-utret c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input cap-utret c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input cap-utret c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="cap-utret-c4">$0.00</td><td class="monthly-display" id="m-cap-utret-c4">$0.00</td></tr>
+                <tr><td class="account-name account-deduct">Pérdidas Acumuladas (-)</td><td><input type="text" class="money-input cap-peracum c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input cap-peracum c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input cap-peracum c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="cap-peracum-c4">$0.00</td><td class="monthly-display" id="m-cap-peracum-c4">$0.00</td></tr>
                 <tr class="total-row" style="background:#f8fafc; color:#0284c7;">
-                    <td>Resultado del Ejercicio (Auto Estado de Res.)</td>
-                    <td style="text-align: right; font-family:'Courier New';" id="util-auto-p1">$0.00</td>
-                    <td class="monthly-display" id="m-util-auto-p1">$0.00</td>
-                    <td style="text-align: right; font-family:'Courier New';" id="util-auto-p2">$0.00</td>
-                    <td class="monthly-display" id="m-util-auto-p2">$0.00</td>
-                    <td style="text-align: right; font-family:'Courier New';" id="util-auto-p3">$0.00</td>
-                    <td class="monthly-display" id="m-util-auto-p3">$0.00</td>
+                    <td>Utilidad o Pérdida del Ejercicio (Auto Estado de Res.)</td>
+                    <td style="text-align:right; font-family:'Courier New';" id="cap-utejer-c1">$0.00</td><td class="monthly-display" id="m-cap-utejer-c1">$0.00</td>
+                    <td style="text-align:right; font-family:'Courier New';" id="cap-utejer-c2">$0.00</td><td class="monthly-display" id="m-cap-utejer-c2">$0.00</td>
+                    <td style="text-align:right; font-family:'Courier New';" id="cap-utejer-c3">$0.00</td><td class="monthly-display" id="m-cap-utejer-c3">$0.00</td>
+                    <td style="text-align:right; font-family:'Courier New';" id="cap-utejer-c4">$0.00</td><td class="monthly-display" id="m-cap-utejer-c4">$0.00</td>
                 </tr>
-                <tr class="total-row"><td>Total Capital Contable</td><td style="text-align: right;" id="tot-cap-p1">$0.00</td><td class="monthly-display" id="m-tot-cap-p1">$0.00</td><td style="text-align: right;" id="tot-cap-p2">$0.00</td><td class="monthly-display" id="m-tot-cap-p2">$0.00</td><td style="text-align: right;" id="tot-cap-p3">$0.00</td><td class="monthly-display" id="m-tot-cap-p3">$0.00</td></tr>
-                <tr class="grand-total"><td>SUMA PASIVO + CAPITAL</td><td style="text-align: right;" id="pas-cap-p1">$0.00</td><td class="monthly-display" id="m-pas-cap-p1">$0.00</td><td style="text-align: right;" id="pas-cap-p2">$0.00</td><td class="monthly-display" id="m-pas-cap-p2">$0.00</td><td style="text-align: right;" id="pas-cap-p3">$0.00</td><td class="monthly-display" id="m-pas-cap-p3">$0.00</td></tr>
+                <tr><td class="account-name">Reserva Legal</td><td><input type="text" class="money-input cap-resleg c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input cap-resleg c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input cap-resleg c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="cap-resleg-c4">$0.00</td><td class="monthly-display" id="m-cap-resleg-c4">$0.00</td></tr>
+                <tr><td class="account-name">Otros Componentes del Capital Ganado</td><td><input type="text" class="money-input cap-otrgan c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input cap-otrgan c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input cap-otrgan c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="cap-otrgan-c4">$0.00</td><td class="monthly-display" id="m-cap-otrgan-c4">$0.00</td></tr>
+                <tr class="total-row"><td>Total Capital Contable</td><td style="text-align:right;" id="tot-cap-c1">$0.00</td><td class="monthly-display" id="m-tot-cap-c1">$0.00</td><td style="text-align:right;" id="tot-cap-c2">$0.00</td><td class="monthly-display" id="m-tot-cap-c2">$0.00</td><td style="text-align:right;" id="tot-cap-c3">$0.00</td><td class="monthly-display" id="m-tot-cap-c3">$0.00</td><td style="text-align:right;" id="tot-cap-c4">$0.00</td><td class="monthly-display" id="m-tot-cap-c4">$0.00</td></tr>
+
+                <tr class="grand-total"><td>SUMA PASIVO + CAPITAL</td><td style="text-align:right;" id="pas-cap-c1">$0.00</td><td class="monthly-display" id="m-pas-cap-c1">$0.00</td><td style="text-align:right;" id="pas-cap-c2">$0.00</td><td class="monthly-display" id="m-pas-cap-c2">$0.00</td><td style="text-align:right;" id="pas-cap-c3">$0.00</td><td class="monthly-display" id="m-pas-cap-c3">$0.00</td><td style="text-align:right;" id="pas-cap-c4">$0.00</td><td class="monthly-display" id="m-pas-cap-c4">$0.00</td></tr>
             </tbody>
         </table>
     </div>
@@ -377,38 +391,85 @@
         <table id="table-resultados">
             <thead>
                 <tr>
-                    <th rowspan="2" style="width: 25%;">Estructura Operativa y de Resultados</th>
-                    <th colspan="2">Corte Parcial Actual</th>
-                    <th colspan="2">Año Anterior Completo</th>
-                    <th colspan="2">Año Anteanterior Completo</th>
+                    <th rowspan="2" style="width: 22%;">Estructura Operativa y Financiera</th>
+                    <th colspan="2">1. Año 2</th>
+                    <th colspan="2">2. Año 1 (Anterior)</th>
+                    <th colspan="2">3. Parcial (Actual)</th>
+                    <th colspan="2">4. Proyección Año 1</th>
                 </tr>
                 <tr class="th-subhead">
-                    <th class="col-money">Monto Parcial ($)</th>
-                    <th>Prom. Mensual</th>
-                    <th class="col-money">Monto Anual ($)</th>
-                    <th>Prom. Mensual</th>
-                    <th class="col-money">Monto Anual ($)</th>
-                    <th>Prom. Mensual</th>
+                    <th class="col-money">Monto ($)</th><th>Prom. Mensual</th>
+                    <th class="col-money">Monto ($)</th><th>Prom. Mensual</th>
+                    <th class="col-money">Parcial ($)</th><th>Prom. Mensual</th>
+                    <th class="col-money">Proyección ($)</th><th>Prom. Mensual</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="sub-category"><td colspan="7">Ingresos y Costos Operativos</td></tr>
-                <tr><td class="account-name">Ventas / Ingresos Totales</td><td><input type="text" class="money-input er-vtot p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-vtot p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-vtot p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr><td class="account-name">(-) Devoluciones, Rebajas y Descuentos</td><td><input type="text" class="money-input er-vdesc p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-vdesc p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-vdesc p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr class="total-row"><td>Ventas Netas</td><td style="text-align: right;" id="vnetas-p1">$0.00</td><td class="monthly-display" id="m-vnetas-p1">$0.00</td><td style="text-align: right;" id="vnetas-p2">$0.00</td><td class="monthly-display" id="m-vnetas-p2">$0.00</td><td style="text-align: right;" id="vnetas-p3">$0.00</td><td class="monthly-display" id="m-vnetas-p3">$0.00</td></tr>
-                <tr><td class="account-name">(-) Costo de Ventas / Costo Operativo</td><td><input type="text" class="money-input er-costo p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-costo p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-costo p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr class="total-row"><td>Utilidad Bruta</td><td style="text-align: right;" id="ubruta-p1">$0.00</td><td class="monthly-display" id="m-ubruta-p1">$0.00</td><td style="text-align: right;" id="ubruta-p2">$0.00</td><td class="monthly-display" id="m-ubruta-p2">$0.00</td><td style="text-align: right;" id="ubruta-p3">$0.00</td><td class="monthly-display" id="m-ubruta-p3">$0.00</td></tr>
+                <!-- INGRESOS OPERATIVOS -->
+                <tr class="sub-category"><td colspan="9">INGRESOS OPERATIVOS</td></tr>
+                <tr><td class="account-name">Ventas / Ingresos</td><td><input type="text" class="money-input er-vta c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-vta c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-vta c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-vta-c4">$0.00</td><td class="monthly-display" id="m-er-vta-c4">$0.00</td></tr>
+                <tr><td class="account-name account-deduct">Descuentos y Devoluciones sobre Ventas (-)</td><td><input type="text" class="money-input er-vdesc c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-vdesc c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-vdesc c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-vdesc-c4">$0.00</td><td class="monthly-display" id="m-er-vdesc-c4">$0.00</td></tr>
+                <tr><td class="account-name">Otros Ingresos Operativos</td><td><input type="text" class="money-input er-otring c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-otring c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-otring c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-otring-c4">$0.00</td><td class="monthly-display" id="m-er-otring-c4">$0.00</td></tr>
+                <tr class="total-row"><td>Total Ingresos Operativos Netos</td><td style="text-align:right;" id="tot-ing-c1">$0.00</td><td class="monthly-display" id="m-tot-ing-c1">$0.00</td><td style="text-align:right;" id="tot-ing-c2">$0.00</td><td class="monthly-display" id="m-tot-ing-c2">$0.00</td><td style="text-align:right;" id="tot-ing-c3">$0.00</td><td class="monthly-display" id="m-tot-ing-c3">$0.00</td><td style="text-align:right;" id="tot-ing-c4">$0.00</td><td class="monthly-display" id="m-tot-ing-c4">$0.00</td></tr>
 
-                <tr class="sub-category"><td colspan="7">Gastos Estratégicos y Operativos</td></tr>
-                <tr><td class="account-name">Gastos de Venta y Comercialización</td><td><input type="text" class="money-input er-gvta p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-gvta p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-gvta p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr><td class="account-name">Gastos de Administración y Nomina Operativa</td><td><input type="text" class="money-input er-gadm p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-gadm p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-gadm p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr class="total-row" style="background-color: #cbd5e1;"><td>Utilidad de Operación (EBIT)</td><td style="text-align: right;" id="uoper-p1">$0.00</td><td class="monthly-display" id="m-uoper-p1">$0.00</td><td style="text-align: right;" id="uoper-p2">$0.00</td><td class="monthly-display" id="m-uoper-p2">$0.00</td><td style="text-align: right;" id="uoper-p3">$0.00</td><td class="monthly-display" id="m-uoper-p3">$0.00</td></tr>
+                <!-- COSTOS OPERATIVOS -->
+                <tr class="sub-category"><td colspan="9">COSTOS OPERATIVOS</td></tr>
+                <tr><td class="account-name">Costo de Ventas</td><td><input type="text" class="money-input er-costvta c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-costvta c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-costvta c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-costvta-c4">$0.00</td><td class="monthly-display" id="m-er-costvta-c4">$0.00</td></tr>
+                <tr><td class="account-name">Compras de Mercancías</td><td><input type="text" class="money-input er-compras c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-compras c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-compras c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-compras-c4">$0.00</td><td class="monthly-display" id="m-er-compras-c4">$0.00</td></tr>
+                <tr><td class="account-name">Fletes sobre Compras</td><td><input type="text" class="money-input er-fltcomp c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-fltcomp c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-fltcomp c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-fltcomp-c4">$0.00</td><td class="monthly-display" id="m-er-fltcomp-c4">$0.00</td></tr>
+                <tr><td class="account-name">Mano de Obra Directa</td><td><input type="text" class="money-input er-mod c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-mod c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-mod c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-mod-c4">$0.00</td><td class="monthly-display" id="m-er-mod-c4">$0.00</td></tr>
+                <tr><td class="account-name">Otros Costos Operativos</td><td><input type="text" class="money-input er-otrcost c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-otrcost c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-otrcost c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-otrcost-c4">$0.00</td><td class="monthly-display" id="m-er-otrcost-c4">$0.00</td></tr>
+                <tr class="total-row"><td>Total Costos Operativos</td><td style="text-align:right;" id="tot-costo-c1">$0.00</td><td class="monthly-display" id="m-tot-costo-c1">$0.00</td><td style="text-align:right;" id="tot-costo-c2">$0.00</td><td class="monthly-display" id="m-tot-costo-c2">$0.00</td><td style="text-align:right;" id="tot-costo-c3">$0.00</td><td class="monthly-display" id="m-tot-costo-c3">$0.00</td><td style="text-align:right;" id="tot-costo-c4">$0.00</td><td class="monthly-display" id="m-tot-costo-c4">$0.00</td></tr>
+                <tr class="total-row" style="background:#cbd5e1"><td>Utilidad Bruta</td><td style="text-align:right;" id="util-bruta-c1">$0.00</td><td class="monthly-display" id="m-util-bruta-c1">$0.00</td><td style="text-align:right;" id="util-bruta-c2">$0.00</td><td class="monthly-display" id="m-util-bruta-c2">$0.00</td><td style="text-align:right;" id="util-bruta-c3">$0.00</td><td class="monthly-display" id="m-util-bruta-c3">$0.00</td><td style="text-align:right;" id="util-bruta-c4">$0.00</td><td class="monthly-display" id="m-util-bruta-c4">$0.00</td></tr>
 
-                <tr class="sub-category"><td colspan="7">Resultado Financiero e Impuestos</td></tr>
-                <tr><td class="account-name">Productos Financieros / Otros Ingresos</td><td><input type="text" class="money-input er-pfin p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-pfin p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-pfin p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr><td class="account-name">(-) Gastos Financieros (Intereses Paid)</td><td><input type="text" class="money-input er-gfin p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-gfin p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-gfin p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr><td class="account-name">(-) Provisión Impuestos (ISR)</td><td><input type="text" class="money-input er-tax p1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-tax p2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-tax p3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td></tr>
-                <tr class="grand-total"><td>UTILIDAD NETA FINAL</td><td style="text-align: right;" id="uneta-p1">$0.00</td><td class="monthly-display" id="m-uneta-p1">$0.00</td><td style="text-align: right;" id="uneta-p2">$0.00</td><td class="monthly-display" id="m-uneta-p2">$0.00</td><td style="text-align: right;" id="uneta-p3">$0.00</td><td class="monthly-display" id="m-uneta-p3">$0.00</td></tr>
+                <!-- GASTOS DE ADMINISTRACIÓN -->
+                <tr class="sub-category"><td colspan="9">GASTOS DE ADMINISTRACIÓN</td></tr>
+                <tr><td class="account-name">Sueldos de Administración</td><td><input type="text" class="money-input er-sueldadm c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-sueldadm c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-sueldadm c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-sueldadm-c4">$0.00</td><td class="monthly-display" id="m-er-sueldadm-c4">$0.00</td></tr>
+                <tr><td class="account-name">Rentas de Oficina</td><td><input type="text" class="money-input er-rentofic c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-rentofic c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-rentofic c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-rentofic-c4">$0.00</td><td class="monthly-display" id="m-er-rentofic-c4">$0.00</td></tr>
+                <tr><td class="account-name">Servicios Públicos</td><td><input type="text" class="money-input er-servpub c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-servpub c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-servpub c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-servpub-c4">$0.00</td><td class="monthly-display" id="m-er-servpub-c4">$0.00</td></tr>
+                <tr><td class="account-name">Mantenimiento</td><td><input type="text" class="money-input er-manten c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-manten c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-manten c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-manten-c4">$0.00</td><td class="monthly-display" id="m-er-manten-c4">$0.00</td></tr>
+                <tr><td class="account-name">Depreciaciones y Amortizaciones</td><td><input type="text" class="money-input er-depamort c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-depamort c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-depamort c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-depamort-c4">$0.00</td><td class="monthly-display" id="m-er-depamort-c4">$0.00</td></tr>
+                <tr><td class="account-name">Honorarios Profesionales</td><td><input type="text" class="money-input er-honor c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-honor c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-honor c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-honor-c4">$0.00</td><td class="monthly-display" id="m-er-honor-c4">$0.00</td></tr>
+                <tr><td class="account-name">Seguros y Licencias</td><td><input type="text" class="money-input er-seglic c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-seglic c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-seglic c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-seglic-c4">$0.00</td><td class="monthly-display" id="m-er-seglic-c4">$0.00</td></tr>
+                <tr><td class="account-name">Papelería y Útiles</td><td><input type="text" class="money-input er-papel c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-papel c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-papel c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-papel-c4">$0.00</td><td class="monthly-display" id="m-er-papel-c4">$0.00</td></tr>
+                <tr><td class="account-name">Otros Gastos de Administración</td><td><input type="text" class="money-input er-otradm c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-otradm c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-otradm c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-otradm-c4">$0.00</td><td class="monthly-display" id="m-er-otradm-c4">$0.00</td></tr>
+                <tr class="total-row"><td>Total Gastos de Administración</td><td style="text-align:right;" id="tot-gadm-c1">$0.00</td><td class="monthly-display" id="m-tot-gadm-c1">$0.00</td><td style="text-align:right;" id="tot-gadm-c2">$0.00</td><td class="monthly-display" id="m-tot-gadm-c2">$0.00</td><td style="text-align:right;" id="tot-gadm-c3">$0.00</td><td class="monthly-display" id="m-tot-gadm-c3">$0.00</td><td style="text-align:right;" id="tot-gadm-c4">$0.00</td><td class="monthly-display" id="m-tot-gadm-c4">$0.00</td></tr>
+
+                <!-- GASTOS DE VENTAS -->
+                <tr class="sub-category"><td colspan="9">GASTOS DE VENTAS</td></tr>
+                <tr><td class="account-name">Comisiones sobre Ventas</td><td><input type="text" class="money-input er-comvta c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-comvta c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-comvta c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-comvta-c4">$0.00</td><td class="monthly-display" id="m-er-comvta-c4">$0.00</td></tr>
+                <tr><td class="account-name">Publicidad y Marketing</td><td><input type="text" class="money-input er-pubmkt c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-pubmkt c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-pubmkt c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-pubmkt-c4">$0.00</td><td class="monthly-display" id="m-er-pubmkt-c4">$0.00</td></tr>
+                <tr><td class="account-name">Fletes y Envíos</td><td><input type="text" class="money-input er-fltenv c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-fltenv c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-fltenv c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-fltenv-c4">$0.00</td><td class="monthly-display" id="m-er-fltenv-c4">$0.00</td></tr>
+                <tr><td class="account-name">Sueldos de Ventas</td><td><input type="text" class="money-input er-sueldvta c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-sueldvta c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-sueldvta c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-sueldvta-c4">$0.00</td><td class="monthly-display" id="m-er-sueldvta-c4">$0.00</td></tr>
+                <tr><td class="account-name">Empaques y Embalajes</td><td><input type="text" class="money-input er-empac c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-empac c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-empac c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-empac-c4">$0.00</td><td class="monthly-display" id="m-er-empac-c4">$0.00</td></tr>
+                <tr><td class="account-name">Viáticos Comerciales</td><td><input type="text" class="money-input er-viat c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-viat c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-viat c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-viat-c4">$0.00</td><td class="monthly-display" id="m-er-viat-c4">$0.00</td></tr>
+                <tr><td class="account-name">Otros Gastos de Ventas</td><td><input type="text" class="money-input er-otrvta c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-otrvta c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-otrvta c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-otrvta-c4">$0.00</td><td class="monthly-display" id="m-er-otrvta-c4">$0.00</td></tr>
+                <tr class="total-row"><td>Total Gastos de Ventas</td><td style="text-align:right;" id="tot-gvta-c1">$0.00</td><td class="monthly-display" id="m-tot-gvta-c1">$0.00</td><td style="text-align:right;" id="tot-gvta-c2">$0.00</td><td class="monthly-display" id="m-tot-gvta-c2">$0.00</td><td style="text-align:right;" id="tot-gvta-c3">$0.00</td><td class="monthly-display" id="m-tot-gvta-c3">$0.00</td><td style="text-align:right;" id="tot-gvta-c4">$0.00</td><td class="monthly-display" id="m-tot-gvta-c4">$0.00</td></tr>
+
+                <tr class="total-row" style="background:#cbd5e1"><td>Utilidad de Operación (EBIT)</td><td style="text-align:right;" id="util-oper-c1">$0.00</td><td class="monthly-display" id="m-util-oper-c1">$0.00</td><td style="text-align:right;" id="util-oper-c2">$0.00</td><td class="monthly-display" id="m-util-oper-c2">$0.00</td><td style="text-align:right;" id="util-oper-c3">$0.00</td><td class="monthly-display" id="m-util-oper-c3">$0.00</td><td style="text-align:right;" id="util-oper-c4">$0.00</td><td class="monthly-display" id="m-util-oper-c4">$0.00</td></tr>
+
+                <!-- RESULTADO INTEGRAL DE FINANCIAMIENTO -->
+                <tr class="sub-category"><td colspan="9">RESULTADO INTEGRAL DE FINANCIAMIENTO</td></tr>
+                <tr><td class="account-name">Intereses Ganados</td><td><input type="text" class="money-input er-intgan c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-intgan c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-intgan c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-intgan-c4">$0.00</td><td class="monthly-display" id="m-er-intgan-c4">$0.00</td></tr>
+                <tr><td class="account-name account-deduct">Intereses Pagados (-)</td><td><input type="text" class="money-input er-intpag c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-intpag c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-intpag c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-intpag-c4">$0.00</td><td class="monthly-display" id="m-er-intpag-c4">$0.00</td></tr>
+                <tr><td class="account-name account-deduct">Comisiones Bancarias (-)</td><td><input type="text" class="money-input er-combanc c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-combanc c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-combanc c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-combanc-c4">$0.00</td><td class="monthly-display" id="m-er-combanc-c4">$0.00</td></tr>
+                <tr><td class="account-name">Utilidad o Pérdida Cambiaria</td><td><input type="text" class="money-input er-utilcamb c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-utilcamb c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-utilcamb c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-utilcamb-c4">$0.00</td><td class="monthly-display" id="m-er-utilcamb-c4">$0.00</td></tr>
+                <tr><td class="account-name">Otros Gastos y Productos Financieros</td><td><input type="text" class="money-input er-otrfin c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-otrfin c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-otrfin c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-otrfin-c4">$0.00</td><td class="monthly-display" id="m-er-otrfin-c4">$0.00</td></tr>
+                <tr class="total-row"><td>Total RIF Neto</td><td style="text-align:right;" id="tot-rif-c1">$0.00</td><td class="monthly-display" id="m-tot-rif-c1">$0.00</td><td style="text-align:right;" id="tot-rif-c2">$0.00</td><td class="monthly-display" id="m-tot-rif-c2">$0.00</td><td style="text-align:right;" id="tot-rif-c3">$0.00</td><td class="monthly-display" id="m-tot-rif-c3">$0.00</td><td style="text-align:right;" id="tot-rif-c4">$0.00</td><td class="monthly-display" id="m-tot-rif-c4">$0.00</td></tr>
+
+                <!-- OTROS INGRESOS Y GASTOS -->
+                <tr class="sub-category"><td colspan="9">OTROS INGRESOS Y GASTOS</td></tr>
+                <tr><td class="account-name">Utilidad o Pérdida en Venta de Activos</td><td><input type="text" class="money-input er-vtaact c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-vtaact c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-vtaact c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-vtaact-c4">$0.00</td><td class="monthly-display" id="m-er-vtaact-c4">$0.00</td></tr>
+                <tr><td class="account-name">Subsidios y Donaciones</td><td><input type="text" class="money-input er-subsid c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-subsid c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-subsid c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-subsid-c4">$0.00</td><td class="monthly-display" id="m-er-subsid-c4">$0.00</td></tr>
+                <tr><td class="account-name">Otros Ingresos y Gastos No Operativos</td><td><input type="text" class="money-input er-otrnooper c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-otrnooper c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-otrnooper c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-otrnooper-c4">$0.00</td><td class="monthly-display" id="m-er-otrnooper-c4">$0.00</td></tr>
+                <tr class="total-row"><td>Utilidad antes de Impuestos</td><td style="text-align:right;" id="util-aimp-c1">$0.00</td><td class="monthly-display" id="m-util-aimp-c1">$0.00</td><td style="text-align:right;" id="util-aimp-c2">$0.00</td><td class="monthly-display" id="m-util-aimp-c2">$0.00</td><td style="text-align:right;" id="util-aimp-c3">$0.00</td><td class="monthly-display" id="m-util-aimp-c3">$0.00</td><td style="text-align:right;" id="util-aimp-c4">$0.00</td><td class="monthly-display" id="m-util-aimp-c4">$0.00</td></tr>
+
+                <!-- IMPUESTOS A LA UTILIDAD -->
+                <tr class="sub-category"><td colspan="9">IMPUESTOS A LA UTILIDAD</td></tr>
+                <tr><td class="account-name">ISR Corriente</td><td><input type="text" class="money-input er-isrcorr c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-isrcorr c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-isrcorr c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-isrcorr-c4">$0.00</td><td class="monthly-display" id="m-er-isrcorr-c4">$0.00</td></tr>
+                <tr><td class="account-name">ISR Diferido</td><td><input type="text" class="money-input er-isrdif c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-isrdif c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-isrdif c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-isrdif-c4">$0.00</td><td class="monthly-display" id="m-er-isrdif-c4">$0.00</td></tr>
+                <tr><td class="account-name">Otros Impuestos a la Utilidad</td><td><input type="text" class="money-input er-otrimp c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-otrimp c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td><input type="text" class="money-input er-otrimp c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="monthly-display">$0.00</td><td style="text-align:right; font-weight:700; font-family:'Courier New';" id="er-otrimp-c4">$0.00</td><td class="monthly-display" id="m-er-otrimp-c4">$0.00</td></tr>
+                <tr class="grand-total"><td>UTILIDAD NETA FINAL</td><td style="text-align:right;" id="util-neta-c1">$0.00</td><td class="monthly-display" id="m-util-neta-c1">$0.00</td><td style="text-align:right;" id="util-neta-c2">$0.00</td><td class="monthly-display" id="m-util-neta-c2">$0.00</td><td style="text-align:right;" id="util-neta-c3">$0.00</td><td class="monthly-display" id="m-util-neta-c3">$0.00</td><td style="text-align:right;" id="util-neta-c4">$0.00</td><td class="monthly-display" id="m-util-neta-c4">$0.00</td></tr>
             </tbody>
         </table>
     </div>
@@ -417,9 +478,9 @@
     <h2>3. Indicadores Financieros de Gestión y Capacidad de Pago</h2>
     
     <div class="grid-two-columns">
-        <section style="background-color: var(--secondary-bg); padding: 20px; border-radius: 6px; border: 1px dashed var(--border-color);">
-            <h3 style="margin-top:0; font-size:13px; text-transform:uppercase; color: var(--primary-dark);">Análisis de Capacidad de Pago (Basado en Corte Parcial)</h3>
-            <table style="background: white; margin-bottom: 15px;">
+        <section style="background-color: var(--secondary-bg); padding: 18px; border-radius: 6px; border: 1px dashed var(--border-color);">
+            <h3 style="margin-top:0; font-size:12.5px; text-transform:uppercase; color: var(--primary-dark);">Análisis de Capacidad de Pago Mensual (Proyección)</h3>
+            <table style="background: white; margin-bottom: 12px;">
                 <tr>
                     <td style="font-weight:600;">Flujo Libre Promedio Mensual Disponible:</td>
                     <td style="text-align:right; font-weight:700; font-family:'Courier New';" id="cap-flujo-mensual">$0.00</td>
@@ -440,8 +501,8 @@
         </section>
 
         <div>
-            <h3 style="margin-top:0; font-size:13px; text-transform:uppercase; color: var(--primary-dark);">Evaluación de Solvencia y Estructura</h3>
-            <div class="kpi-grid" style="grid-template-columns: 1fr; gap: 10px;">
+            <h3 style="margin-top:0; font-size:12.5px; text-transform:uppercase; color: var(--primary-dark);">Evaluación de Solvencia y Márgenes (Parcial Actual)</h3>
+            <div class="kpi-grid">
                 <div class="kpi-card" style="border-left-color: #2563eb;">
                     <div class="kpi-info"><h3>Solvencia Circulante</h3><p>Activo Circ. / Pasivo C.P.</p></div>
                     <div class="kpi-values"><div class="kpi-value" id="kpi-liquidez">0.00</div><div class="kpi-status" id="status-liquidez">-</div></div>
@@ -451,7 +512,7 @@
                     <div class="kpi-values"><div class="kpi-value" id="kpi-endeuda">0.00%</div><div class="kpi-status" id="status-endeuda">-</div></div>
                 </div>
                 <div class="kpi-card" style="border-left-color: #10b981;">
-                    <div class="kpi-info"><h3>Margen Neto Comercial</h3><p>Utilidad Neta / Ventas Netas</p></div>
+                    <div class="kpi-info"><h3>Margen Neto Comercial</h3><p>Utilidad Neta / Ingresos Netos</p></div>
                     <div class="kpi-values"><div class="kpi-value" id="kpi-margen">0.00%</div><div class="kpi-status" id="status-margen">-</div></div>
                 </div>
             </div>
@@ -487,130 +548,245 @@
         return total;
     }
 
-    function updateRowDisplay(inputsSelector, pIndex, divFactor) {
+    function updateRowDisplay(inputsSelector, cIndex, divFactor) {
         let inputs = document.querySelectorAll(inputsSelector);
         inputs.forEach(inp => {
             let tr = inp.closest('tr');
             if(tr) {
                 let displays = tr.querySelectorAll('.monthly-display');
-                if(displays[pIndex]) {
+                if(displays[cIndex]) {
                     let val = parseMoney(inp.value);
-                    displays[pIndex].innerText = formatter.format(val / divFactor);
+                    displays[cIndex].innerText = formatter.format(val / divFactor);
                 }
             }
         });
     }
 
+    function updateProjectedCell(cellId, mCellId, projValue) {
+        let el = document.getElementById(cellId);
+        let mEl = document.getElementById(mCellId);
+        if(el) el.innerText = formatter.format(projValue);
+        if(mEl) mEl.innerText = formatter.format(projValue / 12);
+    }
+
     function calc() {
         const nMesesParcial = parseInt(document.getElementById('bg-num-meses').value) || 1;
-        const divFactores = [nMesesParcial, 12, 12];
+        const anioAct = document.getElementById('bg-anio-act').value;
+        document.getElementById('lbl-proy-anio').innerText = anioAct;
 
-        // --- 1. EVALUAR ESTADO DE RESULTADOS ---
-        let uneta = [0, 0, 0];
-        let vnetas = [0, 0, 0];
-        let uoper = [0, 0, 0];
+        const divFactores = [12, 12, nMesesParcial, 12];
 
-        ['p1', 'p2', 'p3'].forEach((p, idx) => {
-            let div = divFactores[idx];
-            
-            let vtot = sumInputs(`.er-vtot.${p}`);
-            let vdesc = sumInputs(`.er-vdesc.${p}`);
-            let vn = vtot - vdesc;
-            vnetas[idx] = vn;
+        // Helper para proyectar cuentas individuales: (Parcial / N) * 12
+        const accountClasses = [
+            // Balance - Activo
+            'act-caja', 'act-bancos', 'act-invtemp', 'act-cli', 'act-estinc', 'act-dxc', 'act-deud', 'act-iva', 'act-impfav', 'act-inv', 'act-antprov', 'act-pagant', 'act-otrcirc',
+            'act-terr', 'act-edif', 'act-depedif', 'act-maq', 'act-depmaq', 'act-trans', 'act-deptrans', 'act-mob', 'act-depmob', 'act-comp', 'act-depcomp', 'act-intang', 'act-amort', 'act-depgar', 'act-otrnocirc',
+            // Balance - Pasivo
+            'pas-prov', 'pas-dxp', 'pas-acred', 'pas-pbanc', 'pas-antcli', 'pas-imppag', 'pas-nompag', 'pas-divpag', 'pas-otrcirc',
+            'pas-pblp', 'pas-hip', 'pas-arr', 'pas-impdif', 'pas-otrnocirc',
+            // Balance - Capital
+            'cap-soc', 'cap-prim', 'cap-aport', 'cap-otrcontrib', 'cap-utret', 'cap-peracum', 'cap-resleg', 'cap-otrgan',
+            // ER
+            'er-vta', 'er-vdesc', 'er-otring', 'er-costvta', 'er-compras', 'er-fltcomp', 'er-mod', 'er-otrcost',
+            'er-sueldadm', 'er-rentofic', 'er-servpub', 'er-manten', 'er-depamort', 'er-honor', 'er-seglic', 'er-papel', 'er-otradm',
+            'er-comvta', 'er-pubmkt', 'er-fltenv', 'er-sueldvta', 'er-empac', 'er-viat', 'er-otrvta',
+            'er-intgan', 'er-intpag', 'er-combanc', 'er-utilcamb', 'er-otrfin', 'er-vtaact', 'er-subsid', 'er-otrnooper',
+            'er-isrcorr', 'er-isrdif', 'er-otrimp'
+        ];
 
-            let costo = sumInputs(`.er-costo.${p}`);
-            let ubruta = vn - costo;
-
-            let gvta = sumInputs(`.er-gvta.${p}`);
-            let gadm = sumInputs(`.er-gadm.${p}`);
-            let uop = ubruta - gvta - gadm;
-            uoper[idx] = uop;
-
-            let pfin = sumInputs(`.er-pfin.${p}`);
-            let gfin = sumInputs(`.er-gfin.${p}`);
-            let tax = sumInputs(`.er-tax.${p}`);
-
-            let un = uop + pfin - gfin - tax;
-            uneta[idx] = un;
-
-            // Actualizar Displays ER
-            updateRowDisplay(`.er-vtot.${p}`, idx, div);
-            updateRowDisplay(`.er-vdesc.${p}`, idx, div);
-            updateRowDisplay(`.er-costo.${p}`, idx, div);
-            updateRowDisplay(`.er-gvta.${p}`, idx, div);
-            updateRowDisplay(`.er-gadm.${p}`, idx, div);
-            updateRowDisplay(`.er-pfin.${p}`, idx, div);
-            updateRowDisplay(`.er-gfin.${p}`, idx, div);
-            updateRowDisplay(`.er-tax.${p}`, idx, div);
-
-            document.getElementById(`vnetas-${p}`).innerText = formatter.format(vn);
-            document.getElementById(`m-vnetas-${p}`).innerText = formatter.format(vn / div);
-            document.getElementById(`ubruta-${p}`).innerText = formatter.format(ubruta);
-            document.getElementById(`m-ubruta-${p}`).innerText = formatter.format(ubruta / div);
-            document.getElementById(`uoper-${p}`).innerText = formatter.format(uop);
-            document.getElementById(`m-uoper-${p}`).innerText = formatter.format(uop / div);
-            document.getElementById(`uneta-${p}`).innerText = formatter.format(un);
-            document.getElementById(`m-uneta-${p}`).innerText = formatter.format(un / div);
-
-            // Anclaje a Balance General
-            document.getElementById(`util-auto-${p}`).innerText = formatter.format(un);
-            document.getElementById(`m-util-auto-${p}`).innerText = formatter.format(un / div);
+        accountClasses.forEach(cls => {
+            let valC3 = sumInputs(`.${cls}.c3`);
+            let proj = (valC3 / nMesesParcial) * 12;
+            updateProjectedCell(`${cls}-c4`, `m-${cls}-c4`, proj);
         });
 
-        // --- 2. EVALUAR BALANCE GENERAL ---
-        let actCirc = [0, 0, 0];
-        let pasCp = [0, 0, 0];
-        let totalActivos = [0, 0, 0];
-        let totalPasivos = [0, 0, 0];
+        // --- 1. PROCESAR ESTADO DE RESULTADOS ---
+        let utilNeta = [0, 0, 0, 0];
+        let vtasNetas = [0, 0, 0, 0];
+        let utilOper = [0, 0, 0, 0];
 
-        ['p1', 'p2', 'p3'].forEach((p, idx) => {
+        ['c1', 'c2', 'c3', 'c4'].forEach((c, idx) => {
             let div = divFactores[idx];
 
-            let circ = sumInputs(`.act-circ.${p}`);
+            let isProj = (idx === 3);
+
+            let vta = isProj ? ((sumInputs(`.er-vta.c3`) / nMesesParcial) * 12) : sumInputs(`.er-vta.${c}`);
+            let vdesc = isProj ? ((sumInputs(`.er-vdesc.c3`) / nMesesParcial) * 12) : sumInputs(`.er-vdesc.${c}`);
+            let otring = isProj ? ((sumInputs(`.er-otring.c3`) / nMesesParcial) * 12) : sumInputs(`.er-otring.${c}`);
+            let totIng = vta - vdesc + otring;
+            vtasNetas[idx] = totIng;
+
+            let costvta = isProj ? ((sumInputs(`.er-costvta.c3`) / nMesesParcial) * 12) : sumInputs(`.er-costvta.${c}`);
+            let compras = isProj ? ((sumInputs(`.er-compras.c3`) / nMesesParcial) * 12) : sumInputs(`.er-compras.${c}`);
+            let fltcomp = isProj ? ((sumInputs(`.er-fltcomp.c3`) / nMesesParcial) * 12) : sumInputs(`.er-fltcomp.${c}`);
+            let mod = isProj ? ((sumInputs(`.er-mod.c3`) / nMesesParcial) * 12) : sumInputs(`.er-mod.${c}`);
+            let otrcost = isProj ? ((sumInputs(`.er-otrcost.c3`) / nMesesParcial) * 12) : sumInputs(`.er-otrcost.${c}`);
+            let totCosto = costvta + compras + fltcomp + mod + otrcost;
+            let utilBruta = totIng - totCosto;
+
+            let sueldadm = isProj ? ((sumInputs(`.er-sueldadm.c3`) / nMesesParcial) * 12) : sumInputs(`.er-sueldadm.${c}`);
+            let rentofic = isProj ? ((sumInputs(`.er-rentofic.c3`) / nMesesParcial) * 12) : sumInputs(`.er-rentofic.${c}`);
+            let servpub = isProj ? ((sumInputs(`.er-servpub.c3`) / nMesesParcial) * 12) : sumInputs(`.er-servpub.${c}`);
+            let manten = isProj ? ((sumInputs(`.er-manten.c3`) / nMesesParcial) * 12) : sumInputs(`.er-manten.${c}`);
+            let depamort = isProj ? ((sumInputs(`.er-depamort.c3`) / nMesesParcial) * 12) : sumInputs(`.er-depamort.${c}`);
+            let honor = isProj ? ((sumInputs(`.er-honor.c3`) / nMesesParcial) * 12) : sumInputs(`.er-honor.${c}`);
+            let seglic = isProj ? ((sumInputs(`.er-seglic.c3`) / nMesesParcial) * 12) : sumInputs(`.er-seglic.${c}`);
+            let papel = isProj ? ((sumInputs(`.er-papel.c3`) / nMesesParcial) * 12) : sumInputs(`.er-papel.${c}`);
+            let otradm = isProj ? ((sumInputs(`.er-otradm.c3`) / nMesesParcial) * 12) : sumInputs(`.er-otradm.${c}`);
+            let totGadm = sueldadm + rentofic + servpub + manten + depamort + honor + seglic + papel + otradm;
+
+            let comvta = isProj ? ((sumInputs(`.er-comvta.c3`) / nMesesParcial) * 12) : sumInputs(`.er-comvta.${c}`);
+            let pubmkt = isProj ? ((sumInputs(`.er-pubmkt.c3`) / nMesesParcial) * 12) : sumInputs(`.er-pubmkt.${c}`);
+            let fltenv = isProj ? ((sumInputs(`.er-fltenv.c3`) / nMesesParcial) * 12) : sumInputs(`.er-fltenv.${c}`);
+            let sueldvta = isProj ? ((sumInputs(`.er-sueldvta.c3`) / nMesesParcial) * 12) : sumInputs(`.er-sueldvta.${c}`);
+            let empac = isProj ? ((sumInputs(`.er-empac.c3`) / nMesesParcial) * 12) : sumInputs(`.er-empac.${c}`);
+            let viat = isProj ? ((sumInputs(`.er-viat.c3`) / nMesesParcial) * 12) : sumInputs(`.er-viat.${c}`);
+            let otrvta = isProj ? ((sumInputs(`.er-otrvta.c3`) / nMesesParcial) * 12) : sumInputs(`.er-otrvta.${c}`);
+            let totGvta = comvta + pubmkt + fltenv + sueldvta + empac + viat + otrvta;
+
+            let uop = utilBruta - totGadm - totGvta;
+            utilOper[idx] = uop;
+
+            let intgan = isProj ? ((sumInputs(`.er-intgan.c3`) / nMesesParcial) * 12) : sumInputs(`.er-intgan.${c}`);
+            let intpag = isProj ? ((sumInputs(`.er-intpag.c3`) / nMesesParcial) * 12) : sumInputs(`.er-intpag.${c}`);
+            let combanc = isProj ? ((sumInputs(`.er-combanc.c3`) / nMesesParcial) * 12) : sumInputs(`.er-combanc.${c}`);
+            let utilcamb = isProj ? ((sumInputs(`.er-utilcamb.c3`) / nMesesParcial) * 12) : sumInputs(`.er-utilcamb.${c}`);
+            let otrfin = isProj ? ((sumInputs(`.er-otrfin.c3`) / nMesesParcial) * 12) : sumInputs(`.er-otrfin.${c}`);
+            let totRif = intgan - intpag - combanc + utilcamb + otrfin;
+
+            let vtaact = isProj ? ((sumInputs(`.er-vtaact.c3`) / nMesesParcial) * 12) : sumInputs(`.er-vtaact.${c}`);
+            let subsid = isProj ? ((sumInputs(`.er-subsid.c3`) / nMesesParcial) * 12) : sumInputs(`.er-subsid.${c}`);
+            let otrnooper = isProj ? ((sumInputs(`.er-otrnooper.c3`) / nMesesParcial) * 12) : sumInputs(`.er-otrnooper.${c}`);
+            let utilAimp = uop + totRif + vtaact + subsid + otrnooper;
+
+            let isrcorr = isProj ? ((sumInputs(`.er-isrcorr.c3`) / nMesesParcial) * 12) : sumInputs(`.er-isrcorr.${c}`);
+            let isrdif = isProj ? ((sumInputs(`.er-isrdif.c3`) / nMesesParcial) * 12) : sumInputs(`.er-isrdif.${c}`);
+            let otrimp = isProj ? ((sumInputs(`.er-otrimp.c3`) / nMesesParcial) * 12) : sumInputs(`.er-otrimp.${c}`);
+            let totImp = isrcorr + isrdif + otrimp;
+
+            let un = utilAimp - totImp;
+            utilNeta[idx] = un;
+
+            if(!isProj) {
+                updateRowDisplay(`.er-vta.${c}`, idx, div);
+                updateRowDisplay(`.er-vdesc.${c}`, idx, div);
+                updateRowDisplay(`.er-otring.${c}`, idx, div);
+                updateRowDisplay(`.er-costvta.${c}`, idx, div);
+                updateRowDisplay(`.er-compras.${c}`, idx, div);
+                updateRowDisplay(`.er-fltcomp.${c}`, idx, div);
+                updateRowDisplay(`.er-mod.${c}`, idx, div);
+                updateRowDisplay(`.er-otrcost.${c}`, idx, div);
+                updateRowDisplay(`.er-sueldadm.${c}`, idx, div);
+                updateRowDisplay(`.er-rentofic.${c}`, idx, div);
+                updateRowDisplay(`.er-servpub.${c}`, idx, div);
+                updateRowDisplay(`.er-manten.${c}`, idx, div);
+                updateRowDisplay(`.er-depamort.${c}`, idx, div);
+                updateRowDisplay(`.er-honor.${c}`, idx, div);
+                updateRowDisplay(`.er-seglic.${c}`, idx, div);
+                updateRowDisplay(`.er-papel.${c}`, idx, div);
+                updateRowDisplay(`.er-otradm.${c}`, idx, div);
+                updateRowDisplay(`.er-comvta.${c}`, idx, div);
+                updateRowDisplay(`.er-pubmkt.${c}`, idx, div);
+                updateRowDisplay(`.er-fltenv.${c}`, idx, div);
+                updateRowDisplay(`.er-sueldvta.${c}`, idx, div);
+                updateRowDisplay(`.er-empac.${c}`, idx, div);
+                updateRowDisplay(`.er-viat.${c}`, idx, div);
+                updateRowDisplay(`.er-otrvta.${c}`, idx, div);
+                updateRowDisplay(`.er-intgan.${c}`, idx, div);
+                updateRowDisplay(`.er-intpag.${c}`, idx, div);
+                updateRowDisplay(`.er-combanc.${c}`, idx, div);
+                updateRowDisplay(`.er-utilcamb.${c}`, idx, div);
+                updateRowDisplay(`.er-otrfin.${c}`, idx, div);
+                updateRowDisplay(`.er-vtaact.${c}`, idx, div);
+                updateRowDisplay(`.er-subsid.${c}`, idx, div);
+                updateRowDisplay(`.er-otrnooper.${c}`, idx, div);
+                updateRowDisplay(`.er-isrcorr.${c}`, idx, div);
+                updateRowDisplay(`.er-isrdif.${c}`, idx, div);
+                updateRowDisplay(`.er-otrimp.${c}`, idx, div);
+            }
+
+            document.getElementById(`tot-ing-${c}`).innerText = formatter.format(totIng);
+            document.getElementById(`m-tot-ing-${c}`).innerText = formatter.format(totIng / div);
+            document.getElementById(`tot-costo-${c}`).innerText = formatter.format(totCosto);
+            document.getElementById(`m-tot-costo-${c}`).innerText = formatter.format(totCosto / div);
+            document.getElementById(`util-bruta-${c}`).innerText = formatter.format(utilBruta);
+            document.getElementById(`m-util-bruta-${c}`).innerText = formatter.format(utilBruta / div);
+            document.getElementById(`tot-gadm-${c}`).innerText = formatter.format(totGadm);
+            document.getElementById(`m-tot-gadm-${c}`).innerText = formatter.format(totGadm / div);
+            document.getElementById(`tot-gvta-${c}`).innerText = formatter.format(totGvta);
+            document.getElementById(`m-tot-gvta-${c}`).innerText = formatter.format(totGvta / div);
+            document.getElementById(`util-oper-${c}`).innerText = formatter.format(uop);
+            document.getElementById(`m-util-oper-${c}`).innerText = formatter.format(uop / div);
+            document.getElementById(`tot-rif-${c}`).innerText = formatter.format(totRif);
+            document.getElementById(`m-tot-rif-${c}`).innerText = formatter.format(totRif / div);
+            document.getElementById(`util-aimp-${c}`).innerText = formatter.format(utilAimp);
+            document.getElementById(`m-util-aimp-${c}`).innerText = formatter.format(utilAimp / div);
+            document.getElementById(`util-neta-${c}`).innerText = formatter.format(un);
+            document.getElementById(`m-util-neta-${c}`).innerText = formatter.format(un / div);
+
+            // Anclaje a Capital Contable
+            document.getElementById(`cap-utejer-${c}`).innerText = formatter.format(un);
+            document.getElementById(`m-cap-utejer-${c}`).innerText = formatter.format(un / div);
+        });
+
+        // --- 2. PROCESAR BALANCE GENERAL ---
+        let actCirc = [0, 0, 0, 0];
+        let pasCp = [0, 0, 0, 0];
+        let totActivos = [0, 0, 0, 0];
+        let totPasivos = [0, 0, 0, 0];
+
+        ['c1', 'c2', 'c3', 'c4'].forEach((c, idx) => {
+            let div = divFactores[idx];
+            let isProj = (idx === 3);
+
+            let sumCls = (cls) => isProj ? ((sumInputs(`.${cls}.c3`) / nMesesParcial) * 12) : sumInputs(`.${cls}.${c}`);
+
+            let circ = sumCls('act-caja') + sumCls('act-bancos') + sumCls('act-invtemp') + sumCls('act-cli') - sumCls('act-estinc') + sumCls('act-dxc') + sumCls('act-deud') + sumCls('act-iva') + sumCls('act-impfav') + sumCls('act-inv') + sumCls('act-antprov') + sumCls('act-pagant') + sumCls('act-otrcirc');
             actCirc[idx] = circ;
-            let fijo = sumInputs(`.act-fijo.${p}`);
-            let totAct = circ + fijo;
-            totalActivos[idx] = totAct;
 
-            let pcp = sumInputs(`.pas-cp.${p}`);
+            let nocirc = sumCls('act-terr') + sumCls('act-edif') - sumCls('act-depedif') + sumCls('act-maq') - sumCls('act-depmaq') + sumCls('act-trans') - sumCls('act-deptrans') + sumCls('act-mob') - sumCls('act-depmob') + sumCls('act-comp') - sumCls('act-depcomp') + sumCls('act-intang') - sumCls('act-amort') + sumCls('act-depgar') + sumCls('act-otrnocirc');
+            totActivos[idx] = circ + nocirc;
+
+            let pcp = sumCls('pas-prov') + sumCls('pas-dxp') + sumCls('pas-acred') + sumCls('pas-pbanc') + sumCls('pas-antcli') + sumCls('pas-imppag') + sumCls('pas-nompag') + sumCls('pas-divpag') + sumCls('pas-otrcirc');
             pasCp[idx] = pcp;
-            let plp = sumInputs(`.pas-lp.${p}`);
-            let totPas = pcp + plp;
-            totalPasivos[idx] = totPas;
 
-            let capSoc = sumInputs(`.cap-soc.${p}`);
-            let capRet = sumInputs(`.cap-ret.${p}`);
-            let totCap = capSoc + capRet + uneta[idx];
+            let pnc = sumCls('pas-pblp') + sumCls('pas-hip') + sumCls('pas-arr') + sumCls('pas-impdif') + sumCls('pas-otrnocirc');
+            totPasivos[idx] = pcp + pnc;
 
-            updateRowDisplay(`.act-circ.${p}`, idx, div);
-            updateRowDisplay(`.act-fijo.${p}`, idx, div);
-            updateRowDisplay(`.pas-cp.${p}`, idx, div);
-            updateRowDisplay(`.pas-lp.${p}`, idx, div);
-            updateRowDisplay(`.cap-soc.${p}`, idx, div);
-            updateRowDisplay(`.cap-ret.${p}`, idx, div);
+            let capContrib = sumCls('cap-soc') + sumCls('cap-prim') + sumCls('cap-aport') + sumCls('cap-otrcontrib');
+            let capGan = sumCls('cap-utret') - sumCls('cap-peracum') + utilNeta[idx] + sumCls('cap-resleg') + sumCls('cap-otrgan');
+            let totCap = capContrib + capGan;
 
-            document.getElementById(`tot-act-circ-${p}`).innerText = formatter.format(circ);
-            document.getElementById(`m-tot-act-circ-${p}`).innerText = formatter.format(circ / div);
-            document.getElementById(`tot-act-fijo-${p}`).innerText = formatter.format(fijo);
-            document.getElementById(`m-tot-act-fijo-${p}`).innerText = formatter.format(fijo / div);
-            document.getElementById(`gran-tot-act-${p}`).innerText = formatter.format(totAct);
-            document.getElementById(`m-gran-tot-act-${p}`).innerText = formatter.format(totAct / div);
+            if(!isProj) {
+                ['act-caja', 'act-bancos', 'act-invtemp', 'act-cli', 'act-estinc', 'act-dxc', 'act-deud', 'act-iva', 'act-impfav', 'act-inv', 'act-antprov', 'act-pagant', 'act-otrcirc',
+                 'act-terr', 'act-edif', 'act-depedif', 'act-maq', 'act-depmaq', 'act-trans', 'act-deptrans', 'act-mob', 'act-depmob', 'act-comp', 'act-depcomp', 'act-intang', 'act-amort', 'act-depgar', 'act-otrnocirc',
+                 'pas-prov', 'pas-dxp', 'pas-acred', 'pas-pbanc', 'pas-antcli', 'pas-imppag', 'pas-nompag', 'pas-divpag', 'pas-otrcirc',
+                 'pas-pblp', 'pas-hip', 'pas-arr', 'pas-impdif', 'pas-otrnocirc',
+                 'cap-soc', 'cap-prim', 'cap-aport', 'cap-otrcontrib', 'cap-utret', 'cap-peracum', 'cap-resleg', 'cap-otrgan'].forEach(cls => updateRowDisplay(`.${cls}.${c}`, idx, div));
+            }
 
-            document.getElementById(`tot-pas-cp-${p}`).innerText = formatter.format(pcp);
-            document.getElementById(`m-tot-pas-cp-${p}`).innerText = formatter.format(pcp / div);
-            document.getElementById(`tot-pas-lp-${p}`).innerText = formatter.format(plp);
-            document.getElementById(`m-tot-pas-lp-${p}`).innerText = formatter.format(plp / div);
-            document.getElementById(`gran-tot-pas-${p}`).innerText = formatter.format(totPas);
-            document.getElementById(`m-gran-tot-pas-${p}`).innerText = formatter.format(totPas / div);
+            document.getElementById(`tot-act-circ-${c}`).innerText = formatter.format(circ);
+            document.getElementById(`m-tot-act-circ-${c}`).innerText = formatter.format(circ / div);
+            document.getElementById(`tot-act-nocirc-${c}`).innerText = formatter.format(nocirc);
+            document.getElementById(`m-tot-act-nocirc-${c}`).innerText = formatter.format(nocirc / div);
+            document.getElementById(`gran-tot-act-${c}`).innerText = formatter.format(circ + nocirc);
+            document.getElementById(`m-gran-tot-act-${c}`).innerText = formatter.format((circ + nocirc) / div);
 
-            document.getElementById(`tot-cap-${p}`).innerText = formatter.format(totCap);
-            document.getElementById(`m-tot-cap-${p}`).innerText = formatter.format(totCap / div);
-            document.getElementById(`pas-cap-${p}`).innerText = formatter.format(totPas + totCap);
-            document.getElementById(`m-pas-cap-${p}`).innerText = formatter.format((totPas + totCap) / div);
+            document.getElementById(`tot-pas-circ-${c}`).innerText = formatter.format(pcp);
+            document.getElementById(`m-tot-pas-circ-${c}`).innerText = formatter.format(pcp / div);
+            document.getElementById(`tot-pas-nocirc-${c}`).innerText = formatter.format(pnc);
+            document.getElementById(`m-tot-pas-nocirc-${c}`).innerText = formatter.format(pnc / div);
+            document.getElementById(`gran-tot-pas-${c}`).innerText = formatter.format(pcp + pnc);
+            document.getElementById(`m-gran-tot-pas-${c}`).innerText = formatter.format((pcp + pnc) / div);
+
+            document.getElementById(`tot-cap-${c}`).innerText = formatter.format(totCap);
+            document.getElementById(`m-tot-cap-${c}`).innerText = formatter.format(totCap / div);
+            document.getElementById(`pas-cap-${c}`).innerText = formatter.format(pcp + pnc + totCap);
+            document.getElementById(`m-pas-cap-${c}`).innerText = formatter.format((pcp + pnc + totCap) / div);
         });
 
-        // --- 3. CAPACIDAD DE PAGO E INDICADORES (Basado en Corte Parcial p1) ---
-        let flujoMensualDispon = uoper[0] / nMesesParcial;
+        // --- 3. CAPACIDAD DE PAGO E INDICADORES (Basado en Proyección Anual / 12) ---
+        let flujoMensualDispon = utilOper[3] / 12; // Proyección Anual / 12
         let amortizacionPropuesta = parseMoney(document.getElementById('input-amortizacion-mensual').value);
 
         document.getElementById('cap-flujo-mensual').innerText = formatter.format(flujoMensualDispon);
@@ -618,16 +794,16 @@
         document.getElementById('cap-indice-cobertura').innerText = cobertura.toFixed(2) + 'x';
         document.getElementById('cap-remanente-mensual').innerText = formatter.format(flujoMensualDispon - amortizacionPropuesta);
 
-        // KPIs de Solvencia
-        let liq = pasCp[0] > 0 ? (actCirc[0] / pasCp[0]) : 0;
+        // KPIs de Solvencia (Parcial c3)
+        let liq = pasCp[2] > 0 ? (actCirc[2] / pasCp[2]) : 0;
         document.getElementById('kpi-liquidez').innerText = liq.toFixed(2);
         setKpiStatus('status-liquidez', liq >= 1.25, 'Adecuada', 'Riesgo Iliquidez');
 
-        let lev = totalActivos[0] > 0 ? (totalPasivos[0] / totalActivos[0]) * 100 : 0;
+        let lev = totActivos[2] > 0 ? (totPasivos[2] / totActivos[2]) * 100 : 0;
         document.getElementById('kpi-endeuda').innerText = lev.toFixed(1) + '%';
         setKpiStatus('status-endeuda', lev <= 65, 'Sostenible', 'Elevado');
 
-        let mgn = vnetas[0] > 0 ? (uneta[0] / vnetas[0]) * 100 : 0;
+        let mgn = vtasNetas[2] > 0 ? (utilNeta[2] / vtasNetas[2]) * 100 : 0;
         document.getElementById('kpi-margen').innerText = mgn.toFixed(1) + '%';
         setKpiStatus('status-margen', mgn >= 5, 'Saludable', 'Estrecho');
     }
@@ -641,64 +817,57 @@
     }
 
     function cargarCasoExito() {
-        document.getElementById('comp-name').value = "Distribuidora del Noroeste S.A. de C.V.";
+        document.getElementById('comp-name').value = "Grupo Comercial San José S.A. de C.V.";
         document.getElementById('bg-num-meses').value = "1";
 
-        // Parcial
-        document.querySelectorAll('.act-circ.p1')[0].value = formatter.format(150000);
-        document.querySelectorAll('.act-circ.p1')[1].value = formatter.format(480000);
-        document.querySelectorAll('.act-circ.p1')[4].value = formatter.format(320000);
-        document.querySelectorAll('.act-fijo.p1')[0].value = formatter.format(1800000);
-        document.querySelectorAll('.pas-cp.p1')[0].value = formatter.format(210000);
-        document.querySelectorAll('.pas-lp.p1')[0].value = formatter.format(600000);
-        document.getElementById('cap-soc-p1').value = formatter.format(1500000);
+        // Cuentas Año 2 (c1)
+        document.querySelectorAll('.act-bancos.c1')[0].value = formatter.format(450000);
+        document.querySelectorAll('.act-cli.c1')[0].value = formatter.format(280000);
+        document.querySelectorAll('.act-inv.c1')[0].value = formatter.format(350000);
+        document.querySelectorAll('.act-edif.c1')[0].value = formatter.format(1500000);
+        document.querySelectorAll('.pas-prov.c1')[0].value = formatter.format(220000);
+        document.querySelectorAll('.pas-pblp.c1')[0].value = formatter.format(800000);
+        document.querySelectorAll('.cap-soc.c1')[0].value = formatter.format(1200000);
+        document.querySelectorAll('.er-vta.c1')[0].value = formatter.format(4800000);
+        document.querySelectorAll('.er-costvta.c1')[0].value = formatter.format(2600000);
+        document.querySelectorAll('.er-sueldadm.c1')[0].value = formatter.format(520000);
+        document.querySelectorAll('.er-sueldvta.c1')[0].value = formatter.format(410000);
 
-        document.querySelectorAll('.er-vtot.p1')[0].value = formatter.format(520000);
-        document.querySelectorAll('.er-costo.p1')[0].value = formatter.format(280000);
-        document.querySelectorAll('.er-gvta.p1')[0].value = formatter.format(45000);
-        document.querySelectorAll('.er-gadm.p1')[0].value = formatter.format(55000);
+        // Cuentas Año 1 (c2)
+        document.querySelectorAll('.act-bancos.c2')[0].value = formatter.format(520000);
+        document.querySelectorAll('.act-cli.c2')[0].value = formatter.format(310000);
+        document.querySelectorAll('.act-inv.c2')[0].value = formatter.format(390000);
+        document.querySelectorAll('.act-edif.c2')[0].value = formatter.format(1500000);
+        document.querySelectorAll('.pas-prov.c2')[0].value = formatter.format(250000);
+        document.querySelectorAll('.pas-pblp.c2')[0].value = formatter.format(700000);
+        document.querySelectorAll('.cap-soc.c2')[0].value = formatter.format(1200000);
+        document.querySelectorAll('.er-vta.c2')[0].value = formatter.format(5400000);
+        document.querySelectorAll('.er-costvta.c2')[0].value = formatter.format(2900000);
+        document.querySelectorAll('.er-sueldadm.c2')[0].value = formatter.format(580000);
+        document.querySelectorAll('.er-sueldvta.c2')[0].value = formatter.format(460000);
 
-        // Año Anterior
-        document.querySelectorAll('.act-circ.p2')[0].value = formatter.format(110000);
-        document.querySelectorAll('.act-circ.p2')[1].value = formatter.format(520000);
-        document.querySelectorAll('.act-circ.p2')[4].value = formatter.format(390000);
-        document.querySelectorAll('.act-fijo.p2')[0].value = formatter.format(1800000);
-        document.querySelectorAll('.pas-cp.p2')[0].value = formatter.format(280000);
-        document.querySelectorAll('.pas-lp.p2')[0].value = formatter.format(720000);
-        document.getElementById('cap-soc-p2').value = formatter.format(1500000);
+        // Parcial c3 (1 mes)
+        document.querySelectorAll('.act-caja.c3')[0].value = formatter.format(50000);
+        document.querySelectorAll('.act-bancos.c3')[0].value = formatter.format(480000);
+        document.querySelectorAll('.act-cli.c3')[0].value = formatter.format(330000);
+        document.querySelectorAll('.act-inv.c3')[0].value = formatter.format(410000);
+        document.querySelectorAll('.act-edif.c3')[0].value = formatter.format(1500000);
+        document.querySelectorAll('.pas-prov.c3')[0].value = formatter.format(210000);
+        document.querySelectorAll('.pas-pblp.c3')[0].value = formatter.format(650000);
+        document.querySelectorAll('.cap-soc.c3')[0].value = formatter.format(1200000);
+        document.querySelectorAll('.er-vta.c3')[0].value = formatter.format(500000);
+        document.querySelectorAll('.er-costvta.c3')[0].value = formatter.format(260000);
+        document.querySelectorAll('.er-sueldadm.c3')[0].value = formatter.format(50000);
+        document.querySelectorAll('.er-sueldvta.c3')[0].value = formatter.format(40000);
 
-        document.querySelectorAll('.er-vtot.p2')[0].value = formatter.format(5800000);
-        document.querySelectorAll('.er-costo.p2')[0].value = formatter.format(3100000);
-        document.querySelectorAll('.er-gvta.p2')[0].value = formatter.format(510000);
-        document.querySelectorAll('.er-gadm.p2')[0].value = formatter.format(620000);
-
-        // Año Anteanterior
-        document.querySelectorAll('.act-circ.p3')[1].value = formatter.format(410000);
-        document.querySelectorAll('.act-circ.p3')[4].value = formatter.format(350000);
-        document.querySelectorAll('.act-fijo.p3')[0].value = formatter.format(1800000);
-        document.querySelectorAll('.pas-cp.p3')[0].value = formatter.format(240000);
-        document.querySelectorAll('.pas-lp.p3')[0].value = formatter.format(850000);
-        document.getElementById('cap-soc-p3').value = formatter.format(1500000);
-
-        document.querySelectorAll('.er-vtot.p3')[0].value = formatter.format(5100000);
-        document.querySelectorAll('.er-costo.p3')[0].value = formatter.format(2750000);
-        document.querySelectorAll('.er-gvta.p3')[0].value = formatter.format(480000);
-        document.querySelectorAll('.er-gadm.p3')[0].value = formatter.format(580000);
-
-        document.getElementById('input-amortizacion-mensual').value = formatter.format(35000);
+        document.getElementById('input-amortizacion-mensual').value = formatter.format(30000);
 
         calc();
     }
 
     function limpiarTodoFormulario() {
-        let inputs = document.querySelectorAll('.money-input, .free-label-input');
-        inputs.forEach(i => {
-            if (i.classList.contains('money-input')) {
-                i.value = formatter.format(0);
-            } else {
-                i.value = "";
-            }
-        });
+        let inputs = document.querySelectorAll('.money-input');
+        inputs.forEach(i => i.value = formatter.format(0));
         document.getElementById('comp-name').value = "NOMBRE O RAZON SOCIAL";
         calc();
     }
