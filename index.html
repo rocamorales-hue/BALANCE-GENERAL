@@ -208,7 +208,7 @@
             font-weight: bold;
         }
 
-        /* ESTILOS DEL NUEVO BLOQUE 3: GRÁFICAS Y ANÁLISIS */
+        /* ESTILOS DE BLOQUES 3 Y 4 */
         .chart-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -293,6 +293,110 @@
         .badge-up { background-color: #dcfce7; color: #15803d; }
         .badge-down { background-color: #fee2e2; color: #b91c1c; }
         .badge-flat { background-color: #f1f5f9; color: #475569; }
+
+        /* BLOQUE 4 ESTILOS */
+        .b4-container {
+            background: #ffffff;
+            border: 2px solid #0f172a;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+        }
+
+        .b4-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #0f172a;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .b4-header label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .b4-select {
+            padding: 6px 12px;
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 4px;
+            border: 1px solid #94a3b8;
+            background-color: #f8fafc;
+            color: #0f172a;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .b4-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .b4-cards-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .b4-card {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .b4-card-title {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+
+        .b4-card-val {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 18px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .b4-card-sub {
+            font-size: 10px;
+            color: #94a3b8;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        .b4-card.vta { border-top: 4px solid #2563eb; }
+        .b4-card.cost { border-top: 4px solid #ea580c; }
+        .b4-card.gast { border-top: 4px solid #dc2626; }
+        .b4-card.util { border-top: 4px solid #16a34a; }
+
+        .b4-progress-bar {
+            display: flex;
+            height: 24px;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: #e2e8f0;
+            margin-top: 10px;
+            font-size: 10px;
+            font-weight: 700;
+            color: white;
+            line-height: 24px;
+            text-align: center;
+        }
+
+        .b4-p-cost { background-color: #ea580c; }
+        .b4-p-gast { background-color: #dc2626; }
+        .b4-p-util { background-color: #16a34a; }
     </style>
 </head>
 <body>
@@ -523,10 +627,9 @@
         </table>
     </div>
 
-    <!-- NUEVO BLOQUE 3. ANÁLISIS DE TENDENCIAS HISTÓRICAS Y PROYECCIÓN COMERCIAL -->
+    <!-- 3. ANÁLISIS DE TENDENCIAS HISTÓRICAS Y PROYECCIÓN COMERCIAL -->
     <h2>3. Análisis de Tendencias Históricas y Proyección Comercial</h2>
 
-    <!-- Visualización Gráfica -->
     <div class="chart-grid">
         <div class="chart-card">
             <h3>📈 Evolución e Anualización de Ingresos (Ventas)</h3>
@@ -581,7 +684,6 @@
         </div>
     </div>
 
-    <!-- Tabla Metrica de Comportamiento -->
     <div class="table-responsive">
         <table>
             <thead>
@@ -629,6 +731,53 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <!-- 4. CALCULADORA OPERATIVA MENSUAL (NUEVO BLOQUE 4) -->
+    <h2>4. Calculadora Operativa Mensual</h2>
+    <div class="b4-container">
+        <div class="b4-header">
+            <label for="b4-ejercicio-select">SELECCIONAR EJERCICIO PARA CÁLCULOS MENSUALES:</label>
+            <select id="b4-ejercicio-select" class="b4-select" onchange="calc()">
+                <option value="c1">1. Año 2 (Histórico)</option>
+                <option value="c2" selected>2. Año 1 (Anterior)</option>
+                <option value="c3">3. Parcial (Actual Anualizado)</option>
+                <option value="c4">4. Proyección Año 1</option>
+            </select>
+        </div>
+
+        <div class="b4-cards-grid">
+            <div class="b4-card vta">
+                <div class="b4-card-title">Ventas Mensuales</div>
+                <div class="b4-card-val" id="b4-val-vta">$0.00</div>
+                <div class="b4-card-sub" id="b4-pct-vta">100.0% de Ingresos</div>
+            </div>
+            <div class="b4-card cost">
+                <div class="b4-card-title">Costos Mensuales</div>
+                <div class="b4-card-val" id="b4-val-cost">$0.00</div>
+                <div class="b4-card-sub" id="b4-pct-cost">0.0% de Ingresos</div>
+            </div>
+            <div class="b4-card gast">
+                <div class="b4-card-title">Gastos Mensuales (Adm+Vta)</div>
+                <div class="b4-card-val" id="b4-val-gast">$0.00</div>
+                <div class="b4-card-sub" id="b4-pct-gast">0.0% de Ingresos</div>
+            </div>
+            <div class="b4-card util">
+                <div class="b4-card-title">Utilidad Neta Mensual</div>
+                <div class="b4-card-val" id="b4-val-util">$0.00</div>
+                <div class="b4-card-sub" id="b4-pct-util">0.0% Margen Neto</div>
+            </div>
+        </div>
+
+        <!-- Distribución del Ingreso Mensual -->
+        <div style="font-size: 11px; font-weight:700; text-transform: uppercase; color: #64748b; margin-bottom: 5px;">
+            Distribución del Ingreso Mensual
+        </div>
+        <div class="b4-progress-bar">
+            <div id="b4-bar-cost" class="b4-p-cost" style="width: 0%;">Costos</div>
+            <div id="b4-bar-gast" class="b4-p-gast" style="width: 0%;">Gastos</div>
+            <div id="b4-bar-util" class="b4-p-util" style="width: 0%;">Utilidad</div>
+        </div>
     </div>
 </div>
 
@@ -726,6 +875,8 @@
         let vtasNetas = [0, 0, 0, 0];
         let utilBrutaArr = [0, 0, 0, 0];
         let utilOper = [0, 0, 0, 0];
+        let costosTotalesArr = [0, 0, 0, 0];
+        let gastosTotalesArr = [0, 0, 0, 0];
 
         ['c1', 'c2', 'c3', 'c4'].forEach((c, idx) => {
             let div = divFactores[idx];
@@ -742,6 +893,8 @@
             let mod = sumInputs(`.er-mod.${c}`);
             let otrcost = sumInputs(`.er-otrcost.${c}`);
             let totCosto = costvta + compras + fltcomp + mod + otrcost;
+            costosTotalesArr[idx] = totCosto;
+
             let utilBruta = totIng - totCosto;
             utilBrutaArr[idx] = utilBruta;
 
@@ -764,6 +917,8 @@
             let viat = sumInputs(`.er-viat.${c}`);
             let otrvta = sumInputs(`.er-otrvta.${c}`);
             let totGvta = comvta + pubmkt + fltenv + sueldvta + empac + viat + otrvta;
+
+            gastosTotalesArr[idx] = totGadm + totGvta;
 
             let uop = utilBruta - totGadm - totGvta;
             utilOper[idx] = uop;
@@ -870,7 +1025,7 @@
             document.getElementById(`m-pas-cap-${c}`).innerText = formatter.format((pcp + pnc + totCap) / div);
         });
 
-        // --- 3. CÁLCULOS DEL NUEVO BLOQUE 3 (Crecimientos, Tendencias y Gráficas) ---
+        // --- 3. CÁLCULOS BLOQUE 3 ---
         let vtaParcialAnual = vtasNetas[2] * (12 / nMesesParcial);
         let ubParcialAnual = utilBrutaArr[2] * (12 / nMesesParcial);
         let uopParcialAnual = utilOper[2] * (12 / nMesesParcial);
@@ -881,9 +1036,49 @@
         updateTrendRow('uop', utilOper[0], utilOper[1], uopParcialAnual, utilOper[3]);
         updateTrendRow('un', utilNeta[0], utilNeta[1], unParcialAnual, utilNeta[3]);
 
-        // Renderizar Barras
         renderBarChart('vta', [vtasNetas[0], vtasNetas[1], vtaParcialAnual, vtasNetas[3]]);
         renderBarChart('uop', [utilOper[0], utilOper[1], uopParcialAnual, utilOper[3]]);
+
+        // --- 4. CÁLCULOS BLOQUE 4: CALCULADORA OPERATIVA MENSUAL ---
+        const selVal = document.getElementById('b4-ejercicio-select').value; // 'c1', 'c2', 'c3', 'c4'
+        const selIdx = ['c1', 'c2', 'c3', 'c4'].indexOf(selVal);
+        const divSel = divFactores[selIdx];
+
+        let vtaMensual = vtasNetas[selIdx] / divSel;
+        let costMensual = costosTotalesArr[selIdx] / divSel;
+        let gastMensual = gastosTotalesArr[selIdx] / divSel;
+        let utilMensual = utilNeta[selIdx] / divSel;
+
+        document.getElementById('b4-val-vta').innerText = formatter.format(vtaMensual);
+        document.getElementById('b4-val-cost').innerText = formatter.format(costMensual);
+        document.getElementById('b4-val-gast').innerText = formatter.format(gastMensual);
+        document.getElementById('b4-val-util').innerText = formatter.format(utilMensual);
+
+        let pctCost = vtaMensual > 0 ? (costMensual / vtaMensual) * 100 : 0;
+        let pctGast = vtaMensual > 0 ? (gastMensual / vtaMensual) * 100 : 0;
+        let pctUtil = vtaMensual > 0 ? (utilMensual / vtaMensual) * 100 : 0;
+
+        document.getElementById('b4-pct-cost').innerText = pctCost.toFixed(1) + '% de Ingresos';
+        document.getElementById('b4-pct-gast').innerText = pctGast.toFixed(1) + '% de Ingresos';
+        document.getElementById('b4-pct-util').innerText = pctUtil.toFixed(1) + '% Margen Neto';
+
+        // Actualizar Barra Proporcional
+        let elBarCost = document.getElementById('b4-bar-cost');
+        let elBarGast = document.getElementById('b4-bar-gast');
+        let elBarUtil = document.getElementById('b4-bar-util');
+
+        let wCost = Math.max(pctCost, 0);
+        let wGast = Math.max(pctGast, 0);
+        let wUtil = Math.max(pctUtil, 0);
+
+        elBarCost.style.width = wCost.toFixed(1) + '%';
+        elBarCost.innerText = wCost > 8 ? `Costos (${wCost.toFixed(0)}%)` : '';
+
+        elBarGast.style.width = wGast.toFixed(1) + '%';
+        elBarGast.innerText = wGast > 8 ? `Gastos (${wGast.toFixed(0)}%)` : '';
+
+        elBarUtil.style.width = wUtil.toFixed(1) + '%';
+        elBarUtil.innerText = wUtil > 8 ? `Utilidad (${wUtil.toFixed(0)}%)` : '';
     }
 
     function cargarCasoExito() {
