@@ -85,6 +85,21 @@
         .btn-demo:hover { background-color: #4338ca; }
         .btn-clear { background-color: #be123c; color: white; box-shadow: 0 2px 5px rgba(190, 18, 60, 0.2); }
         .btn-clear:hover { background-color: #9f1239; }
+        
+        .btn-export {
+            background-color: #0284c7;
+            color: white;
+            box-shadow: 0 2px 5px rgba(2, 132, 199, 0.2);
+            margin-top: 10px;
+        }
+        .btn-export:hover { background-color: #0369a1; }
+
+        .export-bar {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+            margin-bottom: 25px;
+        }
 
         h2 { 
             margin: 30px 0 15px 0; 
@@ -99,7 +114,7 @@
         .table-responsive {
             width: 100%;
             overflow-x: auto;
-            margin-bottom: 25px;
+            margin-bottom: 10px;
         }
 
         table {
@@ -208,7 +223,6 @@
             font-weight: bold;
         }
 
-        /* ESTILOS DE BLOQUES 3 Y 4 */
         .chart-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -294,7 +308,6 @@
         .badge-down { background-color: #fee2e2; color: #b91c1c; }
         .badge-flat { background-color: #f1f5f9; color: #475569; }
 
-        /* BLOQUE 4 ESTILOS */
         .b4-container {
             background: #ffffff;
             border: 2px solid #0f172a;
@@ -408,7 +421,7 @@
     </header>
 
     <div class="control-panel">
-        <button class="btn-panel btn-demo" onclick="cargarCasoExito()">⚡ Cargar Caso de Prueba</button>
+        <button class="btn-panel btn-demo" onclick="cargarCasoExito()">⚡ Cargar Caso de Prueba Completo</button>
         <button class="btn-panel btn-clear" onclick="limpiarTodoFormulario()">🗑️ Limpiar Todo el Formulario</button>
     </div>
 
@@ -537,6 +550,9 @@
             </tbody>
         </table>
     </div>
+    <div class="export-bar">
+        <button class="btn-panel btn-export" onclick="exportarCSV('table-balance', 'Balance_General.csv')">📥 Descargar Balance General (CSV)</button>
+    </div>
 
     <!-- 2. ESTADO DE RESULTADOS INTEGRAL -->
     <h2>2. Estado de Resultados Integral</h2>
@@ -625,6 +641,9 @@
                 <tr class="grand-total"><td>UTILIDAD NETA FINAL</td><td style="text-align:right;" id="util-neta-c1">$0.00</td><td class="monthly-display" id="m-util-neta-c1">$0.00</td><td style="text-align:right;" id="util-neta-c2">$0.00</td><td class="monthly-display" id="m-util-neta-c2">$0.00</td><td style="text-align:right;" id="util-neta-c3">$0.00</td><td class="monthly-display" id="m-util-neta-c3">$0.00</td><td style="text-align:right;" id="util-neta-c4">$0.00</td><td class="monthly-display" id="m-util-neta-c4">$0.00</td></tr>
             </tbody>
         </table>
+    </div>
+    <div class="export-bar">
+        <button class="btn-panel btn-export" onclick="exportarCSV('table-resultados', 'Estado_Resultados.csv')">📥 Descargar Estado de Resultados (CSV)</button>
     </div>
 
     <!-- 3. ANÁLISIS DE TENDENCIAS HISTÓRICAS Y PROYECCIÓN COMERCIAL -->
@@ -733,7 +752,7 @@
         </table>
     </div>
 
-    <!-- 4. CALCULADORA OPERATIVA MENSUAL (NUEVO BLOQUE 4) -->
+    <!-- 4. CALCULADORA OPERATIVA MENSUAL -->
     <h2>4. Calculadora Operativa Mensual</h2>
     <div class="b4-container">
         <div class="b4-header">
@@ -769,7 +788,6 @@
             </div>
         </div>
 
-        <!-- Distribución del Ingreso Mensual -->
         <div style="font-size: 11px; font-weight:700; text-transform: uppercase; color: #64748b; margin-bottom: 5px;">
             Distribución del Ingreso Mensual
         </div>
@@ -864,6 +882,11 @@
             document.getElementById(`bar-${prefix}-c${idx+1}`).style.height = pct.toFixed(1) + '%';
             document.getElementById(`chart-val-${prefix}-c${idx+1}`).innerText = '$' + (v / 1000).toFixed(0) + 'k';
         });
+    }
+
+    function setFieldValue(selector, val) {
+        let el = document.querySelectorAll(selector)[0];
+        if (el) el.value = formatter.format(val);
     }
 
     function calc() {
@@ -1039,8 +1062,8 @@
         renderBarChart('vta', [vtasNetas[0], vtasNetas[1], vtaParcialAnual, vtasNetas[3]]);
         renderBarChart('uop', [utilOper[0], utilOper[1], uopParcialAnual, utilOper[3]]);
 
-        // --- 4. CÁLCULOS BLOQUE 4: CALCULADORA OPERATIVA MENSUAL ---
-        const selVal = document.getElementById('b4-ejercicio-select').value; // 'c1', 'c2', 'c3', 'c4'
+        // --- 4. CÁLCULOS BLOQUE 4 ---
+        const selVal = document.getElementById('b4-ejercicio-select').value;
         const selIdx = ['c1', 'c2', 'c3', 'c4'].indexOf(selVal);
         const divSel = divFactores[selIdx];
 
@@ -1062,7 +1085,6 @@
         document.getElementById('b4-pct-gast').innerText = pctGast.toFixed(1) + '% de Ingresos';
         document.getElementById('b4-pct-util').innerText = pctUtil.toFixed(1) + '% Margen Neto';
 
-        // Actualizar Barra Proporcional
         let elBarCost = document.getElementById('b4-bar-cost');
         let elBarGast = document.getElementById('b4-bar-gast');
         let elBarUtil = document.getElementById('b4-bar-util');
@@ -1082,62 +1104,403 @@
     }
 
     function cargarCasoExito() {
-        document.getElementById('comp-name').value = "Grupo Comercial San José S.A. de C.V.";
+        document.getElementById('comp-name').value = "Corporación Industrial del Norte S.A.B. de C.V.";
         document.getElementById('bg-num-meses').value = "1";
 
-        // Cuentas Año 2 (c1)
-        document.querySelectorAll('.act-bancos.c1')[0].value = formatter.format(450000);
-        document.querySelectorAll('.act-cli.c1')[0].value = formatter.format(280000);
-        document.querySelectorAll('.act-inv.c1')[0].value = formatter.format(350000);
-        document.querySelectorAll('.act-edif.c1')[0].value = formatter.format(1500000);
-        document.querySelectorAll('.pas-prov.c1')[0].value = formatter.format(220000);
-        document.querySelectorAll('.pas-pblp.c1')[0].value = formatter.format(800000);
-        document.querySelectorAll('.cap-soc.c1')[0].value = formatter.format(1200000);
-        document.querySelectorAll('.er-vta.c1')[0].value = formatter.format(4800000);
-        document.querySelectorAll('.er-costvta.c1')[0].value = formatter.format(2600000);
-        document.querySelectorAll('.er-sueldadm.c1')[0].value = formatter.format(520000);
-        document.querySelectorAll('.er-sueldvta.c1')[0].value = formatter.format(410000);
+        // --- BALANCE GENERAL - AÑO 2 (c1) ---
+        setFieldValue('.act-caja.c1', 85000);
+        setFieldValue('.act-bancos.c1', 1450000);
+        setFieldValue('.act-invtemp.c1', 500000);
+        setFieldValue('.act-cli.c1', 2300000);
+        setFieldValue('.act-estinc.c1', 45000);
+        setFieldValue('.act-dxc.c1', 320000);
+        setFieldValue('.act-deud.c1', 110000);
+        setFieldValue('.act-iva.c1', 185000);
+        setFieldValue('.act-impfav.c1', 95000);
+        setFieldValue('.act-inv.c1', 3400000);
+        setFieldValue('.act-antprov.c1', 250000);
+        setFieldValue('.act-pagant.c1', 120000);
+        setFieldValue('.act-otrcirc.c1', 40000);
 
-        // Cuentas Año 1 (c2)
-        document.querySelectorAll('.act-bancos.c2')[0].value = formatter.format(520000);
-        document.querySelectorAll('.act-cli.c2')[0].value = formatter.format(310000);
-        document.querySelectorAll('.act-inv.c2')[0].value = formatter.format(390000);
-        document.querySelectorAll('.act-edif.c2')[0].value = formatter.format(1500000);
-        document.querySelectorAll('.pas-prov.c2')[0].value = formatter.format(250000);
-        document.querySelectorAll('.pas-pblp.c2')[0].value = formatter.format(700000);
-        document.querySelectorAll('.cap-soc.c2')[0].value = formatter.format(1200000);
-        document.querySelectorAll('.er-vta.c2')[0].value = formatter.format(5400000);
-        document.querySelectorAll('.er-costvta.c2')[0].value = formatter.format(2900000);
-        document.querySelectorAll('.er-sueldadm.c2')[0].value = formatter.format(580000);
-        document.querySelectorAll('.er-sueldvta.c2')[0].value = formatter.format(460000);
+        setFieldValue('.act-terr.c1', 2500000);
+        setFieldValue('.act-edif.c1', 6800000);
+        setFieldValue('.act-depedif.c1', 1360000);
+        setFieldValue('.act-maq.c1', 4200000);
+        setFieldValue('.act-depmaq.c1', 1260000);
+        setFieldValue('.act-trans.c1', 1800000);
+        setFieldValue('.act-deptrans.c1', 720000);
+        setFieldValue('.act-mob.c1', 650000);
+        setFieldValue('.act-depmob.c1', 260000);
+        setFieldValue('.act-comp.c1', 480000);
+        setFieldValue('.act-depcomp.c1', 280000);
+        setFieldValue('.act-intang.c1', 350000);
+        setFieldValue('.act-amort.c1', 70000);
+        setFieldValue('.act-depgar.c1', 150000);
+        setFieldValue('.act-otrnocirc.c1', 80000);
 
-        // Parcial c3 (1 mes)
-        document.querySelectorAll('.act-caja.c3')[0].value = formatter.format(50000);
-        document.querySelectorAll('.act-bancos.c3')[0].value = formatter.format(480000);
-        document.querySelectorAll('.act-cli.c3')[0].value = formatter.format(330000);
-        document.querySelectorAll('.act-inv.c3')[0].value = formatter.format(410000);
-        document.querySelectorAll('.act-edif.c3')[0].value = formatter.format(1500000);
-        document.querySelectorAll('.pas-prov.c3')[0].value = formatter.format(210000);
-        document.querySelectorAll('.pas-pblp.c3')[0].value = formatter.format(650000);
-        document.querySelectorAll('.cap-soc.c3')[0].value = formatter.format(1200000);
-        document.querySelectorAll('.er-vta.c3')[0].value = formatter.format(500000);
-        document.querySelectorAll('.er-costvta.c3')[0].value = formatter.format(260000);
-        document.querySelectorAll('.er-sueldadm.c3')[0].value = formatter.format(50000);
-        document.querySelectorAll('.er-sueldvta.c3')[0].value = formatter.format(40000);
+        setFieldValue('.pas-prov.c1', 1850000);
+        setFieldValue('.pas-dxp.c1', 420000);
+        setFieldValue('.pas-acred.c1', 310000);
+        setFieldValue('.pas-pbanc.c1', 950000);
+        setFieldValue('.pas-antcli.c1', 180000);
+        setFieldValue('.pas-imppag.c1', 240000);
+        setFieldValue('.pas-nompag.c1', 160000);
+        setFieldValue('.pas-divpag.c1', 200000);
+        setFieldValue('.pas-otrcirc.c1', 50000);
 
-        // Proyección Manual c4
-        document.querySelectorAll('.act-caja.c4')[0].value = formatter.format(600000);
-        document.querySelectorAll('.act-bancos.c4')[0].value = formatter.format(5760000);
-        document.querySelectorAll('.act-cli.c4')[0].value = formatter.format(3960000);
-        document.querySelectorAll('.act-inv.c4')[0].value = formatter.format(4920000);
-        document.querySelectorAll('.act-edif.c4')[0].value = formatter.format(1500000);
-        document.querySelectorAll('.pas-prov.c4')[0].value = formatter.format(2520000);
-        document.querySelectorAll('.pas-pblp.c4')[0].value = formatter.format(650000);
-        document.querySelectorAll('.cap-soc.c4')[0].value = formatter.format(1200000);
-        document.querySelectorAll('.er-vta.c4')[0].value = formatter.format(6200000);
-        document.querySelectorAll('.er-costvta.c4')[0].value = formatter.format(3120000);
-        document.querySelectorAll('.er-sueldadm.c4')[0].value = formatter.format(600000);
-        document.querySelectorAll('.er-sueldvta.c4')[0].value = formatter.format(480000);
+        setFieldValue('.pas-pblp.c1', 3800000);
+        setFieldValue('.pas-hip.c1', 2100000);
+        setFieldValue('.pas-arr.c1', 640000);
+        setFieldValue('.pas-impdif.c1', 280000);
+        setFieldValue('.pas-otrnocirc.c1', 120000);
+
+        setFieldValue('.cap-soc.c1', 5000000);
+        setFieldValue('.cap-prim.c1', 300000);
+        setFieldValue('.cap-aport.c1', 500000);
+        setFieldValue('.cap-otrcontrib.c1', 100000);
+        setFieldValue('.cap-utret.c1', 5200000);
+        setFieldValue('.cap-peracum.c1', 0);
+        setFieldValue('.cap-resleg.c1', 450000);
+        setFieldValue('.cap-otrgan.c1', 150000);
+
+        // --- ESTADO DE RESULTADOS - AÑO 2 (c1) ---
+        setFieldValue('.er-vta.c1', 24500000);
+        setFieldValue('.er-vdesc.c1', 350000);
+        setFieldValue('.er-otring.c1', 180000);
+        setFieldValue('.er-costvta.c1', 13800000);
+        setFieldValue('.er-compras.c1', 1200000);
+        setFieldValue('.er-fltcomp.c1', 240000);
+        setFieldValue('.er-mod.c1', 1850000);
+        setFieldValue('.er-otrcost.c1', 310000);
+
+        setFieldValue('.er-sueldadm.c1', 1800000);
+        setFieldValue('.er-rentofic.c1', 360000);
+        setFieldValue('.er-servpub.c1', 180000);
+        setFieldValue('.er-manten.c1', 140000);
+        setFieldValue('.er-depamort.c1', 420000);
+        setFieldValue('.er-honor.c1', 220000);
+        setFieldValue('.er-seglic.c1', 110000);
+        setFieldValue('.er-papel.c1', 45000);
+        setFieldValue('.er-otradm.c1', 65000);
+
+        setFieldValue('.er-comvta.c1', 620000);
+        setFieldValue('.er-pubmkt.c1', 580000);
+        setFieldValue('.er-fltenv.c1', 310000);
+        setFieldValue('.er-sueldvta.c1', 1250000);
+        setFieldValue('.er-empac.c1', 140000);
+        setFieldValue('.er-viat.c1', 180000);
+        setFieldValue('.er-otrvta.c1', 75000);
+
+        setFieldValue('.er-intgan.c1', 65000);
+        setFieldValue('.er-intpag.c1', 480000);
+        setFieldValue('.er-combanc.c1', 55000);
+        setFieldValue('.er-utilcamb.c1', 35000);
+        setFieldValue('.er-otrfin.c1', -15000);
+
+        setFieldValue('.er-vtaact.c1', 80000);
+        setFieldValue('.er-subsid.c1', 0);
+        setFieldValue('.er-otrnooper.c1', 25000);
+
+        setFieldValue('.er-isrcorr.c1', 720000);
+        setFieldValue('.er-isrdif.c1', 85000);
+        setFieldValue('.er-otrimp.c1', 0);
+
+
+        // --- BALANCE GENERAL - AÑO 1 (c2) ---
+        setFieldValue('.act-caja.c2', 110000);
+        setFieldValue('.act-bancos.c2', 1820000);
+        setFieldValue('.act-invtemp.c2', 750000);
+        setFieldValue('.act-cli.c2', 2850000);
+        setFieldValue('.act-estinc.c2', 55000);
+        setFieldValue('.act-dxc.c2', 280000);
+        setFieldValue('.act-deud.c2', 95000);
+        setFieldValue('.act-iva.c2', 210000);
+        setFieldValue('.act-impfav.c2', 110000);
+        setFieldValue('.act-inv.c2', 3950000);
+        setFieldValue('.act-antprov.c2', 310000);
+        setFieldValue('.act-pagant.c2', 145000);
+        setFieldValue('.act-otrcirc.c2', 55000);
+
+        setFieldValue('.act-terr.c2', 2500000);
+        setFieldValue('.act-edif.c2', 6800000);
+        setFieldValue('.act-depedif.c2', 1530000);
+        setFieldValue('.act-maq.c2', 4900000);
+        setFieldValue('.act-depdepmaq.c2', 1620000);
+        setFieldValue('.act-trans.c2', 2200000);
+        setFieldValue('.act-deptrans.c2', 1040000);
+        setFieldValue('.act-mob.c2', 720000);
+        setFieldValue('.act-depmob.c2', 330000);
+        setFieldValue('.act-comp.c2', 590000);
+        setFieldValue('.act-depcomp.c2', 380000);
+        setFieldValue('.act-intang.c2', 350000);
+        setFieldValue('.act-amort.c2', 105000);
+        setFieldValue('.act-depgar.c2', 150000);
+        setFieldValue('.act-otrnocirc.c2', 95000);
+
+        setFieldValue('.pas-prov.c2', 2150000);
+        setFieldValue('.pas-dxp.c2', 380000);
+        setFieldValue('.pas-acred.c2', 290000);
+        setFieldValue('.pas-pbanc.c2', 820000);
+        setFieldValue('.pas-antcli.c2', 210000);
+        setFieldValue('.pas-imppag.c2', 290000);
+        setFieldValue('.pas-nompag.c2', 185000);
+        setFieldValue('.pas-divpag.c2', 250000);
+        setFieldValue('.pas-otrcirc.c2', 65000);
+
+        setFieldValue('.pas-pblp.c2', 3200000);
+        setFieldValue('.pas-hip.c2', 1950000);
+        setFieldValue('.pas-arr.c2', 510000);
+        setFieldValue('.pas-impdif.c2', 310000);
+        setFieldValue('.pas-otrnocirc.c2', 110000);
+
+        setFieldValue('.cap-soc.c2', 5000000);
+        setFieldValue('.cap-prim.c2', 300000);
+        setFieldValue('.cap-aport.c2', 500000);
+        setFieldValue('.cap-otrcontrib.c2', 100000);
+        setFieldValue('.cap-utret.c2', 6845000);
+        setFieldValue('.cap-peracum.c2', 0);
+        setFieldValue('.cap-resleg.c2', 535000);
+        setFieldValue('.cap-otrgan.c2', 180000);
+
+        // --- ESTADO DE RESULTADOS - AÑO 1 (c2) ---
+        setFieldValue('.er-vta.c2', 28900000);
+        setFieldValue('.er-vdesc.c2', 410000);
+        setFieldValue('.er-otring.c2', 210000);
+        setFieldValue('.er-costvta.c2', 16100000);
+        setFieldValue('.er-compras.c2', 1450000);
+        setFieldValue('.er-fltcomp.c2', 280000);
+        setFieldValue('.er-mod.c2', 2100000);
+        setFieldValue('.er-otrcost.c2', 360000);
+
+        setFieldValue('.er-sueldadm.c2', 2050000);
+        setFieldValue('.er-rentofic.c2', 380000);
+        setFieldValue('.er-servpub.c2', 205000);
+        setFieldValue('.er-manten.c2', 165000);
+        setFieldValue('.er-depamort.c2', 480000);
+        setFieldValue('.er-honor.c2', 250000);
+        setFieldValue('.er-seglic.c2', 125000);
+        setFieldValue('.er-papel.c2', 52000);
+        setFieldValue('.er-otradm.c2', 78000);
+
+        setFieldValue('.er-comvta.c2', 740000);
+        setFieldValue('.er-pubmkt.c2', 690000);
+        setFieldValue('.er-fltenv.c2', 365000);
+        setFieldValue('.er-sueldvta.c2', 1420000);
+        setFieldValue('.er-empac.c2', 165000);
+        setFieldValue('.er-viat.c2', 210000);
+        setFieldValue('.er-otrvta.c2', 88000);
+
+        setFieldValue('.er-intgan.c2', 82000);
+        setFieldValue('.er-intpag.c2', 420000);
+        setFieldValue('.er-combanc.c2', 62000);
+        setFieldValue('.er-utilcamb.c2', 48000);
+        setFieldValue('.er-otrfin.c2', -10000);
+
+        setFieldValue('.er-vtaact.c2', 0);
+        setFieldValue('.er-subsid.c2', 50000);
+        setFieldValue('.er-otrnooper.c2', 18000);
+
+        setFieldValue('.er-isrcorr.c2', 890000);
+        setFieldValue('.er-isrdif.c2', 105000);
+        setFieldValue('.er-otrimp.c2', 0);
+
+
+        // --- PARCIAL ACTUAL (c3 - 1 Mes) ---
+        setFieldValue('.act-caja.c3', 125000);
+        setFieldValue('.act-bancos.c3', 1950000);
+        setFieldValue('.act-invtemp.c3', 800000);
+        setFieldValue('.act-cli.c3', 2980000);
+        setFieldValue('.act-estinc.c3', 58000);
+        setFieldValue('.act-dxc.c3', 260000);
+        setFieldValue('.act-deud.c3', 88000);
+        setFieldValue('.act-iva.c3', 225000);
+        setFieldValue('.act-impfav.c3', 110000);
+        setFieldValue('.act-inv.c3', 4100000);
+        setFieldValue('.act-antprov.c3', 340000);
+        setFieldValue('.act-pagant.c3', 160000);
+        setFieldValue('.act-otrcirc.c3', 60000);
+
+        setFieldValue('.act-terr.c3', 2500000);
+        setFieldValue('.act-edif.c3', 6800000);
+        setFieldValue('.act-depedif.c3', 1544200);
+        setFieldValue('.act-maq.c3', 4900000);
+        setFieldValue('.act-depmaq.c3', 1650000);
+        setFieldValue('.act-trans.c3', 2200000);
+        setFieldValue('.act-deptrans.c3', 1066000);
+        setFieldValue('.act-mob.c3', 720000);
+        setFieldValue('.act-depmob.c3', 336000);
+        setFieldValue('.act-comp.c3', 590000);
+        setFieldValue('.act-depcomp.c3', 388000);
+        setFieldValue('.act-intang.c3', 350000);
+        setFieldValue('.act-amort.c3', 108000);
+        setFieldValue('.act-depgar.c3', 150000);
+        setFieldValue('.act-otrnocirc.c3', 95000);
+
+        setFieldValue('.pas-prov.c3', 2240000);
+        setFieldValue('.pas-dxp.c3', 360000);
+        setFieldValue('.pas-acred.c3', 280000);
+        setFieldValue('.pas-pbanc.c3', 800000);
+        setFieldValue('.pas-antcli.c3', 220000);
+        setFieldValue('.pas-imppag.c3', 310000);
+        setFieldValue('.pas-nompag.c3', 190000);
+        setFieldValue('.pas-divpag.c3', 0);
+        setFieldValue('.pas-otrcirc.c3', 70000);
+
+        setFieldValue('.pas-pblp.c3', 3150000);
+        setFieldValue('.pas-hip.c3', 1930000);
+        setFieldValue('.pas-arr.c3', 500000);
+        setFieldValue('.pas-impdif.c3', 310000);
+        setFieldValue('.pas-otrnocirc.c3', 105000);
+
+        setFieldValue('.cap-soc.c3', 5000000);
+        setFieldValue('.cap-prim.c3', 300000);
+        setFieldValue('.cap-aport.c3', 500000);
+        setFieldValue('.cap-otrcontrib.c3', 100000);
+        setFieldValue('.cap-utret.c3', 8530000);
+        setFieldValue('.cap-peracum.c3', 0);
+        setFieldValue('.cap-resleg.c3', 620000);
+        setFieldValue('.cap-otrgan.c3', 180000);
+
+        // --- ESTADO DE RESULTADOS - PARCIAL 1m (c3) ---
+        setFieldValue('.er-vta.c3', 2650000);
+        setFieldValue('.er-vdesc.c3', 38000);
+        setFieldValue('.er-otring.c3', 19000);
+        setFieldValue('.er-costvta.c3', 1480000);
+        setFieldValue('.er-compras.c3', 130000);
+        setFieldValue('.er-fltcomp.c3', 25000);
+        setFieldValue('.er-mod.c3', 195000);
+        setFieldValue('.er-otrcost.c3', 32000);
+
+        setFieldValue('.er-sueldadm.c3', 185000);
+        setFieldValue('.er-rentofic.c3', 33000);
+        setFieldValue('.er-servpub.c3', 18000);
+        setFieldValue('.er-manten.c3', 15000);
+        setFieldValue('.er-depamort.c3', 44000);
+        setFieldValue('.er-honor.c3', 22000);
+        setFieldValue('.er-seglic.c3', 11000);
+        setFieldValue('.er-papel.c3', 4500);
+        setFieldValue('.er-otradm.c3', 7000);
+
+        setFieldValue('.er-comvta.c3', 68000);
+        setFieldValue('.er-pubmkt.c3', 62000);
+        setFieldValue('.er-fltenv.c3', 33000);
+        setFieldValue('.er-sueldvta.c3', 128000);
+        setFieldValue('.er-empac.c3', 15000);
+        setFieldValue('.er-viat.c3', 19000);
+        setFieldValue('.er-otrvta.c3', 8000);
+
+        setFieldValue('.er-intgan.c3', 7500);
+        setFieldValue('.er-intpag.c3', 34000);
+        setFieldValue('.er-combanc.c3', 5500);
+        setFieldValue('.er-utilcamb.c3', 3000);
+        setFieldValue('.er-otrfin.c3', 0);
+
+        setFieldValue('.er-vtaact.c3', 0);
+        setFieldValue('.er-subsid.c3', 0);
+        setFieldValue('.er-otrnooper.c3', 2000);
+
+        setFieldValue('.er-isrcorr.c3', 82000);
+        setFieldValue('.er-isrdif.c3', 9000);
+        setFieldValue('.er-otrimp.c3', 0);
+
+
+        // --- PROYECCIÓN AÑO 1 (c4) ---
+        setFieldValue('.act-caja.c4', 150000);
+        setFieldValue('.act-bancos.c4', 2400000);
+        setFieldValue('.act-invtemp.c4', 1000000);
+        setFieldValue('.act-cli.c4', 3300000);
+        setFieldValue('.act-estinc.c4', 60000);
+        setFieldValue('.act-dxc.c4', 300000);
+        setFieldValue('.act-deud.c4', 100000);
+        setFieldValue('.act-iva.c4', 250000);
+        setFieldValue('.act-impfav.c4', 120000);
+        setFieldValue('.act-inv.c4', 4500000);
+        setFieldValue('.act-antprov.c4', 380000);
+        setFieldValue('.act-pagant.c4', 180000);
+        setFieldValue('.act-otrcirc.c4', 70000);
+
+        setFieldValue('.act-terr.c4', 2500000);
+        setFieldValue('.act-edif.c4', 6800000);
+        setFieldValue('.act-depedif.c4', 1700000);
+        setFieldValue('.act-maq.c4', 5500000);
+        setFieldValue('.act-depmaq.c4', 2050000);
+        setFieldValue('.act-trans.c4', 2500000);
+        setFieldValue('.act-deptrans.c4', 1400000);
+        setFieldValue('.act-mob.c4', 800000);
+        setFieldValue('.act-depmob.c4', 400000);
+        setFieldValue('.act-comp.c4', 700000);
+        setFieldValue('.act-depcomp.c4', 500000);
+        setFieldValue('.act-intang.c4', 350000);
+        setFieldValue('.act-amort.c4', 140000);
+        setFieldValue('.act-depgar.c4', 150000);
+        setFieldValue('.act-otrnocirc.c4', 100000);
+
+        setFieldValue('.pas-prov.c4', 2400000);
+        setFieldValue('.pas-dxp.c4', 350000);
+        setFieldValue('.pas-acred.c4', 300000);
+        setFieldValue('.pas-pbanc.c4', 750000);
+        setFieldValue('.pas-antcli.c4', 250000);
+        setFieldValue('.pas-imppag.c4', 350000);
+        setFieldValue('.pas-nompag.c4', 210000);
+        setFieldValue('.pas-divpag.c4', 300000);
+        setFieldValue('.pas-otrcirc.c4', 80000);
+
+        setFieldValue('.pas-pblp.c4', 2800000);
+        setFieldValue('.pas-hip.c4', 1800000);
+        setFieldValue('.pas-arr.c4', 400000);
+        setFieldValue('.pas-impdif.c4', 350000);
+        setFieldValue('.pas-otrnocirc.c4', 100000);
+
+        setFieldValue('.cap-soc.c4', 5000000);
+        setFieldValue('.cap-prim.c4', 300000);
+        setFieldValue('.cap-aport.c4', 500000);
+        setFieldValue('.cap-otrcontrib.c4', 100000);
+        setFieldValue('.cap-utret.c4', 8530000);
+        setFieldValue('.cap-peracum.c4', 0);
+        setFieldValue('.cap-resleg.c4', 720000);
+        setFieldValue('.cap-otrgan.c4', 200000);
+
+        // --- ESTADO DE RESULTADOS - PROYECCIÓN AÑO 1 (c4) ---
+        setFieldValue('.er-vta.c4', 32500000);
+        setFieldValue('.er-vdesc.c4', 450000);
+        setFieldValue('.er-otring.c4', 240000);
+        setFieldValue('.er-costvta.c4', 17900000);
+        setFieldValue('.er-compras.c4', 1600000);
+        setFieldValue('.er-fltcomp.c4', 310000);
+        setFieldValue('.er-mod.c4', 2350000);
+        setFieldValue('.er-otrcost.c4', 390000);
+
+        setFieldValue('.er-sueldadm.c4', 2250000);
+        setFieldValue('.er-rentofic.c4', 400000);
+        setFieldValue('.er-servpub.c4', 225000);
+        setFieldValue('.er-manten.c4', 185000);
+        setFieldValue('.er-depamort.c4', 530000);
+        setFieldValue('.er-honor.c4', 270000);
+        setFieldValue('.er-seglic.c4', 135000);
+        setFieldValue('.er-papel.c4', 58000);
+        setFieldValue('.er-otradm.c4', 85000);
+
+        setFieldValue('.er-comvta.c4', 830000);
+        setFieldValue('.er-pubmkt.c4', 760000);
+        setFieldValue('.er-fltenv.c4', 410000);
+        setFieldValue('.er-sueldvta.c4', 1580000);
+        setFieldValue('.er-empac.c4', 185000);
+        setFieldValue('.er-viat.c4', 230000);
+        setFieldValue('.er-otrvta.c4', 95000);
+
+        setFieldValue('.er-intgan.c4', 95000);
+        setFieldValue('.er-intpag.c4', 380000);
+        setFieldValue('.er-combanc.c4', 68000);
+        setFieldValue('.er-utilcamb.c4', 50000);
+        setFieldValue('.er-otrfin.c4', 0);
+
+        setFieldValue('.er-vtaact.c4', 0);
+        setFieldValue('.er-subsid.c4', 0);
+        setFieldValue('.er-otrnooper.c4', 20000);
+
+        setFieldValue('.er-isrcorr.c4', 1020000);
+        setFieldValue('.er-isrdif.c4', 115000);
+        setFieldValue('.er-otrimp.c4', 0);
 
         calc();
     }
@@ -1147,6 +1510,57 @@
         inputs.forEach(i => i.value = formatter.format(0));
         document.getElementById('comp-name').value = "NOMBRE O RAZON SOCIAL";
         calc();
+    }
+
+    function exportarCSV(tableId, filename) {
+        const table = document.getElementById(tableId);
+        if (!table) return;
+
+        let csv = [];
+        const rows = table.querySelectorAll('tr');
+
+        rows.forEach(row => {
+            let rowData = [];
+            const cols = row.querySelectorAll('th, td');
+
+            cols.forEach(col => {
+                let text = '';
+                const input = col.querySelector('input');
+                const select = col.querySelector('select');
+
+                if (input) {
+                    text = input.value;
+                } else if (select) {
+                    text = select.options[select.selectedIndex].text;
+                } else {
+                    text = col.innerText;
+                }
+
+                // Limpieza para formato CSV
+                text = text.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
+                text = '"' + text.replace(/"/g, '""') + '"';
+                
+                rowData.push(text);
+            });
+
+            if (rowData.length > 0) {
+                csv.push(rowData.join(','));
+            }
+        });
+
+        const csvString = '\uFEFF' + csv.join('\n'); // BOM para UTF-8 en Excel
+        const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        
+        if (navigator.msSaveBlob) {
+            navigator.msSaveBlob(blob, filename);
+        } else {
+            link.href = URL.createObjectURL(blob);
+            link.setAttribute('download', filename);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
     }
 
     window.onload = function() {
