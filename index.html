@@ -1225,7 +1225,7 @@
         setFieldValue('.act-edif.c2', 6800000);
         setFieldValue('.act-depedif.c2', 1530000);
         setFieldValue('.act-maq.c2', 4900000);
-        setFieldValue('.act-depdepmaq.c2', 1620000);
+        setFieldValue('.act-depmaq.c2', 1620000);
         setFieldValue('.act-trans.c2', 2200000);
         setFieldValue('.act-deptrans.c2', 1040000);
         setFieldValue('.act-mob.c2', 720000);
@@ -1536,7 +1536,6 @@
                     text = col.innerText;
                 }
 
-                // Limpieza para formato CSV
                 text = text.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
                 text = '"' + text.replace(/"/g, '""') + '"';
                 
@@ -1548,7 +1547,7 @@
             }
         });
 
-        const csvString = '\uFEFF' + csv.join('\n'); // BOM para UTF-8 en Excel
+        const csvString = '\uFEFF' + csv.join('\n');
         const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
         const link = document.createElement('a');
         
