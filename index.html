@@ -6,24 +6,29 @@
     <title>Plataforma Financiera Corporativa de 4 Columnas</title>
     <style>
         :root {
-            /* Paleta Institucional (Inspirada en el dashboard) */
+            /* Paleta Institucional */
             --primary-guinda: #800836;
             --primary-guinda-light: #fbebf1;
-            --text-title: #b86235;
+            
+            /* INVERSIÓN SOLICITADA: Naranja como color principal de acento/títulos, Rosa/Guinda claro como secundario */
+            --accent-orange: #b86235;
+            --accent-orange-bg: #fff5eb;
+            --accent-pink: #f9a8d4;
+            --accent-pink-bg: #fdf2f6;
+
+            --text-title: var(--accent-orange);
             --text-main: #4a5568;
             --bg-page: #f4f5f7;
             --bg-card: #ffffff;
             --border-color: #e2e8f0;
 
-            /* Semáforos y Acentos */
+            /* Semáforos */
             --accent-green: #10b981;
             --accent-green-bg: #d1fae5;
             --accent-red: #ef4444;
             --accent-red-bg: #fee2e2;
             --accent-amber: #f59e0b;
             --accent-amber-bg: #fef3c7;
-            --accent-blue: #3b82f6;
-            --accent-blue-bg: #dbeafe;
         }
 
         body {
@@ -35,7 +40,7 @@
         }
 
         .main-container {
-            max-width: 1700px;
+            max-width: 1850px;
             margin: 0 auto;
             background: var(--bg-card);
             padding: 32px;
@@ -54,11 +59,11 @@
             font-weight: 800;
             text-transform: uppercase;
             text-align: center;
-            border: 1px dashed var(--text-title);
+            border: 1px dashed var(--accent-orange);
             width: 50%;
             padding: 8px 12px;
-            color: var(--text-title);
-            background: #fffdfa;
+            color: var(--accent-orange);
+            background: var(--accent-orange-bg);
             border-radius: 8px;
             margin-bottom: 8px;
             letter-spacing: 0.5px;
@@ -96,7 +101,7 @@
         .btn-clear:hover { background-color: #4a5568; }
 
         .btn-export {
-            background-color: var(--text-title);
+            background-color: var(--accent-orange);
             color: white;
             box-shadow: 0 2px 5px rgba(184, 98, 53, 0.2);
             margin-top: 10px;
@@ -130,11 +135,11 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 11.5px;
+            font-size: 11px;
         }
 
         th, td {
-            padding: 8px 10px;
+            padding: 6px 8px;
             border: 1px solid var(--border-color);
             text-align: left;
         }
@@ -144,7 +149,7 @@
             color: #4a5568;
             font-weight: 700;
             text-align: center;
-            font-size: 11px;
+            font-size: 10.5px;
             text-transform: uppercase;
             border-bottom: 2px solid var(--border-color);
         }
@@ -154,12 +159,11 @@
             background-color: var(--primary-guinda-light);
             color: var(--primary-guinda);
             text-transform: uppercase;
-            font-size: 11px;
+            font-size: 10.5px;
             letter-spacing: 0.5px;
         }
 
         .account-name { 
-            width: 36%; 
             color: #2d3748; 
             font-weight: 600;
         }
@@ -173,29 +177,41 @@
             width: 100%;
             border: 1px solid var(--border-color);
             text-align: right;
-            padding: 4px 6px;
+            padding: 4px 5px;
             background: #fff;
             box-sizing: border-box;
             font-family: 'Courier New', Courier, monospace;
             font-weight: 700;
-            font-size: 11.5px;
+            font-size: 11px;
             border-radius: 4px;
             color: #2d3748;
         }
 
         input[type="text"].money-input:focus {
-            border: 1px solid var(--primary-guinda);
+            border: 1px solid var(--accent-orange);
             outline: none;
             background: #fff;
-            box-shadow: 0 0 0 2px rgba(128, 8, 54, 0.1);
+            box-shadow: 0 0 0 2px rgba(184, 98, 53, 0.15);
         }
 
+        /* INVERSIÓN: Estilo del campo proyectado a Naranja */
         .input-proj {
-            background: #fdf2f6 !important;
-            border: 1px solid #f9a8d4 !important;
+            background: var(--accent-orange-bg) !important;
+            border: 1px solid #fbd5b5 !important;
         }
 
-        .col-money { width: 16%; }
+        .col-money-sm {
+            width: 9%;
+        }
+
+        .div-val {
+            text-align: right;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 700;
+            color: var(--accent-orange);
+            background-color: #fffaf5;
+            font-size: 10.5px;
+        }
 
         .total-row {
             font-weight: 700;
@@ -215,13 +231,12 @@
             background: #ffffff;
             color: var(--primary-guinda);
             padding: 2px 4px;
-            font-size: 10.5px;
+            font-size: 10px;
             border-radius: 4px;
             text-align: center;
             font-weight: bold;
         }
 
-        /* BLOQUE DE KPIS CREDITICIOS ESTILO DASHBOARD */
         .kpi-container {
             background: #ffffff;
             border: 1px solid var(--border-color);
@@ -336,7 +351,8 @@
             min-height: 2px;
         }
 
-        .bar-fill.proj { background: var(--text-title); }
+        /* INVERSIÓN: Barra proyectada en Naranja */
+        .bar-fill.proj { background: var(--accent-orange); }
 
         .bar-label {
             font-size: 10px;
@@ -379,29 +395,25 @@
         <table id="table-balance">
             <thead>
                 <tr>
-                    <th style="width: 36%;">Estructura Financiera</th>
-                    <th class="col-money">
+                    <th style="width: 32%;">Estructura Financiera</th>
+                    <th style="width: 17%;">
                         1. Año 2<br>
                         <span style="font-weight: normal; font-size: 9px;">Al 31 de Diciembre de </span>
                         <input type="text" class="meta-header-input" id="bg-anio-2" value="2024" style="width: 45px;">
                     </th>
-                    <th class="col-money">
+                    <th style="width: 17%;">
                         2. Año 1 (Anterior)<br>
                         <span style="font-weight: normal; font-size: 9px;">Al 31 de Diciembre de </span>
                         <input type="text" class="meta-header-input" id="bg-anio-1" value="2025" style="width: 45px;">
                     </th>
-                    <th class="col-money">
+                    <th style="width: 17%;">
                         3. Parcial (Actual)<br>
                         <span style="font-weight: normal; font-size: 9px;">Al </span>
                         <input type="text" class="meta-header-input" id="bg-dia-act" value="31" style="width: 22px;"> de 
                         <input type="text" class="meta-header-input" id="bg-mes-act" value="Ene" style="width: 45px;"> 
                         <input type="text" class="meta-header-input" id="bg-anio-act" value="2026" style="width: 45px;">
-                        <span style="font-weight: normal; font-size: 9px;">(
-                        <select id="bg-num-meses" onchange="calc()" style="font-size: 9.5px;">
-                            <option value="1" selected>1m</option><option value="2">2m</option><option value="3">3m</option><option value="4">4m</option><option value="5">5m</option><option value="6">6m</option><option value="7">7m</option><option value="8">8m</option><option value="9">9m</option><option value="10">10m</option><option value="11">11m</option><option value="12">12m</option>
-                        </select>)</span>
                     </th>
-                    <th class="col-money">4. Proyección año 1</th>
+                    <th style="width: 17%;">4. Proyección año 1</th>
                 </tr>
             </thead>
             <tbody>
@@ -477,7 +489,7 @@
                 <tr class="sub-category"><td colspan="5">CAPITAL GANADO</td></tr>
                 <tr><td class="account-name">Utilidades Retenidas</td><td><input type="text" class="money-input cap-utret c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input cap-utret c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input cap-utret c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj cap-utret c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
                 <tr><td class="account-name account-deduct">Pérdidas Acumuladas (-)</td><td><input type="text" class="money-input cap-peracum c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input cap-peracum c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input cap-peracum c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj cap-peracum c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr class="total-row" style="background:#fff5f8; color:var(--primary-guinda);">
+                <tr class="total-row" style="background:var(--accent-orange-bg); color:var(--accent-orange);">
                     <td>Utilidad o Pérdida del Ejercicio (Auto Estado de Res.)</td>
                     <td style="text-align:right; font-family:'Courier New';" id="cap-utejer-c1">$0.00</td>
                     <td style="text-align:right; font-family:'Courier New';" id="cap-utejer-c2">$0.00</td>
@@ -502,79 +514,358 @@
         <table id="table-resultados">
             <thead>
                 <tr>
-                    <th style="width: 36%;">Estructura Operativa y Financiera</th>
-                    <th class="col-money">1. Año 2</th>
-                    <th class="col-money">2. Año 1 (Anterior)</th>
-                    <th class="col-money">3. Parcial (Actual)</th>
-                    <th class="col-money">4. Proyección año 1</th>
+                    <th rowspan="2" style="width: 28%;">Estructura Operativa y Financiera</th>
+                    <th colspan="2" style="width: 18%;">1. Año 2</th>
+                    <th colspan="2" style="width: 18%;">2. Año 1 (Anterior)</th>
+                    <th colspan="2" style="width: 18%;">3. Parcial (Actual)</th>
+                    <th colspan="2" style="width: 18%;">4. Proyección año 1</th>
+                </tr>
+                <tr>
+                    <th class="col-money-sm">Monto</th>
+                    <th class="col-money-sm" style="font-size:9px; background-color:#fffaf5; color:var(--accent-orange);">/ 12</th>
+                    <th class="col-money-sm">Monto</th>
+                    <th class="col-money-sm" style="font-size:9px; background-color:#fffaf5; color:var(--accent-orange);">/ 12</th>
+                    <th class="col-money-sm">Monto</th>
+                    <th class="col-money-sm" style="font-size:9px; background-color:#fffaf5; color:var(--accent-orange);">
+                        / 
+                        <select id="er-num-meses-div" onchange="calc()" style="font-size:9px; font-weight:bold; color:var(--accent-orange); border:none; background:transparent;">
+                            <option value="1" selected>1m</option><option value="2">2m</option><option value="3">3m</option><option value="4">4m</option><option value="5">5m</option><option value="6">6m</option><option value="7">7m</option><option value="8">8m</option><option value="9">9m</option><option value="10">10m</option><option value="11">11m</option><option value="12">12m</option>
+                        </select>
+                    </th>
+                    <th class="col-money-sm">Monto</th>
+                    <th class="col-money-sm" style="font-size:9px; background-color:#fffaf5; color:var(--accent-orange);">/ 12</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- INGRESOS OPERATIVOS -->
-                <tr class="sub-category"><td colspan="5">INGRESOS OPERATIVOS</td></tr>
-                <tr><td class="account-name">Ventas / Ingresos</td><td><input type="text" class="money-input er-vta c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-vta c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-vta c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-vta c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name account-deduct">Descuentos y Devoluciones sobre Ventas (-)</td><td><input type="text" class="money-input er-vdesc c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-vdesc c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-vdesc c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-vdesc c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Otros Ingresos Operativos</td><td><input type="text" class="money-input er-otring c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-otring c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-otring c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-otring c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr class="total-row"><td>Total Ingresos Operativos Netos</td><td style="text-align:right;" id="tot-ing-c1">$0.00</td><td style="text-align:right;" id="tot-ing-c2">$0.00</td><td style="text-align:right;" id="tot-ing-c3">$0.00</td><td style="text-align:right;" id="tot-ing-c4">$0.00</td></tr>
+                <tr class="sub-category"><td colspan="9">INGRESOS OPERATIVOS</td></tr>
+                <tr>
+                    <td class="account-name">Ventas / Ingresos</td>
+                    <td><input type="text" class="money-input er-vta c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-vta-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-vta c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-vta-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-vta c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-vta-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-vta c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-vta-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name account-deduct">Descuentos y Devoluciones sobre Ventas (-)</td>
+                    <td><input type="text" class="money-input er-vdesc c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-vdesc-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-vdesc c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-vdesc-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-vdesc c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-vdesc-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-vdesc c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-vdesc-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Otros Ingresos Operativos</td>
+                    <td><input type="text" class="money-input er-otring c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otring-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-otring c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otring-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-otring c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otring-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-otring c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otring-c4">$0.00</td>
+                </tr>
+                <tr class="total-row">
+                    <td>Total Ingresos Operativos Netos</td>
+                    <td style="text-align:right;" id="tot-ing-c1">$0.00</td><td class="div-val" id="div-tot-ing-c1">$0.00</td>
+                    <td style="text-align:right;" id="tot-ing-c2">$0.00</td><td class="div-val" id="div-tot-ing-c2">$0.00</td>
+                    <td style="text-align:right;" id="tot-ing-c3">$0.00</td><td class="div-val" id="div-tot-ing-c3">$0.00</td>
+                    <td style="text-align:right;" id="tot-ing-c4">$0.00</td><td class="div-val" id="div-tot-ing-c4">$0.00</td>
+                </tr>
 
                 <!-- COSTOS OPERATIVOS -->
-                <tr class="sub-category"><td colspan="5">COSTOS OPERATIVOS</td></tr>
-                <tr><td class="account-name">Costo de Ventas</td><td><input type="text" class="money-input er-costvta c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-costvta c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-costvta c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-costvta c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Compras de Mercancías</td><td><input type="text" class="money-input er-compras c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-compras c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-compras c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-compras c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Fletes sobre Compras</td><td><input type="text" class="money-input er-fltcomp c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-fltcomp c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-fltcomp c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-fltcomp c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Mano de Obra Directa</td><td><input type="text" class="money-input er-mod c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-mod c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-mod c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-mod c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Otros Costos Operativos</td><td><input type="text" class="money-input er-otrcost c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-otrcost c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-otrcost c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-otrcost c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr class="total-row"><td>Total Costos Operativos</td><td style="text-align:right;" id="tot-costo-c1">$0.00</td><td style="text-align:right;" id="tot-costo-c2">$0.00</td><td style="text-align:right;" id="tot-costo-c3">$0.00</td><td style="text-align:right;" id="tot-costo-c4">$0.00</td></tr>
-                <tr class="total-row" style="background:#e2e8f0"><td>Utilidad Bruta</td><td style="text-align:right;" id="util-bruta-c1">$0.00</td><td style="text-align:right;" id="util-bruta-c2">$0.00</td><td style="text-align:right;" id="util-bruta-c3">$0.00</td><td style="text-align:right;" id="util-bruta-c4">$0.00</td></tr>
+                <tr class="sub-category"><td colspan="9">COSTOS OPERATIVOS</td></tr>
+                <tr>
+                    <td class="account-name">Costo de Ventas</td>
+                    <td><input type="text" class="money-input er-costvta c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-costvta-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-costvta c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-costvta-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-costvta c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-costvta-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-costvta c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-costvta-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Compras de Mercancías</td>
+                    <td><input type="text" class="money-input er-compras c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-compras-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-compras c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-compras-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-compras c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-compras-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-compras c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-compras-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Fletes sobre Compras</td>
+                    <td><input type="text" class="money-input er-fltcomp c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-fltcomp-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-fltcomp c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-fltcomp-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-fltcomp c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-fltcomp-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-fltcomp c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-fltcomp-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Mano de Obra Directa</td>
+                    <td><input type="text" class="money-input er-mod c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-mod-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-mod c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-mod-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-mod c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-mod-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-mod c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-mod-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Otros Costos Operativos</td>
+                    <td><input type="text" class="money-input er-otrcost c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otrcost-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-otrcost c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otrcost-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-otrcost c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otrcost-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-otrcost c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otrcost-c4">$0.00</td>
+                </tr>
+                <tr class="total-row">
+                    <td>Total Costos Operativos</td>
+                    <td style="text-align:right;" id="tot-costo-c1">$0.00</td><td class="div-val" id="div-tot-costo-c1">$0.00</td>
+                    <td style="text-align:right;" id="tot-costo-c2">$0.00</td><td class="div-val" id="div-tot-costo-c2">$0.00</td>
+                    <td style="text-align:right;" id="tot-costo-c3">$0.00</td><td class="div-val" id="div-tot-costo-c3">$0.00</td>
+                    <td style="text-align:right;" id="tot-costo-c4">$0.00</td><td class="div-val" id="div-tot-costo-c4">$0.00</td>
+                </tr>
+                <tr class="total-row" style="background:#e2e8f0">
+                    <td>Utilidad Bruta</td>
+                    <td style="text-align:right;" id="util-bruta-c1">$0.00</td><td class="div-val" id="div-util-bruta-c1">$0.00</td>
+                    <td style="text-align:right;" id="util-bruta-c2">$0.00</td><td class="div-val" id="div-util-bruta-c2">$0.00</td>
+                    <td style="text-align:right;" id="util-bruta-c3">$0.00</td><td class="div-val" id="div-util-bruta-c3">$0.00</td>
+                    <td style="text-align:right;" id="util-bruta-c4">$0.00</td><td class="div-val" id="div-util-bruta-c4">$0.00</td>
+                </tr>
 
                 <!-- GASTOS DE ADMINISTRACIÓN -->
-                <tr class="sub-category"><td colspan="5">GASTOS DE ADMINISTRACIÓN</td></tr>
-                <tr><td class="account-name">Sueldos de Administración</td><td><input type="text" class="money-input er-sueldadm c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-sueldadm c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-sueldadm c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-sueldadm c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Rentas de Oficina</td><td><input type="text" class="money-input er-rentofic c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-rentofic c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-rentofic c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-rentofic c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Servicios Públicos</td><td><input type="text" class="money-input er-servpub c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-servpub c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-servpub c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-servpub c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Mantenimiento</td><td><input type="text" class="money-input er-manten c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-manten c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-manten c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-manten c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Depreciaciones y Amortizaciones</td><td><input type="text" class="money-input er-depamort c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-depamort c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-depamort c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-depamort c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Honorarios Profesionales</td><td><input type="text" class="money-input er-honor c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-honor c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-honor c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-honor c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Seguros y Licencias</td><td><input type="text" class="money-input er-seglic c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-seglic c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-seglic c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-seglic c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Papelería y Útiles</td><td><input type="text" class="money-input er-papel c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-papel c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-papel c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-papel c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Otros Gastos de Administración</td><td><input type="text" class="money-input er-otradm c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-otradm c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-otradm c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-otradm c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr class="total-row"><td>Total Gastos de Administración</td><td style="text-align:right;" id="tot-gadm-c1">$0.00</td><td style="text-align:right;" id="tot-gadm-c2">$0.00</td><td style="text-align:right;" id="tot-gadm-c3">$0.00</td><td style="text-align:right;" id="tot-gadm-c4">$0.00</td></tr>
+                <tr class="sub-category"><td colspan="9">GASTOS DE ADMINISTRACIÓN</td></tr>
+                <tr>
+                    <td class="account-name">Sueldos de Administración</td>
+                    <td><input type="text" class="money-input er-sueldadm c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-sueldadm-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-sueldadm c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-sueldadm-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-sueldadm c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-sueldadm-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-sueldadm c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-sueldadm-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Rentas de Oficina</td>
+                    <td><input type="text" class="money-input er-rentofic c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-rentofic-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-rentofic c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-rentofic-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-rentofic c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-rentofic-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-rentofic c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-rentofic-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Servicios Públicos</td>
+                    <td><input type="text" class="money-input er-servpub c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-servpub-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-servpub c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-servpub-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-servpub c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-servpub-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-servpub c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-servpub-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Mantenimiento</td>
+                    <td><input type="text" class="money-input er-manten c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-manten-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-manten c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-manten-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-manten c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-manten-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-manten c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-manten-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Depreciaciones y Amortizaciones</td>
+                    <td><input type="text" class="money-input er-depamort c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-depamort-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-depamort c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-depamort-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-depamort c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-depamort-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-depamort c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-depamort-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Honorarios Profesionales</td>
+                    <td><input type="text" class="money-input er-honor c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-honor-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-honor c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-honor-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-honor c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-honor-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-honor c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-honor-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Seguros y Licencias</td>
+                    <td><input type="text" class="money-input er-seglic c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-seglic-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-seglic c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-seglic-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-seglic c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-seglic-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-seglic c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-seglic-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Papelería y Útiles</td>
+                    <td><input type="text" class="money-input er-papel c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-papel-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-papel c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-papel-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-papel c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-papel-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-papel c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-papel-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Otros Gastos de Administración</td>
+                    <td><input type="text" class="money-input er-otradm c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otradm-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-otradm c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otradm-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-otradm c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otradm-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-otradm c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otradm-c4">$0.00</td>
+                </tr>
+                <tr class="total-row">
+                    <td>Total Gastos de Administración</td>
+                    <td style="text-align:right;" id="tot-gadm-c1">$0.00</td><td class="div-val" id="div-tot-gadm-c1">$0.00</td>
+                    <td style="text-align:right;" id="tot-gadm-c2">$0.00</td><td class="div-val" id="div-tot-gadm-c2">$0.00</td>
+                    <td style="text-align:right;" id="tot-gadm-c3">$0.00</td><td class="div-val" id="div-tot-gadm-c3">$0.00</td>
+                    <td style="text-align:right;" id="tot-gadm-c4">$0.00</td><td class="div-val" id="div-tot-gadm-c4">$0.00</td>
+                </tr>
 
                 <!-- GASTOS DE VENTAS -->
-                <tr class="sub-category"><td colspan="5">GASTOS DE VENTAS</td></tr>
-                <tr><td class="account-name">Comisiones sobre Ventas</td><td><input type="text" class="money-input er-comvta c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-comvta c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-comvta c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-comvta c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Publicidad y Marketing</td><td><input type="text" class="money-input er-pubmkt c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-pubmkt c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-pubmkt c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-pubmkt c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Fletes y Envíos</td><td><input type="text" class="money-input er-fltenv c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-fltenv c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-fltenv c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-fltenv c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Sueldos de Ventas</td><td><input type="text" class="money-input er-sueldvta c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-sueldvta c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-sueldvta c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-sueldvta c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Empaques y Embalajes</td><td><input type="text" class="money-input er-empac c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-empac c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-empac c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-empac c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Viáticos Comerciales</td><td><input type="text" class="money-input er-viat c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-viat c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-viat c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-viat c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Otros Gastos de Ventas</td><td><input type="text" class="money-input er-otrvta c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-otrvta c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-otrvta c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-otrvta c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr class="total-row"><td>Total Gastos de Ventas</td><td style="text-align:right;" id="tot-gvta-c1">$0.00</td><td style="text-align:right;" id="tot-gvta-c2">$0.00</td><td style="text-align:right;" id="tot-gvta-c3">$0.00</td><td style="text-align:right;" id="tot-gvta-c4">$0.00</td></tr>
+                <tr class="sub-category"><td colspan="9">GASTOS DE VENTAS</td></tr>
+                <tr>
+                    <td class="account-name">Comisiones sobre Ventas</td>
+                    <td><input type="text" class="money-input er-comvta c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-comvta-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-comvta c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-comvta-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-comvta c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-comvta-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-comvta c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-comvta-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Publicidad y Marketing</td>
+                    <td><input type="text" class="money-input er-pubmkt c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-pubmkt-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-pubmkt c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-pubmkt-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-pubmkt c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-pubmkt-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-pubmkt c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-pubmkt-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Fletes y Envíos</td>
+                    <td><input type="text" class="money-input er-fltenv c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-fltenv-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-fltenv c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-fltenv-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-fltenv c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-fltenv-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-fltenv c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-fltenv-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Sueldos de Ventas</td>
+                    <td><input type="text" class="money-input er-sueldvta c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-sueldvta-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-sueldvta c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-sueldvta-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-sueldvta c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-sueldvta-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-sueldvta c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-sueldvta-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Empaques y Embalajes</td>
+                    <td><input type="text" class="money-input er-empac c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-empac-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-empac c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-empac-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-empac c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-empac-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-empac c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-empac-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Viáticos Comerciales</td>
+                    <td><input type="text" class="money-input er-viat c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-viat-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-viat c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-viat-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-viat c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-viat-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-viat c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-viat-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Otros Gastos de Ventas</td>
+                    <td><input type="text" class="money-input er-otrvta c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otrvta-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-otrvta c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otrvta-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-otrvta c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otrvta-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-otrvta c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otrvta-c4">$0.00</td>
+                </tr>
+                <tr class="total-row">
+                    <td>Total Gastos de Ventas</td>
+                    <td style="text-align:right;" id="tot-gvta-c1">$0.00</td><td class="div-val" id="div-tot-gvta-c1">$0.00</td>
+                    <td style="text-align:right;" id="tot-gvta-c2">$0.00</td><td class="div-val" id="div-tot-gvta-c2">$0.00</td>
+                    <td style="text-align:right;" id="tot-gvta-c3">$0.00</td><td class="div-val" id="div-tot-gvta-c3">$0.00</td>
+                    <td style="text-align:right;" id="tot-gvta-c4">$0.00</td><td class="div-val" id="div-tot-gvta-c4">$0.00</td>
+                </tr>
 
-                <tr class="total-row" style="background:#e2e8f0"><td>Utilidad de Operación (EBIT)</td><td style="text-align:right;" id="util-oper-c1">$0.00</td><td style="text-align:right;" id="util-oper-c2">$0.00</td><td style="text-align:right;" id="util-oper-c3">$0.00</td><td style="text-align:right;" id="util-oper-c4">$0.00</td></tr>
+                <tr class="total-row" style="background:#e2e8f0">
+                    <td>Utilidad de Operación (EBIT)</td>
+                    <td style="text-align:right;" id="util-oper-c1">$0.00</td><td class="div-val" id="div-util-oper-c1">$0.00</td>
+                    <td style="text-align:right;" id="util-oper-c2">$0.00</td><td class="div-val" id="div-util-oper-c2">$0.00</td>
+                    <td style="text-align:right;" id="util-oper-c3">$0.00</td><td class="div-val" id="div-util-oper-c3">$0.00</td>
+                    <td style="text-align:right;" id="util-oper-c4">$0.00</td><td class="div-val" id="div-util-oper-c4">$0.00</td>
+                </tr>
 
                 <!-- RESULTADO INTEGRAL DE FINANCIAMIENTO -->
-                <tr class="sub-category"><td colspan="5">RESULTADO INTEGRAL DE FINANCIAMIENTO</td></tr>
-                <tr><td class="account-name">Intereses Ganados</td><td><input type="text" class="money-input er-intgan c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-intgan c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-intgan c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-intgan c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name account-deduct">Intereses Pagados (-)</td><td><input type="text" class="money-input er-intpag c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-intpag c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-intpag c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-intpag c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name account-deduct">Comisiones Bancarias (-)</td><td><input type="text" class="money-input er-combanc c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-combanc c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-combanc c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-combanc c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Utilidad o Pérdida Cambiaria</td><td><input type="text" class="money-input er-utilcamb c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-utilcamb c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-utilcamb c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-utilcamb c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Otros Gastos y Productos Financieros</td><td><input type="text" class="money-input er-otrfin c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-otrfin c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-otrfin c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-otrfin c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr class="total-row"><td>Total RIF Neto</td><td style="text-align:right;" id="tot-rif-c1">$0.00</td><td style="text-align:right;" id="tot-rif-c2">$0.00</td><td style="text-align:right;" id="tot-rif-c3">$0.00</td><td style="text-align:right;" id="tot-rif-c4">$0.00</td></tr>
+                <tr class="sub-category"><td colspan="9">RESULTADO INTEGRAL DE FINANCIAMIENTO</td></tr>
+                <tr>
+                    <td class="account-name">Intereses Ganados</td>
+                    <td><input type="text" class="money-input er-intgan c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-intgan-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-intgan c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-intgan-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-intgan c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-intgan-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-intgan c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-intgan-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name account-deduct">Intereses Pagados (-)</td>
+                    <td><input type="text" class="money-input er-intpag c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-intpag-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-intpag c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-intpag-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-intpag c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-intpag-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-intpag c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-intpag-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name account-deduct">Comisiones Bancarias (-)</td>
+                    <td><input type="text" class="money-input er-combanc c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-combanc-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-combanc c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-combanc-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-combanc c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-combanc-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-combanc c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-combanc-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Utilidad o Pérdida Cambiaria</td>
+                    <td><input type="text" class="money-input er-utilcamb c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-utilcamb-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-utilcamb c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-utilcamb-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-utilcamb c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-utilcamb-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-utilcamb c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-utilcamb-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Otros Gastos y Productos Financieros</td>
+                    <td><input type="text" class="money-input er-otrfin c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otrfin-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-otrfin c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otrfin-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-otrfin c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otrfin-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-otrfin c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otrfin-c4">$0.00</td>
+                </tr>
+                <tr class="total-row">
+                    <td>Total RIF Neto</td>
+                    <td style="text-align:right;" id="tot-rif-c1">$0.00</td><td class="div-val" id="div-tot-rif-c1">$0.00</td>
+                    <td style="text-align:right;" id="tot-rif-c2">$0.00</td><td class="div-val" id="div-tot-rif-c2">$0.00</td>
+                    <td style="text-align:right;" id="tot-rif-c3">$0.00</td><td class="div-val" id="div-tot-rif-c3">$0.00</td>
+                    <td style="text-align:right;" id="tot-rif-c4">$0.00</td><td class="div-val" id="div-tot-rif-c4">$0.00</td>
+                </tr>
 
                 <!-- OTROS INGRESOS Y GASTOS -->
-                <tr class="sub-category"><td colspan="5">OTROS INGRESOS Y GASTOS</td></tr>
-                <tr><td class="account-name">Utilidad o Pérdida en Venta de Activos</td><td><input type="text" class="money-input er-vtaact c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-vtaact c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-vtaact c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-vtaact c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Subsidios y Donaciones</td><td><input type="text" class="money-input er-subsid c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-subsid c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-subsid c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-subsid c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Otros Ingresos y Gastos No Operativos</td><td><input type="text" class="money-input er-otrnooper c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-otrnooper c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-otrnooper c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-otrnooper c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr class="total-row"><td>Utilidad antes de Impuestos</td><td style="text-align:right;" id="util-aimp-c1">$0.00</td><td style="text-align:right;" id="util-aimp-c2">$0.00</td><td style="text-align:right;" id="util-aimp-c3">$0.00</td><td style="text-align:right;" id="util-aimp-c4">$0.00</td></tr>
+                <tr class="sub-category"><td colspan="9">OTROS INGRESOS Y GASTOS</td></tr>
+                <tr>
+                    <td class="account-name">Utilidad o Pérdida en Venta de Activos</td>
+                    <td><input type="text" class="money-input er-vtaact c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-vtaact-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-vtaact c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-vtaact-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-vtaact c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-vtaact-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-vtaact c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-vtaact-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Subsidios y Donaciones</td>
+                    <td><input type="text" class="money-input er-subsid c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-subsid-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-subsid c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-subsid-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-subsid c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-subsid-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-subsid c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-subsid-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Otros Ingresos y Gastos No Operativos</td>
+                    <td><input type="text" class="money-input er-otrnooper c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otrnooper-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-otrnooper c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otrnooper-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-otrnooper c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otrnooper-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-otrnooper c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otrnooper-c4">$0.00</td>
+                </tr>
+                <tr class="total-row">
+                    <td>Utilidad antes de Impuestos</td>
+                    <td style="text-align:right;" id="util-aimp-c1">$0.00</td><td class="div-val" id="div-util-aimp-c1">$0.00</td>
+                    <td style="text-align:right;" id="util-aimp-c2">$0.00</td><td class="div-val" id="div-util-aimp-c2">$0.00</td>
+                    <td style="text-align:right;" id="util-aimp-c3">$0.00</td><td class="div-val" id="div-util-aimp-c3">$0.00</td>
+                    <td style="text-align:right;" id="util-aimp-c4">$0.00</td><td class="div-val" id="div-util-aimp-c4">$0.00</td>
+                </tr>
 
                 <!-- IMPUESTOS A LA UTILIDAD -->
-                <tr class="sub-category"><td colspan="5">IMPUESTOS A LA UTILIDAD</td></tr>
-                <tr><td class="account-name">ISR Corriente</td><td><input type="text" class="money-input er-isrcorr c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-isrcorr c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-isrcorr c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-isrcorr c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">ISR Diferido</td><td><input type="text" class="money-input er-isrdif c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-isrdif c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-isrdif c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-isrdif c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr><td class="account-name">Otros Impuestos a la Utilidad</td><td><input type="text" class="money-input er-otrimp c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-otrimp c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-otrimp c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-otrimp c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr class="grand-total"><td>UTILIDAD NETA FINAL</td><td style="text-align:right;" id="util-neta-c1">$0.00</td><td style="text-align:right;" id="util-neta-c2">$0.00</td><td style="text-align:right;" id="util-neta-c3">$0.00</td><td style="text-align:right;" id="util-neta-c4">$0.00</td></tr>
+                <tr class="sub-category"><td colspan="9">IMPUESTOS A LA UTILIDAD</td></tr>
+                <tr>
+                    <td class="account-name">ISR Corriente</td>
+                    <td><input type="text" class="money-input er-isrcorr c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-isrcorr-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-isrcorr c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-isrcorr-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-isrcorr c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-isrcorr-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-isrcorr c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-isrcorr-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">ISR Diferido</td>
+                    <td><input type="text" class="money-input er-isrdif c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-isrdif-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-isrdif c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-isrdif-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-isrdif c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-isrdif-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-isrdif c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-isrdif-c4">$0.00</td>
+                </tr>
+                <tr>
+                    <td class="account-name">Otros Impuestos a la Utilidad</td>
+                    <td><input type="text" class="money-input er-otrimp c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otrimp-c1">$0.00</td>
+                    <td><input type="text" class="money-input er-otrimp c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otrimp-c2">$0.00</td>
+                    <td><input type="text" class="money-input er-otrimp c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otrimp-c3">$0.00</td>
+                    <td><input type="text" class="money-input input-proj er-otrimp c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td class="div-val" id="div-er-otrimp-c4">$0.00</td>
+                </tr>
+                <tr class="grand-total">
+                    <td>UTILIDAD NETA FINAL</td>
+                    <td style="text-align:right;" id="util-neta-c1">$0.00</td><td class="div-val" style="color:#ffffff; background-color:transparent;" id="div-util-neta-c1">$0.00</td>
+                    <td style="text-align:right;" id="util-neta-c2">$0.00</td><td class="div-val" style="color:#ffffff; background-color:transparent;" id="div-util-neta-c2">$0.00</td>
+                    <td style="text-align:right;" id="util-neta-c3">$0.00</td><td class="div-val" style="color:#ffffff; background-color:transparent;" id="div-util-neta-c3">$0.00</td>
+                    <td style="text-align:right;" id="util-neta-c4">$0.00</td><td class="div-val" style="color:#ffffff; background-color:transparent;" id="div-util-neta-c4">$0.00</td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -782,6 +1073,20 @@
         return total;
     }
 
+    function updateDivCell(className, col, totalVal, divisor) {
+        let inputs = document.querySelectorAll(`.${className}.${col}`);
+        inputs.forEach(input => {
+            let row = input.closest('tr');
+            if (row) {
+                let cellDiv = row.querySelector(`#div-${className}-${col}`);
+                if (cellDiv) {
+                    let val = parseMoney(input.value);
+                    cellDiv.innerText = formatter.format(val / divisor);
+                }
+            }
+        });
+    }
+
     function calcPct(valAct, valAnt) {
         if (valAnt === 0) return valAct > 0 ? 100 : 0;
         return ((valAct - valAnt) / Math.abs(valAnt)) * 100;
@@ -831,16 +1136,29 @@
     }
 
     function calc() {
-        const nMesesParcial = parseInt(document.getElementById('bg-num-meses').value) || 1;
+        const nMesesParcialDiv = parseInt(document.getElementById('er-num-meses-div').value) || 1;
 
-        // --- 1. PROCESAR ESTADO DE RESULTADOS ---
+        // --- 1. PROCESAR ESTADO DE RESULTADOS CON DIVISIONES ---
         let utilNeta = [0, 0, 0, 0];
         let vtasNetas = [0, 0, 0, 0];
         let utilBrutaArr = [0, 0, 0, 0];
         let utilOper = [0, 0, 0, 0];
         let intPagadosArr = [0, 0, 0, 0];
 
+        const erAccounts = [
+            'er-vta', 'er-vdesc', 'er-otring', 'er-costvta', 'er-compras', 'er-fltcomp', 'er-mod', 'er-otrcost',
+            'er-sueldadm', 'er-rentofic', 'er-servpub', 'er-manten', 'er-depamort', 'er-honor', 'er-seglic', 'er-papel', 'er-otradm',
+            'er-comvta', 'er-pubmkt', 'er-fltenv', 'er-sueldvta', 'er-empac', 'er-viat', 'er-otrvta',
+            'er-intgan', 'er-intpag', 'er-combanc', 'er-utilcamb', 'er-otrfin',
+            'er-vtaact', 'er-subsid', 'er-otrnooper', 'er-isrcorr', 'er-isrdif', 'er-otrimp'
+        ];
+
         ['c1', 'c2', 'c3', 'c4'].forEach((c, idx) => {
+            let divisor = (c === 'c3') ? nMesesParcialDiv : 12;
+
+            // Actualizar divisiones de cuentas individuales
+            erAccounts.forEach(acc => updateDivCell(acc, c, 0, divisor));
+
             let vta = sumInputs(`.er-vta.${c}`);
             let vdesc = sumInputs(`.er-vdesc.${c}`);
             let otring = sumInputs(`.er-otring.${c}`);
@@ -901,15 +1219,33 @@
             let un = utilAimp - totImp;
             utilNeta[idx] = un;
 
+            // Totales y sus divisiones
             document.getElementById(`tot-ing-${c}`).innerText = formatter.format(totIng);
+            document.getElementById(`div-tot-ing-${c}`).innerText = formatter.format(totIng / divisor);
+
             document.getElementById(`tot-costo-${c}`).innerText = formatter.format(totCosto);
+            document.getElementById(`div-tot-costo-${c}`).innerText = formatter.format(totCosto / divisor);
+
             document.getElementById(`util-bruta-${c}`).innerText = formatter.format(utilBruta);
+            document.getElementById(`div-util-bruta-${c}`).innerText = formatter.format(utilBruta / divisor);
+
             document.getElementById(`tot-gadm-${c}`).innerText = formatter.format(totGadm);
+            document.getElementById(`div-tot-gadm-${c}`).innerText = formatter.format(totGadm / divisor);
+
             document.getElementById(`tot-gvta-${c}`).innerText = formatter.format(totGvta);
+            document.getElementById(`div-tot-gvta-${c}`).innerText = formatter.format(totGvta / divisor);
+
             document.getElementById(`util-oper-${c}`).innerText = formatter.format(uop);
+            document.getElementById(`div-util-oper-${c}`).innerText = formatter.format(uop / divisor);
+
             document.getElementById(`tot-rif-${c}`).innerText = formatter.format(totRif);
+            document.getElementById(`div-tot-rif-${c}`).innerText = formatter.format(totRif / divisor);
+
             document.getElementById(`util-aimp-${c}`).innerText = formatter.format(utilAimp);
+            document.getElementById(`div-util-aimp-${c}`).innerText = formatter.format(utilAimp / divisor);
+
             document.getElementById(`util-neta-${c}`).innerText = formatter.format(un);
+            document.getElementById(`div-util-neta-${c}`).innerText = formatter.format(un / divisor);
 
             document.getElementById(`cap-utejer-${c}`).innerText = formatter.format(un);
         });
@@ -969,12 +1305,12 @@
         let kVtas = vtasNetas[selIdx];
 
         if (selIdx === 2) {
-            kEbit = kEbit * (12 / nMesesParcial);
-            kInt = kInt * (12 / nMesesParcial);
-            kVtas = kVtas * (12 / nMesesParcial);
+            kEbit = kEbit * (12 / nMesesParcialDiv);
+            kInt = kInt * (12 / nMesesParcialDiv);
+            kVtas = kVtas * (12 / nMesesParcialDiv);
         }
 
-        // 1. Liquidez
+        // Liquidez
         let liq = kPasCirc > 0 ? (kActCirc / kPasCirc) : 0;
         document.getElementById('kpi-val-liq').innerText = liq.toFixed(2) + 'x';
         let bLiq = document.getElementById('kpi-badge-liq');
@@ -990,7 +1326,7 @@
             dLiq.innerText = "Capital de trabajo negativo. Riesgo alto de incumplimiento inmediato.";
         }
 
-        // 2. Prueba del Ácido
+        // Prueba del Ácido
         let acid = kPasCirc > 0 ? ((kActCirc - kInv) / kPasCirc) : 0;
         document.getElementById('kpi-val-acid').innerText = acid.toFixed(2) + 'x';
         let bAcid = document.getElementById('kpi-badge-acid');
@@ -1006,7 +1342,7 @@
             dAcid.innerText = "Sin liquidez rápida suficiente. Riesgo si el inventario se estanca.";
         }
 
-        // 3. Endeudamiento
+        // Endeudamiento
         let end = kTotAct > 0 ? ((kTotPas / kTotAct) * 100) : 0;
         document.getElementById('kpi-val-end').innerText = end.toFixed(1) + '%';
         let bEnd = document.getElementById('kpi-badge-end');
@@ -1022,7 +1358,7 @@
             dEnd.innerText = "Alto nivel de deuda. El riesgo recae principalmente en los acreedores.";
         }
 
-        // 4. Cobertura de Intereses
+        // Cobertura de Intereses
         let cob = kInt > 0 ? (kEbit / kInt) : (kEbit > 0 ? 99 : 0);
         document.getElementById('kpi-val-cob').innerText = kInt > 0 ? cob.toFixed(2) + 'x' : 'N/A';
         let bCob = document.getElementById('kpi-badge-cob');
@@ -1038,7 +1374,7 @@
             dCob.innerText = "Insuficiente generación operativa para cubrir los gastos financieros actuales.";
         }
 
-        // 5. Margen Operativo
+        // Margen Operativo
         let mop = kVtas > 0 ? ((kEbit / kVtas) * 100) : 0;
         document.getElementById('kpi-val-mop').innerText = mop.toFixed(1) + '%';
         let bMop = document.getElementById('kpi-badge-mop');
@@ -1055,10 +1391,10 @@
         }
 
         // --- 4. CÁLCULOS BLOQUE TENDENCIAS ---
-        let vtaParcialAnual = vtasNetas[2] * (12 / nMesesParcial);
-        let ubParcialAnual = utilBrutaArr[2] * (12 / nMesesParcial);
-        let uopParcialAnual = utilOper[2] * (12 / nMesesParcial);
-        let unParcialAnual = utilNeta[2] * (12 / nMesesParcial);
+        let vtaParcialAnual = vtasNetas[2] * (12 / nMesesParcialDiv);
+        let ubParcialAnual = utilBrutaArr[2] * (12 / nMesesParcialDiv);
+        let uopParcialAnual = utilOper[2] * (12 / nMesesParcialDiv);
+        let unParcialAnual = utilNeta[2] * (12 / nMesesParcialDiv);
 
         updateTrendRow('vta', vtasNetas[0], vtasNetas[1], vtaParcialAnual, vtasNetas[3]);
         updateTrendRow('ub', utilBrutaArr[0], utilBrutaArr[1], ubParcialAnual, utilBrutaArr[3]);
@@ -1071,7 +1407,7 @@
 
     function cargarCasoExito() {
         document.getElementById('comp-name').value = "Corporación Industrial del Norte S.A.B. de C.V.";
-        document.getElementById('bg-num-meses').value = "1";
+        document.getElementById('er-num-meses-div').value = "1";
 
         // --- BALANCE GENERAL - AÑO 2 (c1) ---
         setFieldValue('.act-caja.c1', 85000);
