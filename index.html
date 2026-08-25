@@ -943,7 +943,7 @@
 
     <div class="chart-grid">
         <div class="chart-card">
-            <h3>📈 Evolución e Anualización de Ingresos (Ventas)</h3>
+            <h3>📈 Evolución de Ingresos (Promedio Mensual)</h3>
             <div class="bars-container">
                 <div class="bar-wrapper">
                     <span class="bar-val" id="chart-val-vta-c1">$0</span>
@@ -958,7 +958,7 @@
                 <div class="bar-wrapper">
                     <span class="bar-val" id="chart-val-vta-c3">$0</span>
                     <div class="bar-fill" id="bar-vta-c3" style="height: 0%;"></div>
-                    <span class="bar-label">Parcial (Anualizado)</span>
+                    <span class="bar-label">Parcial (Mensual)</span>
                 </div>
                 <div class="bar-wrapper">
                     <span class="bar-val" id="chart-val-vta-c4">$0</span>
@@ -969,7 +969,7 @@
         </div>
 
         <div class="chart-card">
-            <h3>📊 Desempeño de Utilidad Operativa (EBIT)</h3>
+            <h3>📊 Desempeño de Utilidad Operativa (EBIT Promedio Mensual)</h3>
             <div class="bars-container">
                 <div class="bar-wrapper">
                     <span class="bar-val" id="chart-val-uop-c1">$0</span>
@@ -984,7 +984,7 @@
                 <div class="bar-wrapper">
                     <span class="bar-val" id="chart-val-uop-c3">$0</span>
                     <div class="bar-fill" id="bar-uop-c3" style="height: 0%;"></div>
-                    <span class="bar-label">Parcial (Anualizado)</span>
+                    <span class="bar-label">Parcial (Mensual)</span>
                 </div>
                 <div class="bar-wrapper">
                     <span class="bar-val" id="chart-val-uop-c4">$0</span>
@@ -1126,7 +1126,19 @@
         values.forEach((v, idx) => {
             let pct = Math.max((v / maxVal) * 100, 0);
             document.getElementById(`bar-${prefix}-c${idx+1}`).style.height = pct.toFixed(1) + '%';
-            document.getElementById(`chart-val-${prefix}-c${idx+1}`).innerText = '$' + (v / 1000).toFixed(0) + 'k';
+            
+            // Formateador dinámico: Millones (M) o Miles (k)
+            let formattedVal = '';
+            let absVal = Math.abs(v);
+            if (absVal >= 1000000) {
+                formattedVal = '$' + (v / 1000000).toFixed(2) + ' M';
+            } else if (absVal >= 1000) {
+                formattedVal = '$' + (v / 1000).toFixed(0) + 'k';
+            } else {
+                formattedVal = '$' + v.toFixed(0);
+            }
+
+            document.getElementById(`chart-val-${prefix}-c${idx+1}`).innerText = formattedVal;
         });
     }
 
@@ -1390,7 +1402,17 @@
             dMop.innerText = "Baja rentabilidad operativa. Riesgo en caso de fluctuaciones comerciales.";
         }
 
-        // --- 4. CÁLCULOS BLOQUE TENDENCIAS ---
+        // --- 4. CÁLCULOS TENDENCIAS Y GRÁFICAS (BASE MENSUAL) ---
+        let vtaMensualC1 = vtasNetas[0] / 12;
+        let vtaMensualC2 = vtasNetas[1] / 12;
+        let vtaMensualC3 = vtasNetas[2] / nMesesParcialDiv; // Promedio mensual según el select del parcial
+        let vtaMensualC4 = vtasNetas[3] / 12;
+
+        let uopMensualC1 = utilOper[0] / 12;
+        let uopMensualC2 = utilOper[1] / 12;
+        let uopMensualC3 = utilOper[2] / nMesesParcialDiv; // Promedio mensual según el select del parcial
+        let uopMensualC4 = utilOper[3] / 12;
+
         let vtaParcialAnual = vtasNetas[2] * (12 / nMesesParcialDiv);
         let ubParcialAnual = utilBrutaArr[2] * (12 / nMesesParcialDiv);
         let uopParcialAnual = utilOper[2] * (12 / nMesesParcialDiv);
@@ -1401,8 +1423,9 @@
         updateTrendRow('uop', utilOper[0], utilOper[1], uopParcialAnual, utilOper[3]);
         updateTrendRow('un', utilNeta[0], utilNeta[1], unParcialAnual, utilNeta[3]);
 
-        renderBarChart('vta', [vtasNetas[0], vtasNetas[1], vtaParcialAnual, vtasNetas[3]]);
-        renderBarChart('uop', [utilOper[0], utilOper[1], uopParcialAnual, utilOper[3]]);
+        // Renderizar gráficas a nivel promedio mensual
+        renderBarChart('vta', [vtaMensualC1, vtaMensualC2, vtaMensualC3, vtaMensualC4]);
+        renderBarChart('uop', [uopMensualC1, uopMensualC2, uopMensualC3, uopMensualC4]);
     }
 
     function cargarCasoExito() {
