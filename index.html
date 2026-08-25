@@ -6,60 +6,69 @@
     <title>Plataforma Financiera Corporativa de 4 Columnas</title>
     <style>
         :root {
-            --primary-dark: #0f172a;
-            --secondary-bg: #f8fafc;
-            --accent-blue: #2563eb;
-            --accent-green: #16a34a;
-            --accent-orange: #ea580c;
-            --accent-red: #dc2626;
-            --border-color: #cbd5e1;
-            --text-main: #334155;
+            /* Paleta Institucional (Inspirada en el dashboard) */
+            --primary-guinda: #800836;
+            --primary-guinda-light: #fbebf1;
+            --text-title: #b86235;
+            --text-main: #4a5568;
+            --bg-page: #f4f5f7;
+            --bg-card: #ffffff;
+            --border-color: #e2e8f0;
+
+            /* Semáforos y Acentos */
+            --accent-green: #10b981;
+            --accent-green-bg: #d1fae5;
+            --accent-red: #ef4444;
+            --accent-red-bg: #fee2e2;
+            --accent-amber: #f59e0b;
+            --accent-amber-bg: #fef3c7;
+            --accent-blue: #3b82f6;
+            --accent-blue-bg: #dbeafe;
         }
 
         body {
             font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-            background-color: #f1f5f9;
+            background-color: var(--bg-page);
             margin: 0;
-            padding: 20px;
+            padding: 24px;
             color: var(--text-main);
         }
 
         .main-container {
-            max-width: 1800px;
+            max-width: 1700px;
             margin: 0 auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+            background: var(--bg-card);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
         }
 
         header {
             text-align: center;
             margin-bottom: 25px;
-            border-bottom: 3px solid var(--primary-dark);
             padding-bottom: 15px;
         }
 
         .input-company {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 800;
             text-transform: uppercase;
             text-align: center;
-            border: 1px dashed #94a3b8;
+            border: 1px dashed var(--text-title);
             width: 50%;
-            padding: 6px;
-            color: var(--primary-dark);
-            background: #fefcf0;
-            border-radius: 4px;
+            padding: 8px 12px;
+            color: var(--text-title);
+            background: #fffdfa;
+            border-radius: 8px;
             margin-bottom: 8px;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .title-report {
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #64748b;
+            letter-spacing: 1.5px;
+            color: #718096;
             font-weight: 700;
         }
 
@@ -71,28 +80,28 @@
         }
 
         .btn-panel {
-            padding: 9px 18px;
+            padding: 10px 20px;
             font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             border: none;
             transition: all 0.2s ease;
         }
 
-        .btn-demo { background-color: #4f46e5; color: white; box-shadow: 0 2px 5px rgba(79, 70, 229, 0.2); }
-        .btn-demo:hover { background-color: #4338ca; }
-        .btn-clear { background-color: #be123c; color: white; box-shadow: 0 2px 5px rgba(190, 18, 60, 0.2); }
-        .btn-clear:hover { background-color: #9f1239; }
-        
+        .btn-demo { background-color: var(--primary-guinda); color: white; box-shadow: 0 2px 6px rgba(128, 8, 54, 0.25); }
+        .btn-demo:hover { background-color: #610528; }
+        .btn-clear { background-color: #718096; color: white; }
+        .btn-clear:hover { background-color: #4a5568; }
+
         .btn-export {
-            background-color: #0284c7;
+            background-color: var(--text-title);
             color: white;
-            box-shadow: 0 2px 5px rgba(2, 132, 199, 0.2);
+            box-shadow: 0 2px 5px rgba(184, 98, 53, 0.2);
             margin-top: 10px;
         }
-        .btn-export:hover { background-color: #0369a1; }
+        .btn-export:hover { background-color: #9c4f28; }
 
         .export-bar {
             display: flex;
@@ -102,13 +111,14 @@
         }
 
         h2 { 
-            margin: 30px 0 15px 0; 
+            margin: 35px 0 15px 0; 
             text-transform: uppercase; 
-            font-size: 15px; 
+            font-size: 14px; 
             letter-spacing: 1px;
-            color: var(--primary-dark); 
-            border-bottom: 2px solid #cbd5e1; 
-            padding-bottom: 6px;
+            color: var(--primary-guinda); 
+            border-bottom: 2px solid var(--primary-guinda-light); 
+            padding-bottom: 8px;
+            font-weight: 800;
         }
 
         .table-responsive {
@@ -124,105 +134,111 @@
         }
 
         th, td {
-            padding: 6px 10px;
-            border: 1px solid #e2e8f0;
+            padding: 8px 10px;
+            border: 1px solid var(--border-color);
             text-align: left;
         }
 
         th {
-            background-color: #1e293b;
-            color: white;
+            background-color: #fafafa;
+            color: #4a5568;
             font-weight: 700;
             text-align: center;
-            font-size: 10.5px;
+            font-size: 11px;
             text-transform: uppercase;
+            border-bottom: 2px solid var(--border-color);
         }
 
         .sub-category {
             font-weight: 700;
-            background-color: #f1f5f9;
-            color: #1e293b;
+            background-color: var(--primary-guinda-light);
+            color: var(--primary-guinda);
             text-transform: uppercase;
             font-size: 11px;
+            letter-spacing: 0.5px;
         }
 
         .account-name { 
             width: 36%; 
-            color: #334155; 
+            color: #2d3748; 
             font-weight: 600;
         }
 
         .account-deduct {
-            color: #dc2626;
+            color: #e53e3e;
             font-style: italic;
         }
 
         input[type="text"].money-input {
             width: 100%;
-            border: 1px solid transparent;
+            border: 1px solid var(--border-color);
             text-align: right;
-            padding: 3px 5px;
-            background: #fefcf0;
+            padding: 4px 6px;
+            background: #fff;
             box-sizing: border-box;
             font-family: 'Courier New', Courier, monospace;
             font-weight: 700;
             font-size: 11.5px;
-            border-radius: 3px;
-            color: #0f172a;
+            border-radius: 4px;
+            color: #2d3748;
         }
 
         input[type="text"].money-input:focus {
-            border: 1px solid var(--accent-blue);
+            border: 1px solid var(--primary-guinda);
             outline: none;
             background: #fff;
-            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+            box-shadow: 0 0 0 2px rgba(128, 8, 54, 0.1);
         }
 
         .input-proj {
-            background: #f0fdf4 !important;
-            border: 1px solid #bbf7d0 !important;
+            background: #fdf2f6 !important;
+            border: 1px solid #f9a8d4 !important;
         }
 
         .col-money { width: 16%; }
 
         .total-row {
             font-weight: 700;
-            background-color: #e2e8f0;
-            color: #0f172a;
+            background-color: #f7fafc;
+            color: #1a202c;
         }
 
-        .grand-total { background-color: var(--primary-dark); color: white; font-weight: 700; }
+        .grand-total { 
+            background-color: var(--primary-guinda); 
+            color: white; 
+            font-weight: 700; 
+        }
         .grand-total td { color: white; }
 
         .meta-header-input {
-            border: 1px dashed #cbd5e1;
+            border: 1px solid var(--border-color);
             background: #ffffff;
-            color: #0f172a;
+            color: var(--primary-guinda);
             padding: 2px 4px;
             font-size: 10.5px;
-            border-radius: 3px;
+            border-radius: 4px;
             text-align: center;
             font-weight: bold;
         }
 
-        /* ESTILOS KPI CREDITICIOS */
+        /* BLOQUE DE KPIS CREDITICIOS ESTILO DASHBOARD */
         .kpi-container {
             background: #ffffff;
-            border: 2px solid #0f172a;
-            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
             padding: 20px;
             margin-top: 15px;
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
 
         .kpi-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #0f172a;
+            background: var(--primary-guinda);
             color: #fff;
             padding: 12px 20px;
-            border-radius: 6px;
+            border-radius: 8px;
             margin-bottom: 20px;
         }
 
@@ -235,27 +251,27 @@
 
         .kpi-select {
             padding: 6px 12px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
-            border-radius: 4px;
-            border: 1px solid #94a3b8;
-            background-color: #f8fafc;
-            color: #0f172a;
+            border-radius: 6px;
+            border: none;
+            background-color: #ffffff;
+            color: var(--primary-guinda);
             cursor: pointer;
             outline: none;
         }
 
         .badge-kpi {
-            padding: 4px 8px;
-            border-radius: 4px;
+            padding: 4px 10px;
+            border-radius: 20px;
             font-size: 10px;
             font-weight: 800;
             text-transform: uppercase;
             display: inline-block;
         }
-        .kpi-good { background-color: #dcfce7; color: #15803d; }
-        .kpi-warn { background-color: #fef9c3; color: #a16207; }
-        .kpi-danger { background-color: #fee2e2; color: #b91c1c; }
+        .kpi-good { background-color: var(--accent-green-bg); color: var(--accent-green); }
+        .kpi-warn { background-color: var(--accent-amber-bg); color: var(--accent-amber); }
+        .kpi-danger { background-color: var(--accent-red-bg); color: var(--accent-red); }
 
         .chart-grid {
             display: grid;
@@ -269,19 +285,20 @@
         }
 
         .chart-card {
-            background: var(--secondary-bg);
+            background: #ffffff;
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 10px;
             padding: 20px;
         }
 
         .chart-card h3 {
             margin-top: 0;
-            font-size: 13px;
+            font-size: 12px;
             text-transform: uppercase;
-            color: var(--primary-dark);
+            color: var(--primary-guinda);
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
+            padding-bottom: 10px;
+            font-weight: 700;
         }
 
         .bars-container {
@@ -290,7 +307,7 @@
             align-items: flex-end;
             height: 180px;
             padding-top: 25px;
-            border-bottom: 2px solid #94a3b8;
+            border-bottom: 2px solid var(--border-color);
         }
 
         .bar-wrapper {
@@ -307,40 +324,40 @@
             font-weight: 700;
             font-family: 'Courier New', Courier, monospace;
             margin-bottom: 5px;
-            color: var(--primary-dark);
+            color: var(--primary-guinda);
         }
 
         .bar-fill {
             width: 100%;
-            max-width: 45px;
-            background: var(--accent-blue);
+            max-width: 40px;
+            background: var(--primary-guinda);
             border-radius: 4px 4px 0 0;
             transition: height 0.4s ease, background-color 0.3s ease;
             min-height: 2px;
         }
 
-        .bar-fill.proj { background: var(--accent-green); }
+        .bar-fill.proj { background: var(--text-title); }
 
         .bar-label {
             font-size: 10px;
             font-weight: 700;
             margin-top: 8px;
-            color: #64748b;
+            color: #718096;
             text-align: center;
         }
 
         .badge-trend {
-            padding: 3px 7px;
-            border-radius: 12px;
+            padding: 4px 10px;
+            border-radius: 20px;
             font-size: 10px;
             font-weight: 800;
             text-transform: uppercase;
             display: inline-block;
         }
 
-        .badge-up { background-color: #dcfce7; color: #15803d; }
-        .badge-down { background-color: #fee2e2; color: #b91c1c; }
-        .badge-flat { background-color: #f1f5f9; color: #475569; }
+        .badge-up { background-color: var(--accent-green-bg); color: var(--accent-green); }
+        .badge-down { background-color: var(--accent-red-bg); color: var(--accent-red); }
+        .badge-flat { background-color: #edf2f7; color: #4a5568; }
     </style>
 </head>
 <body>
@@ -448,7 +465,7 @@
                 <tr><td class="account-name">Otros Pasivos No Circulantes</td><td><input type="text" class="money-input pas-otrnocirc c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input pas-otrnocirc c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input pas-otrnocirc c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj pas-otrnocirc c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
                 <tr class="total-row"><td>Total Pasivo No Circulante</td><td style="text-align:right;" id="tot-pas-nocirc-c1">$0.00</td><td style="text-align:right;" id="tot-pas-nocirc-c2">$0.00</td><td style="text-align:right;" id="tot-pas-nocirc-c3">$0.00</td><td style="text-align:right;" id="tot-pas-nocirc-c4">$0.00</td></tr>
 
-                <tr class="total-row" style="background:#cbd5e1"><td>SUMA DEL PASIVO</td><td style="text-align:right;" id="gran-tot-pas-c1">$0.00</td><td style="text-align:right;" id="gran-tot-pas-c2">$0.00</td><td style="text-align:right;" id="gran-tot-pas-c3">$0.00</td><td style="text-align:right;" id="gran-tot-pas-c4">$0.00</td></tr>
+                <tr class="total-row" style="background:#e2e8f0"><td>SUMA DEL PASIVO</td><td style="text-align:right;" id="gran-tot-pas-c1">$0.00</td><td style="text-align:right;" id="gran-tot-pas-c2">$0.00</td><td style="text-align:right;" id="gran-tot-pas-c3">$0.00</td><td style="text-align:right;" id="gran-tot-pas-c4">$0.00</td></tr>
 
                 <!-- CAPITAL CONTABLE -->
                 <tr class="sub-category"><td colspan="5">CAPITAL CONTRIBUIDO</td></tr>
@@ -460,7 +477,7 @@
                 <tr class="sub-category"><td colspan="5">CAPITAL GANADO</td></tr>
                 <tr><td class="account-name">Utilidades Retenidas</td><td><input type="text" class="money-input cap-utret c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input cap-utret c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input cap-utret c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj cap-utret c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
                 <tr><td class="account-name account-deduct">Pérdidas Acumuladas (-)</td><td><input type="text" class="money-input cap-peracum c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input cap-peracum c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input cap-peracum c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj cap-peracum c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
-                <tr class="total-row" style="background:#f8fafc; color:#0284c7;">
+                <tr class="total-row" style="background:#fff5f8; color:var(--primary-guinda);">
                     <td>Utilidad o Pérdida del Ejercicio (Auto Estado de Res.)</td>
                     <td style="text-align:right; font-family:'Courier New';" id="cap-utejer-c1">$0.00</td>
                     <td style="text-align:right; font-family:'Courier New';" id="cap-utejer-c2">$0.00</td>
@@ -508,7 +525,7 @@
                 <tr><td class="account-name">Mano de Obra Directa</td><td><input type="text" class="money-input er-mod c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-mod c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-mod c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-mod c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
                 <tr><td class="account-name">Otros Costos Operativos</td><td><input type="text" class="money-input er-otrcost c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-otrcost c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-otrcost c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-otrcost c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
                 <tr class="total-row"><td>Total Costos Operativos</td><td style="text-align:right;" id="tot-costo-c1">$0.00</td><td style="text-align:right;" id="tot-costo-c2">$0.00</td><td style="text-align:right;" id="tot-costo-c3">$0.00</td><td style="text-align:right;" id="tot-costo-c4">$0.00</td></tr>
-                <tr class="total-row" style="background:#cbd5e1"><td>Utilidad Bruta</td><td style="text-align:right;" id="util-bruta-c1">$0.00</td><td style="text-align:right;" id="util-bruta-c2">$0.00</td><td style="text-align:right;" id="util-bruta-c3">$0.00</td><td style="text-align:right;" id="util-bruta-c4">$0.00</td></tr>
+                <tr class="total-row" style="background:#e2e8f0"><td>Utilidad Bruta</td><td style="text-align:right;" id="util-bruta-c1">$0.00</td><td style="text-align:right;" id="util-bruta-c2">$0.00</td><td style="text-align:right;" id="util-bruta-c3">$0.00</td><td style="text-align:right;" id="util-bruta-c4">$0.00</td></tr>
 
                 <!-- GASTOS DE ADMINISTRACIÓN -->
                 <tr class="sub-category"><td colspan="5">GASTOS DE ADMINISTRACIÓN</td></tr>
@@ -534,7 +551,7 @@
                 <tr><td class="account-name">Otros Gastos de Ventas</td><td><input type="text" class="money-input er-otrvta c1" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-otrvta c2" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input er-otrvta c3" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td><td><input type="text" class="money-input input-proj er-otrvta c4" value="$0.00" onfocus="clearFormat(this)" onblur="formatFormat(this)"></td></tr>
                 <tr class="total-row"><td>Total Gastos de Ventas</td><td style="text-align:right;" id="tot-gvta-c1">$0.00</td><td style="text-align:right;" id="tot-gvta-c2">$0.00</td><td style="text-align:right;" id="tot-gvta-c3">$0.00</td><td style="text-align:right;" id="tot-gvta-c4">$0.00</td></tr>
 
-                <tr class="total-row" style="background:#cbd5e1"><td>Utilidad de Operación (EBIT)</td><td style="text-align:right;" id="util-oper-c1">$0.00</td><td style="text-align:right;" id="util-oper-c2">$0.00</td><td style="text-align:right;" id="util-oper-c3">$0.00</td><td style="text-align:right;" id="util-oper-c4">$0.00</td></tr>
+                <tr class="total-row" style="background:#e2e8f0"><td>Utilidad de Operación (EBIT)</td><td style="text-align:right;" id="util-oper-c1">$0.00</td><td style="text-align:right;" id="util-oper-c2">$0.00</td><td style="text-align:right;" id="util-oper-c3">$0.00</td><td style="text-align:right;" id="util-oper-c4">$0.00</td></tr>
 
                 <!-- RESULTADO INTEGRAL DE FINANCIAMIENTO -->
                 <tr class="sub-category"><td colspan="5">RESULTADO INTEGRAL DE FINANCIAMIENTO</td></tr>
@@ -595,21 +612,21 @@
                         <td style="font-size: 10px; color:#64748b;">Activo Circulante / Pasivo Circulante</td>
                         <td style="text-align:center; font-family:'Courier New'; font-weight:700;" id="kpi-val-liq">0.00x</td>
                         <td style="text-align:center;" id="kpi-badge-liq"><span class="badge-kpi kpi-warn">EVALUANDO</span></td>
-                        <td style="font-size:10.5px; color:#475569;" id="kpi-desc-liq">Capacidad para afrontar compromisos a corto plazo. óptimo > 1.5x.</td>
+                        <td style="font-size:10.5px; color:#475569;" id="kpi-desc-liq">Capacidad para afrontar compromisos a corto plazo. Óptimo > 1.5x.</td>
                     </tr>
                     <tr>
                         <td class="account-name">2. Prueba del Ácido (Liquidez Rápida)</td>
                         <td style="font-size: 10px; color:#64748b;">(Activo Circ. - Inventarios) / Pasivo Circ.</td>
                         <td style="text-align:center; font-family:'Courier New'; font-weight:700;" id="kpi-val-acid">0.00x</td>
                         <td style="text-align:center;" id="kpi-badge-acid"><span class="badge-kpi kpi-warn">EVALUANDO</span></td>
-                        <td style="font-size:10.5px; color:#475569;" id="kpi-desc-acid">Liquidez inmediata excluyendo inventario de lenta realización. Óptimo > 1.0x.</td>
+                        <td style="font-size:10.5px; color:#475569;" id="kpi-desc-acid">Liquidez inmediata excluyendo inventario. Óptimo > 1.0x.</td>
                     </tr>
                     <tr>
                         <td class="account-name">3. Nivel de Apalancamiento (Endeudamiento)</td>
                         <td style="font-size: 10px; color:#64748b;">Pasivo Total / Activo Total</td>
                         <td style="text-align:center; font-family:'Courier New'; font-weight:700;" id="kpi-val-end">0.0%</td>
                         <td style="text-align:center;" id="kpi-badge-end"><span class="badge-kpi kpi-warn">EVALUANDO</span></td>
-                        <td style="font-size:10.5px; color:#475569;" id="kpi-desc-end">Proporción de los activos financiada por acreedores. Saludable < 65.0%.</td>
+                        <td style="font-size:10.5px; color:#475569;" id="kpi-desc-end">Proporción de activos financiada por acreedores. Saludable < 65.0%.</td>
                     </tr>
                     <tr>
                         <td class="account-name">4. Cobertura de Intereses (DSCR Operativo)</td>
@@ -623,7 +640,7 @@
                         <td style="font-size: 10px; color:#64748b;">EBIT / Ingresos Netos Totales</td>
                         <td style="text-align:center; font-family:'Courier New'; font-weight:700;" id="kpi-val-mop">0.0%</td>
                         <td style="text-align:center;" id="kpi-badge-mop"><span class="badge-kpi kpi-warn">EVALUANDO</span></td>
-                        <td style="font-size:10.5px; color:#475569;" id="kpi-desc-mop">Porcentaje libre de cada peso vendido para cubrir financiamiento e impuestos.</td>
+                        <td style="font-size:10.5px; color:#475569;" id="kpi-desc-mop">Porcentaje libre por peso vendido para cubrir financiamiento e impuestos.</td>
                     </tr>
                 </tbody>
             </table>
@@ -951,7 +968,6 @@
         let kInt = intPagadosArr[selIdx];
         let kVtas = vtasNetas[selIdx];
 
-        // Anualización si se selecciona parcial
         if (selIdx === 2) {
             kEbit = kEbit * (12 / nMesesParcial);
             kInt = kInt * (12 / nMesesParcial);
